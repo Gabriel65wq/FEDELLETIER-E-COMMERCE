@@ -5360,3 +5360,154 @@ body.dark #producto-detalle .precio-card.selected {
   color: var(--text-color);
   display: block;
 }
+
+/* ========================================================
+   RESPONSIVE SYSTEM — non-destructive
+   Breakpoints: 992 / 768 (ya tienes) / 600 / 480
+   Solo presenta ajustes visuales; 0 cambios de estructura.
+======================================================== */
+
+/* ========== NAVBAR (header / .header-container / .centered-nav) ========== */
+@media (max-width: 992px) {
+  header { padding: 12px 5%; }
+
+  .header-container { gap: 16px; }
+
+  .header-left h1 { font-size: 1.25rem; }
+
+  .centered-nav { gap: 12px; }
+  .hamburger-button { width: 38px; height: 38px; }
+}
+
+@media (max-width: 768px) {
+  /* Reafirmamos y complementamos lo que ya tienes */
+  .header-container { flex-direction: column; gap: 15px; } /* (ya existe) */
+  .header-right { gap: 15px; }                              /* (ya existe) */
+
+  /* Evita solapamientos en móviles medianos */
+  .header-left h1 { font-size: 1.1rem; }
+  .centered-nav { gap: 10px; }
+}
+
+@media (max-width: 600px) {
+  header { padding: 10px 4%; }
+  .hamburger-button { width: 34px; height: 34px; }
+}
+
+@media (max-width: 480px) {
+  .header-left h1 { font-size: 1rem; }
+  .centered-nav { gap: 8px; }
+}
+
+/* ========== #INICIO (hero) ========== */
+@media (max-width: 992px) {
+  #inicio { padding: 110px 6% 70px; }
+  #inicio .container { gap: 60px; }
+  #inicio .left h1 { font-size: 3rem; line-height: 1.25; }
+  .circular-image { width: 280px; height: 280px; }
+}
+
+@media (max-width: 768px) {
+  /* Ya lo tienes: cambia a columna, centra y ajusta tipografía e imagen */
+  #inicio .container { flex-direction: column; text-align: center; gap: 30px; } /* (existe) */
+  #inicio .left { text-align: center; min-width: unset; }                        /* (existe) */
+  #inicio .left h1 { font-size: 2.5rem; white-space: normal; }                  /* (existe) */
+  .circular-image { width: 180px; height: 180px; }                               /* (existe) */
+}
+
+@media (max-width: 600px) {
+  #inicio { padding: 96px 5% 56px; }
+  #inicio .left h1 { font-size: 2.15rem; }
+  #inicio .left p { font-size: 1.02rem; line-height: 1.6; }
+  .circular-image { width: 210px; height: 210px; } /* un pelín más grande que a 768 para equilibrio vertical */
+  .social-buttons { justify-content: center; gap: 12px; }
+}
+
+@media (max-width: 480px) {
+  #inicio { padding: 88px 5% 48px; }
+  #inicio .left h1 { font-size: 1.95rem; }
+  #inicio .left p { font-size: 0.96rem; }
+  .circular-image { width: 200px; height: 200px; }
+}
+
+/* ========== #PRODUCTOS (grid y cards) ========== */
+@media (max-width: 992px) {
+  .productos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+}
+@media (max-width: 768px) {
+  .productos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .producto-card img { width: 100%; height: auto; display: block; }
+  .producto-card h3 { font-size: 1.02rem; }
+  .producto-card p { font-size: 0.95rem; }
+}
+@media (max-width: 600px) {
+  #productos { padding: 72px 5% 56px; }
+  .productos-titulo { font-size: 1.6rem; }
+  .filtros { gap: 8px; flex-wrap: wrap; }
+  .filtro-btn { padding: 8px 12px; font-size: 0.9rem; }
+}
+@media (max-width: 480px) {
+  .productos-grid { grid-template-columns: 1fr; gap: 14px; }
+  .producto-card { padding: 14px; }
+  .producto-card h3 { font-size: 1rem; }
+  .producto-card p, .producto-card span { font-size: 0.9rem; }
+}
+
+/* ========== #INFORMACION (texto legible y respirado) ========== */
+@media (max-width: 992px) {
+  #informacion { padding: 96px 8% 72px; }
+  .informacion-contenido { max-width: 780px; line-height: 1.85; }
+}
+@media (max-width: 768px) {
+  .informacion-contenido { font-size: 1.02rem; line-height: 1.75; }
+  .informacion-contenido h3 { font-size: 1.35rem; }
+  .informacion-contenido h4 { font-size: 1.15rem; }
+}
+@media (max-width: 600px) {
+  #informacion { padding: 80px 6% 56px; }
+  .informacion-contenido { max-width: 560px; }
+}
+@media (max-width: 480px) {
+  .informacion-contenido { font-size: 0.96rem; }
+}
+
+/* ========== #REFERENCIAS (mosaico / galería) ========== */
+@media (max-width: 992px) {
+  #referencias { padding: 96px 8% 96px; }
+  .referencias-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+}
+@media (max-width: 768px) {
+  .referencias-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .ver-todas-btn { padding: 10px 14px; font-size: 0.95rem; }
+}
+@media (max-width: 600px) {
+  #referencias { padding: 72px 6% 72px; }
+}
+@media (max-width: 480px) {
+  .referencias-grid { grid-template-columns: 1fr; gap: 12px; }
+  .galeria-imagenes img { width: 100%; height: auto; }
+}
+
+/* ========== FOOTER (footer-container y columnas) ========== */
+@media (max-width: 992px) {
+  footer { padding: 28px 6%; }
+  .footer-container { gap: 28px; }
+}
+@media (max-width: 768px) {
+  /* Ya lo tienes: apilar columnas y centrar */
+  .footer-container { flex-direction: column; text-align: center; gap: 40px; } /* (existe) */
+}
+@media (max-width: 600px) {
+  .footer-left p, .footer-right p { font-size: 0.95rem; }
+  .footer-middle nav a { display: inline-block; padding: 6px 8px; }
+}
+@media (max-width: 480px) {
+  .copyright-notice { font-size: 0.85rem; }
+}
