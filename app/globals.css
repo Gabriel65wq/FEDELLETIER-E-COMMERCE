@@ -1441,5 +1441,5 @@ body.dark .auth-form h2 {
 .auth-submit-btn {
   width: 100%;
   padding: 1rem;
-  background: linear-gradient(90deg, var(\
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-color)); 
 }
