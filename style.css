@@ -5394,11 +5394,6 @@ body.dark #producto-detalle .precio-card.selected {
   .hamburger-button { width: 34px; height: 34px; }
 }
 
-@media (max-width: 480px) {
-  .header-left h1 { font-size: 1rem; }
-  .centered-nav { gap: 8px; }
-}
-
 /* ========== #INICIO (hero) ========== */
 @media (max-width: 992px) {
   #inicio { padding: 110px 6% 70px; }
@@ -5511,3 +5506,90 @@ body.dark #producto-detalle .precio-card.selected {
 @media (max-width: 480px) {
   .copyright-notice { font-size: 0.85rem; }
 }
+
+/* =========================================================
+   Ajustes responsive SOLO para móviles (visual, no funcional)
+   ========================================================= */
+
+/* 1) #productos: al menos 2 productos por fila en móvil */
+@media (max-width: 768px) {
+  .productos-grid {
+    /* Fuerza 2 columnas estables en móviles */
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px;
+  }
+
+  /* Pequeños ajustes tipográficos para legibilidad */
+  .producto-card h3 { font-size: 1.02rem; }
+  .producto-card p,
+  .producto-card span { font-size: 0.95rem; }
+}
+
+/* IMPORTANTE: a ≤480px hoy se fuerza 1 columna; lo anulamos. */
+@media (max-width: 480px) {
+  .productos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px;
+  }
+  .producto-card { padding: 12px; }
+  .producto-card img { height: auto; }
+}
+
+/* 2) Detalle de producto: ocultar imagen en móvil y priorizar texto */
+@media (max-width: 768px) {
+  #producto-detalle .detalle-info {
+    /* Una sola columna para que el texto use todo el ancho */
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  /* Oculta SOLO el contenedor de imagen, sin tocar la imagen principal del visor de referencias */
+  #producto-detalle .detalle-imagen-container {
+    display: none !important;
+  }
+
+  /* Ajustes de texto para mejor lectura */
+  #producto-detalle .detalle-texto h2 { font-size: 1.4rem; }
+  #producto-detalle .detalle-texto h3 { font-size: 0.95rem; }
+  #producto-detalle .detalle-precio-total { font-size: 1rem; }
+}
+
+/* 3) #referencias: tres imágenes en una misma fila en móvil */
+@media (max-width: 768px) {
+  /* Tira de tres miniaturas lado a lado */
+  .referencias-galeria {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    align-items: center;
+  }
+
+  /* Miniaturas recortadas de forma consistente */
+  .referencias-galeria .ref-img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+  }
+}
+
+/* 4) Galería completa (al tocar “Ver referencias”): 3 por fila en móvil */
+@media (max-width: 768px) {
+  #galeria-referencias .galeria-imagenes {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  #galeria-referencias .galeria-imagenes img {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+  }
+}
+
+/* Nota: NO tocamos .galeria-imagen-principal para conservar el zoom/visor actual */
