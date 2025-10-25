@@ -1,12 +1,6 @@
-export interface Product {
-  categoria: string
-  descripcion: string
-  detalles: string[]
-  precios?: Array<[string, number]>
-  rangosPerfume?: Array<[number, number, number]>
-}
+import type { Product } from "@/types/product"
 
-export const PRODUCTOS_DB = {
+export const PRODUCTOS_DB: Record<string, Product> = {
   "AirPods Pro 2da Gen": {
     categoria: "Accesorios Apple",
     descripcion: "Auriculares inalámbricos con cancelación activa de ruido y calidad de sonido premium.",
@@ -18,14 +12,14 @@ export const PRODUCTOS_DB = {
       "Estuche de carga inalámbrica incluido",
     ],
     precios: [
-      ["5x", 13.3],
-      ["10x", 12.8],
-      ["20x", 11.5],
-      ["30x", 10.5],
-      ["40x", 10.0],
-      ["100x", 9.5],
-      ["200x", 9.0],
-      ["500x", 8.5],
+      { tier: "5x", price: 13.3 },
+      { tier: "10x", price: 12.8 },
+      { tier: "20x", price: 11.5 },
+      { tier: "30x", price: 10.5 },
+      { tier: "40x", price: 10.0 },
+      { tier: "100x", price: 9.5 },
+      { tier: "200x", price: 9.0 },
+      { tier: "500x", price: 8.5 },
     ],
   },
   "Cable + Cargador": {
@@ -39,12 +33,12 @@ export const PRODUCTOS_DB = {
       "Compatible con iPhone y iPad",
     ],
     precios: [
-      ["5x", 5.5],
-      ["10x", 5.0],
-      ["20x", 4.5],
-      ["30x", 4.1],
-      ["50x", 3.7],
-      ["100x", 3.2],
+      { tier: "5x", price: 5.5 },
+      { tier: "10x", price: 5.0 },
+      { tier: "20x", price: 4.5 },
+      { tier: "30x", price: 4.1 },
+      { tier: "50x", price: 3.7 },
+      { tier: "100x", price: 3.2 },
     ],
   },
   "Cargadores Completos": {
@@ -58,12 +52,12 @@ export const PRODUCTOS_DB = {
       "Diseño compacto y portátil",
     ],
     precios: [
-      ["5x", 5.5],
-      ["10x", 5.0],
-      ["20x", 4.5],
-      ["30x", 4.1],
-      ["50x", 3.7],
-      ["100x", 3.2],
+      { tier: "5x", price: 5.5 },
+      { tier: "10x", price: 5.0 },
+      { tier: "20x", price: 4.5 },
+      { tier: "30x", price: 4.1 },
+      { tier: "50x", price: 3.7 },
+      { tier: "100x", price: 3.2 },
     ],
   },
   "Battery Pack 🔋": {
@@ -77,11 +71,11 @@ export const PRODUCTOS_DB = {
       "Integración perfecta con iOS",
     ],
     precios: [
-      ["5x", 10.0],
-      ["10x", 9.5],
-      ["20x", 9.0],
-      ["30x", 8.5],
-      ["50x", 8.0],
+      { tier: "5x", price: 10.0 },
+      { tier: "10x", price: 9.5 },
+      { tier: "20x", price: 9.0 },
+      { tier: "30x", price: 8.5 },
+      { tier: "50x", price: 8.0 },
     ],
   },
   "Funda Silicon Case I11 - 16Pro Max 📱": {
@@ -95,12 +89,12 @@ export const PRODUCTOS_DB = {
       "Disponible en varios colores",
     ],
     precios: [
-      ["15x", 2.5],
-      ["25x", 2.2],
-      ["50x", 1.8],
-      ["75x", 1.7],
-      ["100x", 1.5],
-      ["300x", 1.3],
+      { tier: "15x", price: 2.5 },
+      { tier: "25x", price: 2.2 },
+      { tier: "50x", price: 1.8 },
+      { tier: "75x", price: 1.7 },
+      { tier: "100x", price: 1.5 },
+      { tier: "300x", price: 1.3 },
     ],
   },
   "AirPods Max 🎧": {
@@ -115,10 +109,10 @@ export const PRODUCTOS_DB = {
       "Digital Crown para control preciso del volumen",
     ],
     precios: [
-      ["5x", 16.0],
-      ["10x", 15.0],
-      ["20x", 14.0],
-      ["50x", 13.0],
+      { tier: "5x", price: 16.0 },
+      { tier: "10x", price: 15.0 },
+      { tier: "20x", price: 14.0 },
+      { tier: "50x", price: 13.0 },
     ],
   },
   "JBL GO3": {
@@ -132,12 +126,12 @@ export const PRODUCTOS_DB = {
       "Colores surtidos disponibles",
     ],
     precios: [
-      ["5x", 11.0],
-      ["10x", 10.5],
-      ["20x", 10.0],
-      ["40x", 9.5],
-      ["60x", 9.0],
-      ["100x", 8.5],
+      { tier: "5x", price: 11.0 },
+      { tier: "10x", price: 10.5 },
+      { tier: "20x", price: 10.0 },
+      { tier: "40x", price: 9.5 },
+      { tier: "60x", price: 9.0 },
+      { tier: "100x", price: 8.5 },
     ],
   },
   "​Aspiradora Robot 🤖": {
@@ -153,7 +147,7 @@ export const PRODUCTOS_DB = {
       "Disponible en negro y blanco",
       "¡PRECIO DE LIQUIDACIÓN!",
     ],
-    precios: [["1x", 16.0]],
+    precios: [{ tier: "1x", price: 16.0 }],
   },
   "Torch 7.5G 🌸": {
     categoria: "Vapes",
@@ -166,11 +160,11 @@ export const PRODUCTOS_DB = {
       "Experiencia de vapor suave",
     ],
     precios: [
-      ["5x", 30.0],
-      ["10x", 29.5],
-      ["25x", 29.0],
-      ["50x", 28.0],
-      ["100x", 27.0],
+      { tier: "5x", price: 30.0 },
+      { tier: "10x", price: 29.5 },
+      { tier: "25x", price: 29.0 },
+      { tier: "50x", price: 28.0 },
+      { tier: "100x", price: 27.0 },
     ],
   },
   "ElfThc 5g Edición Limitada 💨": {
@@ -184,12 +178,12 @@ export const PRODUCTOS_DB = {
       "Experiencia única",
     ],
     precios: [
-      ["5x", 26.5],
-      ["10x", 25.5],
-      ["15x", 24.5],
-      ["25x", 23.5],
-      ["50x", 22.0],
-      ["100x", 21.5],
+      { tier: "5x", price: 26.5 },
+      { tier: "10x", price: 25.5 },
+      { tier: "15x", price: 24.5 },
+      { tier: "25x", price: 23.5 },
+      { tier: "50x", price: 22.0 },
+      { tier: "100x", price: 21.5 },
     ],
   },
   "ElfThc 3000mg Edición Limitada 💨": {
@@ -203,12 +197,12 @@ export const PRODUCTOS_DB = {
       "Diseño premium",
     ],
     precios: [
-      ["5x", 19.0],
-      ["10x", 18.5],
-      ["20x", 18.0],
-      ["30x", 17.5],
-      ["50x", 17.0],
-      ["100x", 16.0],
+      { tier: "5x", price: 19.0 },
+      { tier: "10x", price: 18.5 },
+      { tier: "20x", price: 18.0 },
+      { tier: "30x", price: 17.5 },
+      { tier: "50x", price: 17.0 },
+      { tier: "100x", price: 16.0 },
     ],
   },
   "Elfbar 40K Puff 💨": {
@@ -222,11 +216,11 @@ export const PRODUCTOS_DB = {
       "4 niveles personalizados de intensidad",
     ],
     precios: [
-      ["5x", 13.8],
-      ["10x", 13.3],
-      ["20x", 12.8],
-      ["50x", 12.0],
-      ["100x", 11.75],
+      { tier: "5x", price: 13.8 },
+      { tier: "10x", price: 13.3 },
+      { tier: "20x", price: 12.8 },
+      { tier: "50x", price: 12.0 },
+      { tier: "100x", price: 11.75 },
     ],
   },
   "Ignite V400 40mil 💨": {
@@ -241,11 +235,11 @@ export const PRODUCTOS_DB = {
       "Sabores intensos y duraderos",
     ],
     precios: [
-      ["5x", 15.5],
-      ["10x", 15.0],
-      ["20x", 14.5],
-      ["30x", 14.25],
-      ["50x", 13.8],
+      { tier: "5x", price: 15.5 },
+      { tier: "10x", price: 15.0 },
+      { tier: "20x", price: 14.5 },
+      { tier: "30x", price: 14.25 },
+      { tier: "50x", price: 13.8 },
     ],
   },
   "Lost Mary Mixer 30.000 Puffs 💨": {
@@ -259,12 +253,12 @@ export const PRODUCTOS_DB = {
       "Variedad de sabores disponibles",
     ],
     precios: [
-      ["5x", 13.5],
-      ["10x", 13.0],
-      ["20x", 12.7],
-      ["30x", 12.2],
-      ["50x", 11.8],
-      ["100x", 11.4],
+      { tier: "5x", price: 13.5 },
+      { tier: "10x", price: 13.0 },
+      { tier: "20x", price: 12.7 },
+      { tier: "30x", price: 12.2 },
+      { tier: "50x", price: 11.8 },
+      { tier: "100x", price: 11.4 },
     ],
   },
   "IGNITE V250 25.000 Puffs 💨": {
@@ -278,12 +272,12 @@ export const PRODUCTOS_DB = {
       "Variedad de sabores refrescantes",
     ],
     precios: [
-      ["5x", 13.7],
-      ["10x", 13.2],
-      ["20x", 12.8],
-      ["40x", 12.3],
-      ["60x", 11.8],
-      ["100x", 11.4],
+      { tier: "5x", price: 13.7 },
+      { tier: "10x", price: 13.2 },
+      { tier: "20x", price: 12.8 },
+      { tier: "40x", price: 12.3 },
+      { tier: "60x", price: 11.8 },
+      { tier: "100x", price: 11.4 },
     ],
   },
   "IGNITE V150 15.000 Puffs 💨": {
@@ -297,12 +291,12 @@ export const PRODUCTOS_DB = {
       "Variedad de sabores disponibles",
     ],
     precios: [
-      ["5x", 11.0],
-      ["10x", 10.8],
-      ["20x", 10.3],
-      ["40x", 9.8],
-      ["60x", 9.4],
-      ["100x", 8.8],
+      { tier: "5x", price: 11.0 },
+      { tier: "10x", price: 10.8 },
+      { tier: "20x", price: 10.3 },
+      { tier: "40x", price: 9.8 },
+      { tier: "60x", price: 9.4 },
+      { tier: "100x", price: 8.8 },
     ],
   },
   "Elfbar Ice King 40.000 Puffs 💨": {
@@ -316,12 +310,12 @@ export const PRODUCTOS_DB = {
       "Variedad de sabores helados",
     ],
     precios: [
-      ["5x", 15.0],
-      ["10x", 14.5],
-      ["20x", 14.0],
-      ["40x", 13.5],
-      ["60x", 13.0],
-      ["100x", 12.5],
+      { tier: "5x", price: 15.0 },
+      { tier: "10x", price: 14.5 },
+      { tier: "20x", price: 14.0 },
+      { tier: "40x", price: 13.5 },
+      { tier: "60x", price: 13.0 },
+      { tier: "100x", price: 12.5 },
     ],
   },
   "AL HARAMAIN AMBER OUD GOLD EDITION EDP 100ml 🌟": {
@@ -335,10 +329,10 @@ export const PRODUCTOS_DB = {
       "Fragancia unisex de alta gama",
     ],
     rangosPerfume: [
-      [3, 4, 62.5],
-      [5, 9, 60.5],
-      [10, 19, 60.0],
-      [20, Number.POSITIVE_INFINITY, 59.5],
+      { min: 3, max: 4, price: 62.5 },
+      { min: 5, max: 9, price: 60.5 },
+      { min: 10, max: 19, price: 60.0 },
+      { min: 20, max: Number.POSITIVE_INFINITY, price: 59.5 },
     ],
   },
   "BHARARA KING EDP 150ml 👑": {
@@ -352,10 +346,10 @@ export const PRODUCTOS_DB = {
       "Larga duración y excelente proyección",
     ],
     rangosPerfume: [
-      [3, 4, 68.5],
-      [5, 9, 66.5],
-      [10, 19, 66.0],
-      [20, Number.POSITIVE_INFINITY, 65.5],
+      { min: 3, max: 4, price: 68.5 },
+      { min: 5, max: 9, price: 66.5 },
+      { min: 10, max: 19, price: 66.0 },
+      { min: 20, max: Number.POSITIVE_INFINITY, price: 65.5 },
     ],
   },
   "LATTAFA FAKHAR DORADO EDP 100ml ✨": {
@@ -369,10 +363,10 @@ export const PRODUCTOS_DB = {
       "Perfume unisex de alta calidad",
     ],
     rangosPerfume: [
-      [3, 4, 36.5],
-      [5, 9, 35.0],
-      [10, 19, 34.0],
-      [20, Number.POSITIVE_INFINITY, 33.5],
+      { min: 3, max: 4, price: 36.5 },
+      { min: 5, max: 9, price: 35.0 },
+      { min: 10, max: 19, price: 34.0 },
+      { min: 20, max: Number.POSITIVE_INFINITY, price: 33.5 },
     ],
   },
   "ARMAF CLUB DE NUIT INTENSE MAN EDT 105ml 🖤": {
@@ -386,10 +380,10 @@ export const PRODUCTOS_DB = {
       "Excelente relación calidad-precio",
     ],
     rangosPerfume: [
-      [3, 4, 35.5],
-      [5, 9, 33.5],
-      [10, 19, 33.0],
-      [20, Number.POSITIVE_INFINITY, 32.5],
+      { min: 3, max: 4, price: 35.5 },
+      { min: 5, max: 9, price: 33.5 },
+      { min: 10, max: 19, price: 33.0 },
+      { min: 20, max: Number.POSITIVE_INFINITY, price: 32.5 },
     ],
   },
   "LATTAFA KHAMRAH EDP 100ml 🍯": {
@@ -403,10 +397,10 @@ export const PRODUCTOS_DB = {
       "Excelente duración y proyección",
     ],
     rangosPerfume: [
-      [3, 4, 42.0],
-      [5, 9, 40.0],
-      [10, 19, 39.5],
-      [20, Number.POSITIVE_INFINITY, 39.0],
+      { min: 3, max: 4, price: 42.0 },
+      { min: 5, max: 9, price: 40.0 },
+      { min: 10, max: 19, price: 39.5 },
+      { min: 20, max: Number.POSITIVE_INFINITY, price: 39.0 },
     ],
   },
   "LATTAFA ASAD EDP 100ml 🦁": {
@@ -420,10 +414,10 @@ export const PRODUCTOS_DB = {
       "Gran proyección y duración",
     ],
     rangosPerfume: [
-      [3, 4, 29.5],
-      [5, 9, 27.5],
-      [10, 19, 27.0],
-      [20, Number.POSITIVE_INFINITY, 26.5],
+      { min: 3, max: 4, price: 29.5 },
+      { min: 5, max: 9, price: 27.5 },
+      { min: 10, max: 19, price: 27.0 },
+      { min: 20, max: Number.POSITIVE_INFINITY, price: 26.5 },
     ],
   },
   "LATTAFA BADE'E AL OUD SUBLIME 100ml 🌹": {
@@ -437,10 +431,10 @@ export const PRODUCTOS_DB = {
       "Perfume unisex de alta calidad",
     ],
     rangosPerfume: [
-      [3, 4, 29.5],
-      [5, 9, 27.5],
-      [10, 19, 27.0],
-      [20, Number.POSITIVE_INFINITY, 26.5],
+      { min: 3, max: 4, price: 29.5 },
+      { min: 5, max: 9, price: 27.5 },
+      { min: 10, max: 19, price: 27.0 },
+      { min: 20, max: Number.POSITIVE_INFINITY, price: 26.5 },
     ],
   },
   "LATTAFA YARA PINK EDP 100ml 🌸": {
@@ -454,10 +448,10 @@ export const PRODUCTOS_DB = {
       "Muy popular entre mujeres jóvenes",
     ],
     rangosPerfume: [
-      [3, 4, 36.0],
-      [5, 9, 34.0],
-      [10, 19, 33.5],
-      [20, Number.POSITIVE_INFINITY, 33.0],
+      { min: 3, max: 4, price: 36.0 },
+      { min: 5, max: 9, price: 34.0 },
+      { min: 10, max: 19, price: 33.5 },
+      { min: 20, max: Number.POSITIVE_INFINITY, price: 33.0 },
     ],
   },
   "LATTAFA YARA CANDY EDP 100ml 🍭": {
@@ -471,10 +465,10 @@ export const PRODUCTOS_DB = {
       "Ideal para amantes de lo dulce",
     ],
     rangosPerfume: [
-      [3, 4, 28.5],
-      [5, 9, 26.5],
-      [10, 19, 26.0],
-      [20, Number.POSITIVE_INFINITY, 25.5],
+      { min: 3, max: 4, price: 28.5 },
+      { min: 5, max: 9, price: 26.5 },
+      { min: 10, max: 19, price: 26.0 },
+      { min: 20, max: Number.POSITIVE_INFINITY, price: 25.5 },
     ],
   },
   "LATTAFA YARA MOI EDP 100ml 💖": {
@@ -488,10 +482,10 @@ export const PRODUCTOS_DB = {
       "Excelente duración y proyección",
     ],
     rangosPerfume: [
-      [3, 4, 29.0],
-      [5, 9, 27.0],
-      [10, 19, 26.5],
-      [20, Number.POSITIVE_INFINITY, 26.0],
+      { min: 3, max: 4, price: 29.0 },
+      { min: 5, max: 9, price: 27.0 },
+      { min: 10, max: 19, price: 26.5 },
+      { min: 20, max: Number.POSITIVE_INFINITY, price: 26.0 },
     ],
   },
   "LATTAFA BADEE AL OUD NOBLE BLUSH EDP 100ml 🌺": {
@@ -505,10 +499,10 @@ export const PRODUCTOS_DB = {
       "Perfume unisex de alta gama",
     ],
     rangosPerfume: [
-      [3, 4, 31.5],
-      [5, 9, 29.5],
-      [10, 19, 29.0],
-      [20, Number.POSITIVE_INFINITY, 28.5],
+      { min: 3, max: 4, price: 31.5 },
+      { min: 5, max: 9, price: 29.5 },
+      { min: 10, max: 19, price: 29.0 },
+      { min: 20, max: Number.POSITIVE_INFINITY, price: 28.5 },
     ],
   },
   "LATTAFA FAKHAR ROSE EDP 100ml 🌹": {
@@ -522,35 +516,10 @@ export const PRODUCTOS_DB = {
       "Perfecta para ocasiones especiales",
     ],
     rangosPerfume: [
-      [3, 4, 36.0],
-      [5, 9, 34.0],
-      [10, 19, 33.5],
-      [20, Number.POSITIVE_INFINITY, 33.0],
+      { min: 3, max: 4, price: 36.0 },
+      { min: 5, max: 9, price: 34.0 },
+      { min: 10, max: 19, price: 33.5 },
+      { min: 20, max: Number.POSITIVE_INFINITY, price: 33.0 },
     ],
   },
-} as const
-
-export type ProductName = keyof typeof PRODUCTOS_DB
-
-export function calcularPrecioPorTiers(cantidad: number, precios: Array<[string, number]>): number {
-  let mejorPrecio = precios[0][1]
-  for (const [tier, precio] of precios) {
-    const cantidadTier = Number.parseInt(String(tier).replace(/\D/g, ""), 10)
-    if (!isNaN(cantidadTier) && cantidad >= cantidadTier) {
-      mejorPrecio = precio
-    }
-  }
-  return mejorPrecio
-}
-
-export function calcularPrecioPerfume(totalPerfumes: number, rangosPerfume: Array<[number, number, number]>): number {
-  if (totalPerfumes < 3) {
-    return rangosPerfume[0][2]
-  }
-  for (const [min, max, precio] of rangosPerfume) {
-    if (totalPerfumes >= min && totalPerfumes <= max) {
-      return precio
-    }
-  }
-  return rangosPerfume[rangosPerfume.length - 1][2]
 }
