@@ -516,32 +516,31 @@ NEW THEME SWITCH STYLES (Sun/Moon Switch)
   position: relative;
 }
 
-.cart-badge {
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  transform: translate(50%, -50%);
-  background: linear-gradient(135deg, #ff3b30, #ff6b6b);
-  color: #fff;
-  font-size: 0.65rem;
-  font-weight: 700;
-  padding: 2px 6px;
-  border-radius: 50%;
-  min-width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(255, 59, 48, 0.4);
-  backdrop-filter: blur(2px);
-  will-change: transform;
-  border: 1px solid rgba(255,255,255,0.8);
+/* FIX POSICIÓN CART BADGE DEFINITIVO */
+.header-middle .cart-button {
+  position: relative !important;
 }
 
-.cart-badge:empty {
-  display: none;
+.header-middle .cart-button .cart-badge {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  transform: translate(40%, -40%) !important;
+  background: linear-gradient(135deg, #ff3b30, #ff6b6b) !important;
+  color: #fff !important;
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  line-height: 1 !important;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(255, 59, 48, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  pointer-events: none;
 }
 
 @keyframes badgePulse {
@@ -5403,12 +5402,11 @@ body.dark #producto-detalle .precio-card.selected {
 }
 
 @media (max-width: 480px) {
-  .cart-badge {
-    top: -2px;
-    right: -2px;
-    min-width: 16px;
-    height: 16px;
-    font-size: 0.55rem;
+  .header-middle .cart-button .cart-badge {
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 0.55rem !important;
+    transform: translate(45%, -45%) !important;
   }
 }
 
