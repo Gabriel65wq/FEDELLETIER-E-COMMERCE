@@ -518,18 +518,26 @@ NEW THEME SWITCH STYLES (Sun/Moon Switch)
 
 .cart-badge {
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: -4px;
+  right: -4px;
+  transform: translate(50%, -50%);
   background: linear-gradient(135deg, #ff3b30, #ff6b6b);
-  color: white;
-  font-size: 0.7rem;
+  color: #fff;
+  font-size: 0.65rem;
   font-weight: 700;
   padding: 2px 6px;
-  border-radius: 10px;
+  border-radius: 50%;
   min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(255, 59, 48, 0.4);
-  animation: badgePulse 2s ease-in-out infinite;
+  box-shadow: 0 2px 4px rgba(255, 59, 48, 0.4);
+  backdrop-filter: blur(2px);
+  will-change: transform;
+  border: 1px solid rgba(255,255,255,0.8);
 }
 
 .cart-badge:empty {
@@ -5394,6 +5402,16 @@ body.dark #producto-detalle .precio-card.selected {
   .hamburger-button { width: 34px; height: 34px; }
 }
 
+@media (max-width: 480px) {
+  .cart-badge {
+    top: -2px;
+    right: -2px;
+    min-width: 16px;
+    height: 16px;
+    font-size: 0.55rem;
+  }
+}
+
 /* ========== #INICIO (hero) ========== */
 @media (max-width: 992px) {
   #inicio { padding: 110px 6% 70px; }
@@ -5575,17 +5593,17 @@ body.dark #producto-detalle .precio-card.selected {
   }
 }
 
-/* 4) Galería completa (al tocar “Ver referencias”): 3 por fila en móvil */
+/* ✅ Ver referencias → 2 fotos por fila en móviles */
 @media (max-width: 768px) {
   #galeria-referencias .galeria-imagenes {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px;
   }
 
   #galeria-referencias .galeria-imagenes img {
     width: 100%;
-    height: 110px;
+    height: 150px;
     object-fit: cover;
     border-radius: 10px;
     display: block;
