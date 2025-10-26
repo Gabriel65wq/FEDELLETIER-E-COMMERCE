@@ -3188,3 +3188,15 @@ footer {
     font-size: 1.5rem;
   }
 }
+
+/* FIX VISIBILIDAD ICONO INSTAGRAM */
+.icon-content a[data-social="instagram"] svg {
+  fill: #e1306c !important;
+  stroke: none !important;
+  z-index: 2 !important;
+  opacity: 1 !important;
+}
+
+.icon-content a[data-social="instagram"]::before {
+  z-index: 1 !important;
+}
