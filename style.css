@@ -1993,6 +1993,12 @@ footer {
     max-width: 100%;
   }
 
+  /* Modificando grid de productos para mostrar 2 columnas en móvil */
+  .productos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
   #informacion,
   #referencias {
     padding: 80px 5%;
@@ -2002,9 +2008,23 @@ footer {
     font-size: 1rem;
   }
 
+  /* Reduciendo tamaño del texto de descripción de referencias en móvil */
+  .referencias-descripcion {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Ajustando galería de referencias para mostrar 3 imágenes en una fila */
+  .referencias-galeria {
+    flex-wrap: nowrap;
+    gap: var(--space-sm);
+  }
+
   .ref-img {
-    width: 200px;
-    height: 200px;
+    width: 30%;
+    height: auto;
+    aspect-ratio: 1;
+    flex-shrink: 1;
   }
 
   .ver-todas-btn {
@@ -2186,6 +2206,12 @@ footer {
     font-size: 0.85rem;
   }
 
+  /* Manteniendo 2 columnas en productos para pantallas muy pequeñas */
+  .productos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+
   .producto-card h3 {
     font-size: 1rem;
   }
@@ -2203,27 +2229,23 @@ footer {
     font-size: 1.2rem;
   }
 
+  /* Reduciendo aún más el texto de referencias en pantallas muy pequeñas */
+  .referencias-descripcion {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  /* Ajustando galería de referencias para 3 imágenes en fila en pantallas pequeñas */
+  .referencias-galeria {
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
   .ref-img {
-    width: 180px;
-    height: 180px;
-  }
-
-  .ver-todas-btn {
-    font-size: 1rem;
-    padding: 10px 25px;
-  }
-
-  .galeria-titulo {
-    font-size: 1.4rem;
-  }
-
-  .galeria-imagenes {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: var(--space-sm);
-  }
-
-  .galeria-imagenes img {
-    height: 140px;
+    width: 32%;
+    height: auto;
+    aspect-ratio: 1;
+    flex-shrink: 1;
   }
 
   .detalle-contenido {
