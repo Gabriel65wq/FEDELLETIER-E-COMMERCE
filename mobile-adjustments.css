@@ -617,3 +617,8 @@
     opacity: 0.6;
   }
 }
+
+/* Ver referencias - 2 imágenes por fila en móviles */
+.referencias-galeria.activada {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
