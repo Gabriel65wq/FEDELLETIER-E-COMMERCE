@@ -1360,27 +1360,34 @@ body.dark .ref-img:hover {
 /* ============================================
    GALERÍA COMPLETA DE REFERENCIAS
    ============================================ */
-#galeria-referencias {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.95);
-  display: none;
-  justify-content: center;
-  align-items: flex-start;
-  overflow-y: auto;
-  padding-top: 100px;
-  z-index: 3000;
-  animation: fadeIn 0.6s ease;
+
+/* Asegurar que la galería oculte la sección de referencias */
+.galeria-oculta {
+  display: none !important;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+#galeria-referencias {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-color);
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 40px 20px;
+  display: none;
 }
+
+#galeria-referencias:not(.galeria-oculta) {
+  display: flex;
+}
+
+/* Cuando la galería está visible, ocultar la sección de referencias */
+body:has(#galeria-referencias:not(.galeria-oculta)) #referencias {
+  display: none !important;
+}
+/* </CHANGE> */
 
 .galeria-container {
   width: 90%;
@@ -2590,7 +2597,7 @@ footer {
 
   /* Icono del sol (tema claro) */
   .theme-switch::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3 Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3Cline x1='1' y1='12' x2='3' y2='12'/%3E%3 Cline x1='21' y1='12' x2='23' y2='12'/%3E%3 Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3 Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3 Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3 Cline x1='1' y1='12' x2='3' y2='12'/%3E%3 Cline x1='21' y1='12' x2='23' y2='12'/%3E%3 Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
