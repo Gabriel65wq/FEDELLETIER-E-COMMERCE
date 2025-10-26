@@ -3200,3 +3200,8 @@ footer {
 .icon-content a[data-social="instagram"]::before {
   z-index: 1 !important;
 }
+
+.icon-content a[data-social="instagram"] svg {
+  fill: #E4405F !important;
+  stroke: none !important;
+}
