@@ -700,19 +700,24 @@ body.dark .circular-image:hover {
   display: block;
   z-index: 1;
   position: relative;
+  /* Asegurar que el fill funcione correctamente */
+  fill: currentColor;
 }
 
-/* Agregar colores base para cada red social para mejor visibilidad */
+/* Colores base con mayor especificidad para asegurar visibilidad */
 .icon-content a[data-social="instagram"] svg {
-  color: #e1306c;
+  color: #e1306c !important;
+  fill: #e1306c !important;
 }
 
 .icon-content a[data-social="whatsapp"] svg {
-  color: #25d366;
+  color: #25d366 !important;
+  fill: #25d366 !important;
 }
 
 .icon-content a[data-social="facebook"] svg {
-  color: #1877f2;
+  color: #1877f2 !important;
+  fill: #1877f2 !important;
 }
 
 .icon-content a::before {
@@ -744,7 +749,8 @@ body.dark .circular-image:hover {
 }
 
 .icon-content a:hover svg {
-  color: #fff;
+  color: #fff !important;
+  fill: #fff !important;
 }
 
 .icon-content .tooltip {
@@ -2610,7 +2616,7 @@ footer {
 
   /* Icono del sol (tema claro) */
   .theme-switch::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3 Cline x1='1' y1='12' x2='3' y2='12'/%3E%3 Cline x1='21' y1='12' x2='23' y2='12'/%3E%3Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3 Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3 Cline x1='1' y1='12' x2='3' y2='12'/%3E%3Cline x1='21' y1='12' x2='23' y2='12'/%3E%3 Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

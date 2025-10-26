@@ -763,7 +763,7 @@ const ProductDetailManager = {
     this.detalleImagen = document.getElementById("detalle-imagen")
     this.detalleTitulo = document.getElementById("detalle-titulo")
     this.detalleCategoria = document.getElementById("detalle-categoria")
-    this.detalleDescripcion = document.getElementById("detalle-descripcion")
+    this.detalleDescripcion = document.getElementById("detalle-Descripcion")
     this.detalleLista = document.getElementById("detalle-lista")
     this.detalleTabla = document.getElementById("detalle-tabla")
     this.cantidadInput = document.getElementById("cantidad")
@@ -1100,14 +1100,16 @@ const GalleryManager = {
   setupEventListeners() {
     if (this.verTodasBtn) {
       this.verTodasBtn.addEventListener("click", () => {
-        this.galeriaRef.style.display = "flex"
+        this.galeriaRef.classList.remove("galeria-oculta")
+        this.galeriaRef.setAttribute("aria-hidden", "false")
         document.body.style.overflow = "hidden"
       })
     }
 
     if (this.volverReferencias) {
       this.volverReferencias.addEventListener("click", () => {
-        this.galeriaRef.style.display = "none"
+        this.galeriaRef.classList.add("galeria-oculta")
+        this.galeriaRef.setAttribute("aria-hidden", "true")
         document.body.style.overflow = ""
         document.querySelector("#referencias").scrollIntoView({ behavior: "smooth" })
       })
