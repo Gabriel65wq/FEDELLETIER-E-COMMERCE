@@ -73,9 +73,6 @@
   }
 
   /* Theme switch simplificado para móvil */
-  .header-right {
-    display: none;
-  }
 
   .theme-switch {
     order: 3;
