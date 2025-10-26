@@ -1507,7 +1507,7 @@ body:has(#galeria-referencias:not(.galeria-oculta)) #referencias {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 4000;
+  z-index: 10000; /* Aumentado z-index de 4000 a 10000 para que aparezca sobre la galería de referencias (z-index: 9999) */
   animation: fadeInUp 0.6s ease;
 }
 
@@ -2616,7 +2616,7 @@ footer {
 
   /* Icono del sol (tema claro) */
   .theme-switch::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3 Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3Cline x1='1' y1='12' x2='3' y2='12'/%3E%3 Cline x1='21' y1='12' x2='23' y2='12'/%3E%3Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3 Cline x1='12' y1='21' x2='12' y2='23'/%3E%3Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3 Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3 Cline x1='1' y1='12' x2='3' y2='12'/%3E%3 Cline x1='21' y1='12' x2='23' y2='12'/%3E%3 Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -3187,6 +3187,23 @@ footer {
   .footer-logo h2 {
     font-size: 1.5rem;
   }
+}
+
+/* FIX VISIBILIDAD ICONO INSTAGRAM */
+.icon-content a[data-social="instagram"] svg {
+  fill: #e1306c !important;
+  stroke: none !important;
+  z-index: 2 !important;
+  opacity: 1 !important;
+}
+
+.icon-content a[data-social="instagram"]::before {
+  z-index: 1 !important;
+}
+
+.icon-content a[data-social="instagram"] svg {
+  fill: #e4405f !important;
+  stroke: none !important;
 }
 
 /* FIX VISIBILIDAD ICONO INSTAGRAM */
