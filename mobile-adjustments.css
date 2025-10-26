@@ -72,7 +72,7 @@
     width: 20px;
   }
 
-  /* Botón Theme igual que los demás en móvil */
+  /* Botón Theme con emojis en móvil */
 .theme-switch {
   width: 44px;
   height: 44px;
@@ -83,47 +83,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.2s ease;
+  position: relative;
+  font-size: 24px;
+  transition: background-color .25s ease, transform .2s ease;
 }
 
 .theme-switch:active {
-  transform: scale(0.90);
+  transform: scale(0.85);
 }
 
-/* Ocultar el toggle complejo original en móvil */
-.theme-switch__container {
+/* Ocultar el switch complejo original en móvil */
+.theme-switch__container,
+.theme-switch__circle-container,
+.theme-switch__stars-container,
+.theme-switch__clouds,
+.theme-switch__sun-moon-container {
   display: none !important;
 }
 
-/* Ícono sol por defecto */
+/* Estado por defecto: ☀️ modo claro */
 .theme-switch::before {
   content: "☀️";
-  font-size: 22px;
+  display: block;
   opacity: 1;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: rotate(0deg) scale(1);
+  transition: transform .4s ease, opacity .3s ease;
 }
 
-/* Ícono luna oculto inicialmente */
-.theme-switch::after {
-  content: "🌙";
-  font-size: 22px;
-  position: absolute;
-  opacity: 0;
-  transform: scale(0.5);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-/* Cuando está oscuro → mostrar luna */
+/* Cuando está oscuro → 🌙 con giro */
 body.dark .theme-switch::before {
-  opacity: 0;
-  transform: scale(0.5);
-}
-
-body.dark .theme-switch::after {
-  opacity: 1;
-  transform: scale(1);
+  content: "🌙";
+  transform: rotate(-25deg) scale(1);
 }
 
   /* ==========================================
