@@ -350,6 +350,7 @@
     font-size: 1rem;
   }
 
+
   /* Ocultar sección de referencias cuando la galería está visible */
   /* </CHANGE> */
 
@@ -388,6 +389,10 @@
     /* Agregado will-change para mejorar el rendimiento en móvil */
     will-change: transform;
   }
+
+.referencias-galeria.activada {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
 
   /* ==========================================
      MODAL DETALLE DE PRODUCTO
@@ -616,9 +621,4 @@
     border-top: 1px solid var(--border-color);
     opacity: 0.6;
   }
-}
-
-/* Ver referencias - 2 imágenes por fila en móviles */
-.referencias-galeria.activada {
-  grid-template-columns: repeat(2, 1fr) !important;
 }
