@@ -1,48 +1,43 @@
-/* ============================================
-   AJUSTES EXCLUSIVOS PARA MÓVIL
-   Solo se aplican en pantallas menores a 768px
-   ============================================ */
+/* ==========================================================
+   ✅ MOBILE DESIGN — SOLO PARA PANTALLAS MENORES A 768PX
+   ========================================================== */
 
-/* Media query para dispositivos móviles */
 @media (max-width: 767px) {
-  /* ==========================================
-     NAVBAR - Ajustes de alineación móvil
-     ========================================== */
 
-  /* Reducir altura de la navbar en móvil */
+  /* ===============================
+     ✅ NAVBAR — Todo centrado
+     =============================== */
+
   header {
     padding: 8px var(--space-md);
   }
 
   .header-container {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    max-width: 100%;
+    width: 100%;
   }
 
-  /* Ocultar logo en móvil */
+  /* Ocultar logo */
   .header-left {
-    display: none;
+    display: none !important;
   }
 
-  /* Centro: Todos los botones centrados con mismo tamaño */
-  .header-middle {
-    flex: 0 1 auto;
-    display: flex;
-    justify-content: center;
-  }
-
+  /* Contenedor de botones centrado */
+  .header-middle,
   .centered-nav {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
-    gap: 0.75rem;
+    gap: 12px;
+    width: auto;
+    margin: 0 auto;
   }
 
-  /* Todos los botones con el mismo tamaño */
+  /* Mismo tamaño para todos los btn */
   .nav-button,
   .hamburger-button,
   .cart-button,
@@ -56,56 +51,64 @@
     justify-content: center;
     border-radius: var(--border-radius);
     background-color: var(--bg-secondary);
+    position: relative;
   }
 
-  .nav-button .icon,
-  .cart-button .icon {
-    width: 22px;
-    height: 22px;
+  /* Orden seleccionado:
+     Inicio – Hamburguesa – Carrito – Theme ✅ */
+  .nav-button { order: 0; }
+  .hamburger-button { order: 1; }
+  .cart-button { order: 2; }
+  .theme-switch { order: 3; }
+
+  /* Badge del carrito ✅ */
+  .cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: red;
+    color: #fff;
+    font-size: 12px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    pointer-events: none;
   }
 
-  .hamburger-button {
-    gap: 4px;
+  /* Theme con sol/luna */
+  .theme-switch {
+    font-size: 20px;
+    cursor: pointer;
   }
 
-  .hamburger-button span {
-    width: 20px;
-  }
 
-  /* ==========================================
-     SECCIÓN #INICIO - Centrado completo
-     ========================================== */
+  /* ===============================
+     ✅ #INICIO — Todo centrado
+     =============================== */
 
   #inicio {
     padding: 60px 5%;
+    text-align: center;
   }
 
   #inicio .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
     gap: 2rem;
-  }
-
-  #inicio .left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 100%;
   }
 
   #inicio .left h1 {
     font-size: 2rem;
-    text-align: center;
     width: 100%;
   }
 
   #inicio .left p {
-    text-align: center;
-    width: 100%;
     font-size: 1rem;
+    width: 100%;
   }
 
   #inicio .social-buttons {
@@ -114,69 +117,16 @@
     gap: 1rem;
   }
 
-  /* Mejorar visibilidad de los iconos sociales en móvil */
-  .icon-content a {
-    width: 60px;
-    height: 60px;
-    border: 3px solid var(--border-color);
-  }
-
-  .icon-content a svg {
-    width: 32px;
-    height: 32px;
-    max-width: 32px;
-    max-height: 32px;
-  }
-
-  /* Asegurar que el SVG de Instagram sea visible */
-  .icon-content a[data-social="instagram"] svg {
-    color: #e1306c;
-  }
-
-  .icon-content a[data-social="whatsapp"] svg {
-    color: #25d366;
-  }
-
-  .icon-content a[data-social="facebook"] svg {
-    color: #1877f2;
-  }
-
-  /* Cuando se hace hover, el color cambia a blanco */
-  .icon-content a:hover svg {
-    color: #fff !important;
-  }
-  /* </CHANGE> */
-
-  #inicio .right {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-
-  #inicio .circular-image {
-    margin: 0 auto;
+  .circular-image {
     width: 250px;
     height: 250px;
+    margin: 0 auto;
   }
 
-  /* ==========================================
-     SECCIÓN #PRODUCTOS - 2 productos por fila
-     ========================================== */
 
-  .productos-titulo {
-    font-size: 2.2rem;
-    margin-bottom: 35px;
-  }
-
-  .productos-filtros {
-    gap: var(--space-sm);
-    margin-bottom: 40px;
-  }
-
-  .filtro-btn {
-    padding: 8px 18px;
-    font-size: 0.9rem;
-  }
+  /* ===============================
+     ✅ PRODUCTOS — 2 por fila
+     =============================== */
 
   .productos-grid {
     display: grid;
@@ -185,147 +135,36 @@
     padding: 0 0.5rem;
   }
 
-  .producto-card {
-    width: 100%;
-    max-width: 100%;
-  }
-
   .producto-card img {
     height: 180px;
     object-fit: cover;
   }
 
-  .producto-card h3 {
-    font-size: 0.85rem;
-    line-height: 1.3;
-    margin: var(--space-sm) 0;
-  }
 
-  .producto-card p {
-    font-size: 0.75rem;
-  }
-
-  .producto-card span {
-    font-size: 0.7rem;
-  }
-
-  /* ==========================================
-     SECCIÓN #INFORMACIÓN
-     ========================================== */
-
-  #informacion {
-    padding: 80px 5%;
-  }
-
-  .informacion-titulo {
-    font-size: 2.2rem;
-    margin-bottom: 35px;
-  }
-
-  .informacion-contenido {
-    font-size: 1rem;
-  }
-
-  .informacion-contenido h3 {
-    font-size: 1.4rem;
-  }
-
-  /* ==========================================
-     SECCIÓN #REFERENCIAS - Ajustes móviles
-     ========================================== */
+  /* ===============================
+     ✅ REFERENCIAS
+     =============================== */
 
   #referencias {
-    padding: 80px 5%;
+    padding: 60px 5%;
   }
 
-  .referencias-titulo {
-    font-size: 2.2rem;
-    margin-bottom: 35px;
-  }
-
-  .referencias-descripcion {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 1.5rem;
-  }
-
-  /* 3 imágenes en una fila */
   .referencias-galeria {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
-    margin-bottom: 1.5rem;
   }
 
   .ref-img {
-    width: 100%;
-    height: auto;
     aspect-ratio: 1;
     object-fit: cover;
-    border-radius: 0.5rem;
-  }
-
-  /* Botón debajo de las imágenes */
-  .referencias-boton {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-
-  .ver-todas-btn {
-    width: auto;
-    padding: 0.75rem 2rem;
-    font-size: 1rem;
+    border-radius: 8px;
   }
 
 
-  /* Ocultar sección de referencias cuando la galería está visible */
-  /* </CHANGE> */
-
-  /* ==========================================
-     GALERÍA COMPLETA
-     ========================================== */
-
-  .galeria-container {
-    width: 95%;
-  }
-
-  .galeria-top {
-    flex-direction: column;
-    gap: var(--space-md);
-    margin-bottom: 30px;
-    align-items: flex-start;
-  }
-
-  #volver-referencias {
-    font-size: 0.9rem;
-    padding: 8px 20px;
-  }
-
-  .galeria-titulo {
-    font-size: 1.6rem;
-    text-align: left;
-  }
-
-  .galeria-imagenes {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: var(--space-md);
-  }
-
-  .galeria-imagenes img {
-    height: 180px;
-    /* Agregado will-change para mejorar el rendimiento en móvil */
-    will-change: transform;
-  }
-
-  /* ==========================================
-     MODAL DETALLE DE PRODUCTO
-     ========================================== */
-
-  .detalle-contenido {
-    width: 95%;
-    max-height: 90vh;
-  }
+  /* ===============================
+     ✅ DETALLE PRODUCTO
+     =============================== */
 
   .detalle-info {
     grid-template-columns: 1fr;
@@ -333,832 +172,47 @@
     padding: var(--space-lg);
   }
 
-  .detalle-imagen-container {
-    min-height: 250px;
-  }
 
-  .detalle-texto h2 {
-    font-size: 1.6rem;
-  }
-
-  .detalle-tabla-moderna {
-    grid-template-columns: 1fr;
-  }
-
-  /* ==========================================
-     CARRITO
-     ========================================== */
-
-  .carrito-header {
-    padding: 20px;
-  }
-
-  .carrito-header h2 {
-    font-size: 1.5rem;
-  }
-
-  .carrito-items {
-    padding: var(--space-md) var(--space-lg);
-  }
+  /* ===============================
+     ✅ CARRITO
+     =============================== */
 
   .carrito-item {
     grid-template-columns: 60px 1fr auto;
-    gap: var(--space-sm);
-    padding: var(--space-sm);
   }
 
-  .carrito-item-imagen {
-    width: 60px;
-    height: 60px;
-  }
 
-  .carrito-item-info h4 {
-    font-size: 1rem;
-  }
-
-  .carrito-item-precio {
-    font-size: 1rem;
-  }
-
-  .btn-eliminar {
-    font-size: 0.75rem;
-    padding: 5px 10px;
-  }
-
-  .carrito-resumen {
-    padding: 20px;
-  }
-
-  .resumen-linea {
-    font-size: 0.9rem;
-  }
-
-  .resumen-linea.total {
-    font-size: 1.2rem;
-  }
-
-  /* ==========================================
-     CHECKOUT
-     ========================================== */
-
-  .checkout-container {
-    padding: 30px var(--space-md);
-  }
-
-  .checkout-header h2 {
-    font-size: 2rem;
-  }
+  /* ===============================
+     ✅ CHECKOUT — Una columna
+     =============================== */
 
   .checkout-content {
     grid-template-columns: 1fr;
   }
 
-  .checkout-form h3 {
-    font-size: 1.4rem;
-  }
-}
 
-/* Media query adicional para móviles muy pequeños (menos de 400px) */
-@media (max-width: 399px) {
-  .header-container {
-    gap: 0.5rem;
-  }
+  /* ===============================
+     ✅ FOOTER centrado
+     =============================== */
 
-  .nav-button,
-  .hamburger-button,
-  .cart-button,
-  .theme-switch {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    min-height: 40px;
-  }
-
-  .nav-button .icon,
-  .cart-button .icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .hamburger-button span {
-    width: 18px;
-  }
-
-  .theme-switch::before,
-  .theme-switch::after {
-    background-size: 20px 20px;
-  }
-
-  .productos-grid {
-    gap: 0.75rem;
-  }
-
-  .referencias-galeria {
-    gap: 0.35rem;
-  }
-
-  #inicio .left h1 {
-    font-size: 1.8rem;
-  }
-
-  #inicio .circular-image {
-    width: 200px;
-    height: 200px;
-  }
-
-  /* Ajustar iconos sociales en pantallas muy pequeñas */
-  .icon-content a {
-    width: 50px;
-    height: 50px;
-  }
-
-  .icon-content a svg {
-    width: 26px;
-    height: 26px;
-    max-width: 26px;
-    max-height: 26px;
-  }
-  /* </CHANGE> */
-}
-
-/* Media query para pantallas entre 480px y 767px */
-@media (min-width: 480px) and (max-width: 767px) {
-  .nav-button,
-  .hamburger-button,
-  .cart-button,
-  .theme-switch {
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-    min-height: 48px;
-  }
-
-  .nav-button .icon,
-  .cart-button .icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  .theme-switch::before,
-  .theme-switch::after {
-    background-size: 26px 26px;
-  }
-}
-
-@media (max-width: 767px) {
   footer {
-    text-align: center;
+    text-align: center !important;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-  }
-
-  footer * {
-    text-align: center !important;
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 767px) {
-  /* Reducimos espaciamiento en columnas del footer */
-  footer {
-    gap: 0.75rem !important; /* antes seguramente era mucho mayor */
+    gap: .75rem;
     padding-bottom: 1.5rem;
   }
 
-  footer .footer-section {
-    margin-bottom: 0.75rem !important; /* menor separación entre secciones */
+  footer * {
+    margin: 0 auto !important;
+    text-align: center !important;
   }
 
-  /* Ajustar títulos del footer */
-  footer .footer-section h3,
-  footer .footer-section h4 {
-    margin-bottom: 0.5rem !important;
-  }
-
-  /* Línea encima de derechos reservados */
   footer hr {
     width: 85%;
-    margin: 1.2rem auto 0.8rem auto;
-    border: 0;
     border-top: 1px solid var(--border-color);
-    opacity: 0.6;
-  }
-}
-
-/* ============================================
-   RESPONSIVE DESIGN (MOBILE FIRST)
-   ============================================ */
-@media (max-width: 1024px) {
-  #inicio .container {
-    flex-direction: column;
-    text-align: center;
-    gap: var(--space-2xl);
-  }
-
-  #inicio .left h1 {
-    font-size: 3rem;
-  }
-
-  #inicio .left p {
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .circular-image {
-    width: 300px;
-    height: 300px;
-  }
-
-  .checkout-content {
-    grid-template-columns: 1fr;
-  }
-
-  .checkout-resumen {
-    position: static;
-  }
-}
-
-/* ============================================
-   RESPONSIVE DESIGN - MOBILE
-   ============================================ */
-@media (max-width: 767px) {
-  /*Navbar móvil compacta y reorganizada */
-  header {
-    padding: 8px var(--space-md);
-  }
-
-  .header-container {
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-sm);
-  }
-
-  /* Ocultar logo en móvil */
-  .header-left {
-    display: none;
-  }
-
-  /* Reorganizar navegación: todos los botones centrados */
-  .centered-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    flex: 0 0 auto;
-    order: 0;
-    margin: 0;
-  }
-
-  /* Hamburguesa a la izquierda del todo */
-  .hamburger-menu {
-    order: -1;
-    flex: 0 0 auto;
-  }
-
-  /* Theme switch simplificado para móvil */
-  .theme-switch {
-    order: 1;
-    flex: 0 0 auto;
-    margin: 0;
-    width: 36px;
-    height: 36px;
-    position: relative;
-    cursor: pointer;
-  }
-
-  /* Ocultar el toggle complejo en móvil */
-  .theme-switch__container {
-    display: none;
-  }
-
-  /* Crear botón simple para theme en móvil */
-  .theme-switch::after {
-    content: "☀️";
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 1;
-  }
-
-  .theme-switch__checkbox:checked ~ .theme-switch::after {
-    content: "🌙";
-  }
-
-@media (max-width: 768px) {
-  header {
-    padding: var(--space-md) var(--space-lg);
-  }
-
-  .header-container {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .header-left,
-  .centered-nav {
-    flex-basis: 100%;
-    justify-content: center;
-    margin-bottom: var(--space-md);
-  }
-
-  .header-left h1 {
-    font-size: 1.8rem;
-  }
-
-  .centered-nav {
-    order: 1;
-    margin-top: var(--space-md);
-    gap: var(--space-sm);
-  }
-
-  .theme-switch {
-    order: 2;
-  }
-
-  #inicio {
-    padding: 60px 5%;
-  }
-
-  #inicio .left h1 {
-    font-size: 2.5rem;
-  }
-
-  #inicio .left p {
-    font-size: 1rem;
-  }
-
-  .circular-image {
-    width: 250px;
-    height: 250px;
-  }
-
-  .productos-titulo,
-  .informacion-titulo,
-  .referencias-titulo {
-    font-size: 2.2rem;
-    margin-bottom: 35px;
-  }
-
-  .productos-filtros {
-    gap: var(--space-sm);
-    margin-bottom: 40px;
-  }
-
-  .filtro-btn {
-    padding: 8px 18px;
-    font-size: 0.9rem;
-  }
-
-  .producto-card {
-    max-width: 100%;
-  }
-
-  #informacion,
-  #referencias {
-    padding: 80px 5%;
-  }
-
-  .informacion-contenido {
-    font-size: 1rem;
-  }
-
-  .informacion-contenido h3 {
-    font-size: 1.4rem;
-  }
-
-  .referencias-galeria {
-    gap: 15px;
-  }
-
-  .ref-img {
-    width: 240px;
-    height: 240px;
-  }
-
-  .galeria-container {
-    width: 95%;
-  }
-
-  .galeria-top {
-    flex-direction: column;
-    gap: var(--space-md);
-    margin-bottom: 30px;
-    align-items: flex-start;
-  }
-
-  #volver-referencias {
-    font-size: 0.9rem;
-    padding: 8px 20px;
-  }
-
-  .galeria-titulo {
-    font-size: 1.6rem;
-    text-align: left;
-  }
-
-  .galeria-imagenes {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: var(--space-md);
-  }
-
-  .galeria-imagenes img {
-    height: 180px;
-  }
-
-  .detalle-contenido {
-    width: 95%;
-    max-height: 90vh;
-  }
-
-  .detalle-info {
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
-    padding: var(--space-lg);
-  }
-
-  .detalle-imagen-container {
-    min-height: 250px;
-  }
-
-  .detalle-texto h2 {
-    font-size: 1.6rem;
-  }
-
-  .detalle-tabla-moderna {
-    grid-template-columns: 1fr;
-  }
-
-  .carrito-header {
-    padding: 20px;
-  }
-
-  .carrito-header h2 {
-    font-size: 1.5rem;
-  }
-
-  .carrito-items {
-    padding: var(--space-md) var(--space-lg);
-  }
-
-  .carrito-item {
-    grid-template-columns: 60px 1fr auto;
-    gap: var(--space-sm);
-    padding: var(--space-sm);
-  }
-
-  .carrito-item-imagen {
-    width: 60px;
-    height: 60px;
-  }
-
-  .carrito-item-info h4 {
-    font-size: 1rem;
-  }
-
-  .carrito-item-precio {
-    font-size: 1rem;
-  }
-
-  .btn-eliminar {
-    font-size: 0.75rem;
-    padding: 5px 10px;
-  }
-
-  .carrito-resumen {
-    padding: 20px;
-  }
-
-  .resumen-linea {
-    font-size: 0.9rem;
-  }
-
-  .resumen-linea.total {
-    font-size: 1.2rem;
-  }
-
-  .checkout-container {
-    padding: 30px var(--space-md);
-  }
-
-  .checkout-header h2 {
-    font-size: 2rem;
-  }
-
-  .checkout-form h3 {
-    font-size: 1.4rem;
-  }
-
-  .checkout-btn {
-    font-size: 1.1rem;
-    padding: 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .header-left h1 {
-    font-size: 1.5rem;
-  }
-
-  .centered-nav {
-    margin-top: var(--space-sm);
-    gap: var(--space-xs);
-  }
-
-  .nav-button,
-  .button,
-  .hamburger-button,
-  .theme-switch {
-    width: 35px;
-    height: 35px;
-    min-width: 35px;
-  }
-
-  .nav-button .icon,
-  .button .icon {
-    font-size: 20px;
-    width: 20px;
-    height: 20px;
-  }
-
-  .hamburger-button {
-    width: 35px;
-    height: 35px;
-    gap: 3px;
-  }
-
-  .hamburger-button span {
-    width: 18px;
-  }
-
-  #inicio .left h1 {
-    font-size: 2rem;
-    white-space: normal;
-  }
-
-  #inicio .left p {
-    font-size: 0.9rem;
-  }
-
-  .circular-image {
-    width: 200px;
-    height: 200px;
-  }
-
-  .social-buttons {
-    gap: var(--space-sm);
-  }
-
-  .icon-content a {
-    width: 45px;
-    height: 45px;
-  }
-
-  .icon-content a svg {
-    height: 22px;
-  }
-
-  .productos-titulo,
-  .informacion-titulo,
-  .referencias-titulo {
-    font-size: 1.8rem;
-    margin-bottom: 30px;
-  }
-
-  .filtro-btn {
-    padding: 7px 15px;
-    font-size: 0.85rem;
-  }
-
-  .producto-card h3 {
-    font-size: 1rem;
-  }
-
-  .producto-card p {
-    font-size: 0.85rem;
-  }
-
-  #informacion,
-  #referencias {
-    padding: 60px 4%;
-  }
-
-  .informacion-contenido h3 {
-    font-size: 1.2rem;
-  }
-
-  .ref-img {
-    width: 180px;
-    height: 180px;
-  }
-
-  .ver-todas-btn {
-    font-size: 1rem;
-    padding: 10px 25px;
-  }
-
-  .galeria-titulo {
-    font-size: 1.4rem;
-  }
-
-  .galeria-imagenes {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: var(--space-sm);
-  }
-
-  .galeria-imagenes img {
-    height: 140px;
-  }
-
-  .detalle-contenido {
-    padding: 0;
-  }
-
-  .cerrar-detalle {
-    top: 10px;
-    right: 10px;
-    font-size: 1.3rem;
-  }
-
-  .detalle-info {
-    padding: var(--space-md);
-    gap: var(--space-md);
-  }
-
-  .detalle-imagen-container {
-    min-height: 200px;
-    padding: var(--space-sm);
-  }
-
-  .detalle-texto h2 {
-    font-size: 1.4rem;
-  }
-
-  .detalle-categoria {
-    font-size: 0.75rem;
-  }
-
-  .detalle-texto p,
-  .detalle-texto ul li {
-    font-size: 0.9rem;
-  }
-
-  .precio-card {
-    padding: var(--space-sm);
-  }
-
-  .precio-cantidad {
-    font-size: 1rem;
-  }
-
-  .precio-valor {
-    font-size: 0.9rem;
-  }
-
-  .detalle-cantidad input {
-    width: 70px;
-    padding: 5px;
-  }
-
-  .detalle-precio-total {
-    font-size: 1.1rem;
-  }
-
-  .detalle-boton {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-
-  .carrito-header {
-    padding: 15px 20px;
-  }
-
-  .carrito-header h2 {
-    font-size: 1.3rem;
-  }
-
-  .cerrar-carrito {
-    width: 35px;
-    height: 35px;
-    font-size: 1.3rem;
-  }
-
-  .carrito-vacio {
-    padding: 40px 20px;
-    min-height: 300px;
-  }
-
-  .carrito-vacio-icon {
-    width: 90px;
-    height: 90px;
-  }
-
-  .carrito-vacio h3 {
-    font-size: 1.5rem;
-  }
-
-  .carrito-vacio p {
-    font-size: 0.9rem;
-  }
-
-  .carrito-items {
-    padding: var(--space-sm) var(--space-md);
-  }
-
-  .carrito-item {
-    gap: var(--space-xs);
-    padding: var(--space-xs);
-  }
-
-  .carrito-item-imagen {
-    width: 50px;
-    height: 50px;
-  }
-
-  .carrito-item-info h4 {
-    font-size: 0.9rem;
-  }
-
-  .carrito-item-precio {
-    font-size: 0.9rem;
-  }
-
-  .btn-eliminar {
-    font-size: 0.7rem;
-    padding: 4px 8px;
-  }
-
-  .carrito-resumen {
-    padding: 15px 20px;
-  }
-
-  .resumen-linea {
-    font-size: 0.85rem;
-  }
-
-  .resumen-linea.total {
-    font-size: 1.1rem;
-  }
-
-  .checkout-container {
-    padding: 20px;
-  }
-
-  .checkout-header h2 {
-    font-size: 1.8rem;
-  }
-
-  .checkout-form h3 {
-    font-size: 1.2rem;
-  }
-
-  .form-group label {
-    font-size: 0.85rem;
-  }
-
-  .form-group input,
-  .form-group select {
-    padding: 10px 12px;
-    font-size: 0.9rem;
-  }
-
-  .payment-option {
-    min-width: 100px;
-    max-width: 150px;
-    padding: var(--space-sm);
-  }
-
-  .payment-option img {
-    width: 50px;
-    height: 30px;
-  }
-
-  .payment-option span {
-    font-size: 0.8rem;
-  }
-
-  .checkout-btn {
-    font-size: 1rem;
-    padding: 10px;
-  }
-
-  .footer-links {
-    gap: var(--space-md);
-  }
-
-  .footer-links a {
-    font-size: 0.9rem;
-  }
-
-  .footer-logo h2 {
-    font-size: 1.5rem;
+    opacity: .6;
+    margin-top: 1rem;
   }
 }
