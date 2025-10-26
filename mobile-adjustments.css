@@ -590,3 +590,30 @@
     margin: 0 auto;
   }
 }
+
+@media (max-width: 767px) {
+  /* Reducimos espaciamiento en columnas del footer */
+  footer {
+    gap: 0.75rem !important; /* antes seguramente era mucho mayor */
+    padding-bottom: 1.5rem;
+  }
+
+  footer .footer-section {
+    margin-bottom: 0.75rem !important; /* menor separación entre secciones */
+  }
+
+  /* Ajustar títulos del footer */
+  footer .footer-section h3,
+  footer .footer-section h4 {
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Línea encima de derechos reservados */
+  footer hr {
+    width: 85%;
+    margin: 1.2rem auto 0.8rem auto;
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    opacity: 0.6;
+  }
+}
