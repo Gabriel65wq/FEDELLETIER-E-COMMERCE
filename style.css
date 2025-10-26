@@ -2516,10 +2516,111 @@ footer {
   }
   /* </CHANGE> */
 
-  /* </CHANGE> Mostrar 2 productos por fila en móvil */
+  /* </CHANGE> Mostrar 2 productos por fila en móvil manteniendo formato original */
   .productos-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-md);
+  }
+
+  /* Mantener el aspecto original de las cards de productos en móvil */
+  .producto-card {
+    max-width: 100%;
+    padding: var(--space-md);
+  }
+
+  .producto-card img {
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .producto-card h3 {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    margin: var(--space-sm) 0;
+  }
+
+  .producto-card p {
+    font-size: 0.75rem;
+  }
+
+  .producto-card span {
+    font-size: 0.7rem;
+  }
+  /* </CHANGE> */
+
+  /* </CHANGE> Rediseñar el botón theme para móvil: solo mostrar un icono con transición */
+  .theme-switch {
+    width: 36px;
+    height: 36px;
+    position: relative;
+  }
+
+  .theme-switch input[type="checkbox"] {
+    display: none;
+  }
+
+  .theme-switch__container {
+    display: none;
+  }
+
+  /* Crear contenedor para los iconos */
+  .theme-switch::before,
+  .theme-switch::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    transition: opacity 0.4s ease, transform 0.4s ease, rotate 0.4s ease;
+  }
+
+  /* Icono del sol (tema claro) */
+  .theme-switch::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3 Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3 Cline x1='1' y1='12' x2='3' y2='12'/%3E%3 Cline x1='21' y1='12' x2='23' y2='12'/%3E%3 Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+
+  /* Icono de la luna (tema oscuro) */
+  .theme-switch::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300d4ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-180deg) scale(0.5);
+  }
+
+  /* Cuando el tema está oscuro (checkbox checked) */
+  .theme-switch input[type="checkbox"]:checked ~ .theme-switch::before,
+  body.dark .theme-switch::before {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(180deg) scale(0.5);
+  }
+
+  .theme-switch input[type="checkbox"]:checked ~ .theme-switch::after,
+  body.dark .theme-switch::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+
+  /* Agregar efecto hover */
+  .theme-switch:hover::before,
+  .theme-switch:hover::after {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  body.dark .theme-switch:hover::before {
+    transform: translate(-50%, -50%) rotate(180deg) scale(0.6);
+  }
+
+  body.dark .theme-switch:hover::after {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.1);
   }
   /* </CHANGE> */
 

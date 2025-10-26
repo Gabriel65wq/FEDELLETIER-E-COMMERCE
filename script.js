@@ -554,6 +554,18 @@ const ThemeManager = {
     this.checkbox = document.getElementById("theme-checkbox")
     this.loadTheme()
     this.checkbox.addEventListener("change", () => this.toggleTheme())
+
+    const themeSwitch = document.querySelector(".theme-switch")
+    if (themeSwitch) {
+      themeSwitch.addEventListener("click", (e) => {
+        // Solo en móvil (cuando el checkbox está oculto)
+        if (window.innerWidth <= 767) {
+          e.preventDefault()
+          this.checkbox.checked = !this.checkbox.checked
+          this.toggleTheme()
+        }
+      })
+    }
   },
 
   loadTheme() {
