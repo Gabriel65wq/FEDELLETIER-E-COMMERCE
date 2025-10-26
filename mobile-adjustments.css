@@ -9,32 +9,30 @@
      NAVBAR - Ajustes de alineación móvil
      ========================================== */
 
+  /* Reducir altura de la navbar en móvil */
+  header {
+    padding: 8px var(--space-md);
+  }
+
   .header-container {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding: 0.75rem 1rem;
-    gap: 0.5rem;
+    justify-content: center;
+    gap: 0.75rem;
+    max-width: 100%;
   }
 
-  /* Logo a la izquierda */
+  /* Ocultar logo en móvil */
   .header-left {
-    flex: 0 0 auto;
-    min-width: fit-content;
+    display: none;
   }
 
-  .header-left h1 {
-    font-size: 1.25rem;
-    margin: 0;
-  }
-
-  /* Centro: Inicio, Hamburguesa, Carrito */
+  /* Centro: Todos los botones centrados con mismo tamaño */
   .header-middle {
-    flex: 1;
+    flex: 0 1 auto;
     display: flex;
     justify-content: center;
-    align-items: center;
   }
 
   .centered-nav {
@@ -44,30 +42,115 @@
     gap: 0.75rem;
   }
 
+  /* Todos los botones con el mismo tamaño */
   .nav-button,
   .hamburger-button,
-  .cart-button {
-    width: 2.5rem;
-    height: 2.5rem;
+  .cart-button,
+  .theme-switch {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: var(--border-radius);
+    background-color: var(--bg-secondary);
   }
 
-  /* Theme button a la derecha - más delgado */
+  .nav-button .icon,
+  .cart-button .icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .hamburger-button {
+    gap: 4px;
+  }
+
+  .hamburger-button span {
+    width: 20px;
+  }
+
+  /* Theme switch simplificado para móvil */
   .header-right {
-    flex: 0 0 auto;
-    min-width: fit-content;
+    display: none;
   }
 
   .theme-switch {
-    transform: scale(0.75);
+    order: 3;
+    flex: 0 0 auto;
     margin: 0;
+    cursor: pointer;
+    background-color: var(--bg-secondary);
   }
+
+  .theme-switch:hover {
+    background-color: var(--color-primary);
+  }
+
+  /* Ocultar el toggle complejo en móvil */
+  .theme-switch__container {
+    display: none !important;
+  }
+
+  /* Crear iconos simples para theme en móvil con sol visible */
+  .theme-switch::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffa500' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3Cline x1='1' y1='12' x2='3' y2='12'/%3E%3Cline x1='21' y1='12' x2='23' y2='12'/%3E%3Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    transition: all 0.3s ease;
+  }
+
+  .theme-switch::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234da3ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/%3E%3C/svg%3E");
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+    transition: all 0.3s ease;
+  }
+
+  /* Cuando el tema está oscuro (checkbox checked) */
+  .theme-switch__checkbox:checked ~ .theme-switch::before,
+  body.dark .theme-switch::before {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+  }
+
+  .theme-switch__checkbox:checked ~ .theme-switch::after,
+  body.dark .theme-switch::after {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  /* Efecto hover */
+  .theme-switch:hover::before {
+    filter: brightness(1.2);
+  }
+
+  .theme-switch:hover::after {
+    filter: brightness(1.2);
+  }
+  /* </CHANGE> */
 
   /* ==========================================
      SECCIÓN #INICIO - Centrado completo
      ========================================== */
+
+  #inicio {
+    padding: 60px 5%;
+  }
 
   #inicio .container {
     display: flex;
@@ -86,6 +169,7 @@
   }
 
   #inicio .left h1 {
+    font-size: 2rem;
     text-align: center;
     width: 100%;
   }
@@ -93,6 +177,7 @@
   #inicio .left p {
     text-align: center;
     width: 100%;
+    font-size: 1rem;
   }
 
   #inicio .social-buttons {
@@ -108,11 +193,28 @@
 
   #inicio .circular-image {
     margin: 0 auto;
+    width: 250px;
+    height: 250px;
   }
 
   /* ==========================================
      SECCIÓN #PRODUCTOS - 2 productos por fila
      ========================================== */
+
+  .productos-titulo {
+    font-size: 2.2rem;
+    margin-bottom: 35px;
+  }
+
+  .productos-filtros {
+    gap: var(--space-sm);
+    margin-bottom: 40px;
+  }
+
+  .filtro-btn {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+  }
 
   .productos-grid {
     display: grid;
@@ -123,11 +225,61 @@
 
   .producto-card {
     width: 100%;
+    max-width: 100%;
+  }
+
+  .producto-card img {
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .producto-card h3 {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    margin: var(--space-sm) 0;
+  }
+
+  .producto-card p {
+    font-size: 0.75rem;
+  }
+
+  .producto-card span {
+    font-size: 0.7rem;
+  }
+
+  /* ==========================================
+     SECCIÓN #INFORMACIÓN
+     ========================================== */
+
+  #informacion {
+    padding: 80px 5%;
+  }
+
+  .informacion-titulo {
+    font-size: 2.2rem;
+    margin-bottom: 35px;
+  }
+
+  .informacion-contenido {
+    font-size: 1rem;
+  }
+
+  .informacion-contenido h3 {
+    font-size: 1.4rem;
   }
 
   /* ==========================================
      SECCIÓN #REFERENCIAS - Ajustes móviles
      ========================================== */
+
+  #referencias {
+    padding: 80px 5%;
+  }
+
+  .referencias-titulo {
+    font-size: 2.2rem;
+    margin-bottom: 35px;
+  }
 
   .referencias-descripcion {
     font-size: 0.9rem;
@@ -161,24 +313,172 @@
   .ver-todas-btn {
     width: auto;
     padding: 0.75rem 2rem;
+    font-size: 1rem;
+  }
+
+  /* ==========================================
+     GALERÍA COMPLETA
+     ========================================== */
+
+  .galeria-container {
+    width: 95%;
+  }
+
+  .galeria-top {
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: 30px;
+    align-items: flex-start;
+  }
+
+  #volver-referencias {
+    font-size: 0.9rem;
+    padding: 8px 20px;
+  }
+
+  .galeria-titulo {
+    font-size: 1.6rem;
+    text-align: left;
+  }
+
+  .galeria-imagenes {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .galeria-imagenes img {
+    height: 180px;
+  }
+
+  /* ==========================================
+     MODAL DETALLE DE PRODUCTO
+     ========================================== */
+
+  .detalle-contenido {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .detalle-info {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+  }
+
+  .detalle-imagen-container {
+    min-height: 250px;
+  }
+
+  .detalle-texto h2 {
+    font-size: 1.6rem;
+  }
+
+  .detalle-tabla-moderna {
+    grid-template-columns: 1fr;
+  }
+
+  /* ==========================================
+     CARRITO
+     ========================================== */
+
+  .carrito-header {
+    padding: 20px;
+  }
+
+  .carrito-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .carrito-items {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .carrito-item {
+    grid-template-columns: 60px 1fr auto;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+  }
+
+  .carrito-item-imagen {
+    width: 60px;
+    height: 60px;
+  }
+
+  .carrito-item-info h4 {
+    font-size: 1rem;
+  }
+
+  .carrito-item-precio {
+    font-size: 1rem;
+  }
+
+  .btn-eliminar {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+
+  .carrito-resumen {
+    padding: 20px;
+  }
+
+  .resumen-linea {
+    font-size: 0.9rem;
+  }
+
+  .resumen-linea.total {
+    font-size: 1.2rem;
+  }
+
+  /* ==========================================
+     CHECKOUT
+     ========================================== */
+
+  .checkout-container {
+    padding: 30px var(--space-md);
+  }
+
+  .checkout-header h2 {
+    font-size: 2rem;
+  }
+
+  .checkout-content {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-form h3 {
+    font-size: 1.4rem;
   }
 }
 
 /* Media query adicional para móviles muy pequeños (menos de 400px) */
 @media (max-width: 399px) {
-  .header-left h1 {
-    font-size: 1rem;
+  .header-container {
+    gap: 0.5rem;
   }
 
   .nav-button,
   .hamburger-button,
-  .cart-button {
-    width: 2.25rem;
-    height: 2.25rem;
+  .cart-button,
+  .theme-switch {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
   }
 
-  .theme-switch {
-    transform: scale(0.65);
+  .nav-button .icon,
+  .cart-button .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .hamburger-button span {
+    width: 18px;
+  }
+
+  .theme-switch::before,
+  .theme-switch::after {
+    background-size: 20px 20px;
   }
 
   .productos-grid {
@@ -187,5 +487,38 @@
 
   .referencias-galeria {
     gap: 0.35rem;
+  }
+
+  #inicio .left h1 {
+    font-size: 1.8rem;
+  }
+
+  #inicio .circular-image {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Media query para pantallas entre 480px y 767px */
+@media (min-width: 480px) and (max-width: 767px) {
+  .nav-button,
+  .hamburger-button,
+  .cart-button,
+  .theme-switch {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  .nav-button .icon,
+  .cart-button .icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .theme-switch::before,
+  .theme-switch::after {
+    background-size: 26px 26px;
   }
 }
