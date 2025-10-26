@@ -351,10 +351,6 @@
   }
 
   /* Ocultar sección de referencias cuando la galería está visible */
-  #galeria-referencias:not(.galeria-oculta) ~ #referencias,
-  body:has(#galeria-referencias:not(.galeria-oculta)) #referencias {
-    display: none;
-  }
   /* </CHANGE> */
 
   /* ==========================================
