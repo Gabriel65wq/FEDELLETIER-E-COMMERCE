@@ -558,9 +558,9 @@ const ThemeManager = {
     const themeSwitch = document.querySelector(".theme-switch")
     if (themeSwitch) {
       themeSwitch.addEventListener("click", (e) => {
-        // Solo en móvil (cuando el checkbox está oculto)
         if (window.innerWidth <= 767) {
           e.preventDefault()
+          e.stopPropagation()
           this.checkbox.checked = !this.checkbox.checked
           this.toggleTheme()
         }

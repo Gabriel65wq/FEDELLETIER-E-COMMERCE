@@ -2398,14 +2398,15 @@ footer {
    RESPONSIVE DESIGN - MOBILE
    ============================================ */
 @media (max-width: 767px) {
-  /* </CHANGE> Navbar móvil compacta: ocultar logo, reorganizar elementos */
+  /* Navbar móvil compacta y reorganizada */
   header {
-    padding: var(--space-sm) var(--space-md);
+    padding: 8px var(--space-md);
   }
 
   .header-container {
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     gap: var(--space-sm);
   }
 
@@ -2414,35 +2415,64 @@ footer {
     display: none;
   }
 
-  /* Reorganizar navegación: hamburguesa, inicio, carrito */
+  /* Reorganizar navegación: todos los botones centrados */
   .centered-nav {
-    flex-basis: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex: 0 0 auto;
     order: 0;
     margin: 0;
-    gap: var(--space-sm);
-    flex: 1;
-    justify-content: center;
   }
 
-  /* Hamburguesa a la izquierda */
+  /* Hamburguesa a la izquierda del todo */
   .hamburger-menu {
     order: -1;
+    flex: 0 0 auto;
   }
 
-  /* Theme switch a la derecha */
+  /* Theme switch simplificado para móvil */
   .theme-switch {
     order: 1;
+    flex: 0 0 auto;
     margin: 0;
+    width: 36px;
+    height: 36px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  /* Ocultar el toggle complejo en móvil */
+  .theme-switch__container {
+    display: none;
+  }
+
+  /* Crear botón simple para theme en móvil */
+  .theme-switch::after {
+    content: "☀️";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+  }
+
+  .theme-switch__checkbox:checked ~ .theme-switch::after {
+    content: "🌙";
   }
 
   /* Igualar tamaños de todos los botones */
   .nav-button,
   .button,
-  .hamburger-button,
-  .theme-switch {
+  .hamburger-button {
     width: 36px;
     height: 36px;
     min-width: 36px;
+    min-height: 36px;
   }
 
   .nav-button .icon,
@@ -2458,24 +2488,6 @@ footer {
 
   .hamburger-button span {
     width: 18px;
-  }
-
-  /* Ajustar el switch de tema para que sea del mismo tamaño */
-  .theme-switch input[type="checkbox"] {
-    width: 36px;
-    height: 36px;
-  }
-
-  .theme-switch input[type="checkbox"]::before {
-    width: 16px;
-    height: 16px;
-    left: 3px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .theme-switch input[type="checkbox"]:checked::before {
-    left: calc(100% - 19px);
   }
   /* </CHANGE> */
 
@@ -2578,7 +2590,7 @@ footer {
 
   /* Icono del sol (tema claro) */
   .theme-switch::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3 Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3 Cline x1='1' y1='12' x2='3' y2='12'/%3E%3 Cline x1='21' y1='12' x2='23' y2='12'/%3E%3 Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3 Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3Cline x1='1' y1='12' x2='3' y2='12'/%3E%3 Cline x1='21' y1='12' x2='23' y2='12'/%3E%3 Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
