@@ -552,6 +552,9 @@ function calcularPrecioPerfume(totalPerfumes, rangosPerfume) {
 // ============================================
 // THEME MANAGER
 // ============================================
+// ============================================
+// THEME MANAGER
+// ============================================
 const ThemeManager = {
   init() {
     this.checkbox = document.getElementById("theme-checkbox")
@@ -561,17 +564,17 @@ const ThemeManager = {
 
   loadTheme() {
     const savedTheme = localStorage.getItem("theme")
-    if (savedTheme === "light" || !savedTheme) {
-      document.body.classList.remove("dark")
-      this.checkbox.checked = false // Tema Claro -> unchecked
-    } else {
+    if (savedTheme === "dark") {
       document.body.classList.add("dark")
-      this.checkbox.checked = true // Tema Oscuro -> checked
+      this.checkbox.checked = true // Tema Oscuro -> checked (luna visible)
+    } else {
+      document.body.classList.remove("dark")
+      this.checkbox.checked = false // Tema Claro -> unchecked (sol visible)
     }
   },
 
   toggleTheme() {
-    const isDark = this.checkbox.checked // checked=true es ahora Tema Oscuro
+    const isDark = this.checkbox.checked // checked=true es ahora Tema Oscuro (luna)
     if (isDark) {
       document.body.classList.add("dark")
       localStorage.setItem("theme", "dark")
@@ -1272,6 +1275,30 @@ window.addEventListener("load", () => {
     document.body.classList.remove("no-transition")
   }, 100)
   window.scrollTo({ top: 0, behavior: "instant" })
+
+  ThemeManager.init()
+  CartManager.init()
+  ProductDetailManager.init()
+  CheckoutManager.init()
+  ProductFilterManager.init()
+  GalleryManager.init()
+  HamburgerMenuManager.init()
+  AuthModalManager.init()
+  initSmoothScroll()
+})
+
+// ============================================
+// INITIALIZATION
+// ============================================
+document.body.classList.add("no-transition")
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.body.classList.remove("no-transition")
+  }, 100)
+
+  window.scrollTo({ top: 0, behavior: "instant" })
+  window.location.hash = "#inicio"
 
   ThemeManager.init()
   CartManager.init()
