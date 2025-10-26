@@ -1,0 +1,191 @@
+/* ============================================
+   AJUSTES EXCLUSIVOS PARA MÓVIL
+   Solo se aplican en pantallas menores a 768px
+   ============================================ */
+
+/* Media query para dispositivos móviles */
+@media (max-width: 767px) {
+  /* ==========================================
+     NAVBAR - Ajustes de alineación móvil
+     ========================================== */
+
+  .header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+  }
+
+  /* Logo a la izquierda */
+  .header-left {
+    flex: 0 0 auto;
+    min-width: fit-content;
+  }
+
+  .header-left h1 {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  /* Centro: Inicio, Hamburguesa, Carrito */
+  .header-middle {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .centered-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .nav-button,
+  .hamburger-button,
+  .cart-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Theme button a la derecha - más delgado */
+  .header-right {
+    flex: 0 0 auto;
+    min-width: fit-content;
+  }
+
+  .theme-switch {
+    transform: scale(0.75);
+    margin: 0;
+  }
+
+  /* ==========================================
+     SECCIÓN #INICIO - Centrado completo
+     ========================================== */
+
+  #inicio .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  #inicio .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  #inicio .left h1 {
+    text-align: center;
+    width: 100%;
+  }
+
+  #inicio .left p {
+    text-align: center;
+    width: 100%;
+  }
+
+  #inicio .social-buttons {
+    justify-content: center;
+    width: 100%;
+  }
+
+  #inicio .right {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  #inicio .circular-image {
+    margin: 0 auto;
+  }
+
+  /* ==========================================
+     SECCIÓN #PRODUCTOS - 2 productos por fila
+     ========================================== */
+
+  .productos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .producto-card {
+    width: 100%;
+  }
+
+  /* ==========================================
+     SECCIÓN #REFERENCIAS - Ajustes móviles
+     ========================================== */
+
+  .referencias-descripcion {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  /* 3 imágenes en una fila */
+  .referencias-galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ref-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+
+  /* Botón debajo de las imágenes */
+  .referencias-boton {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .ver-todas-btn {
+    width: auto;
+    padding: 0.75rem 2rem;
+  }
+}
+
+/* Media query adicional para móviles muy pequeños (menos de 400px) */
+@media (max-width: 399px) {
+  .header-left h1 {
+    font-size: 1rem;
+  }
+
+  .nav-button,
+  .hamburger-button,
+  .cart-button {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .theme-switch {
+    transform: scale(0.65);
+  }
+
+  .productos-grid {
+    gap: 0.75rem;
+  }
+
+  .referencias-galeria {
+    gap: 0.35rem;
+  }
+}
