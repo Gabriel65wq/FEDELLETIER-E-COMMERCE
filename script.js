@@ -763,7 +763,7 @@ const ProductDetailManager = {
     this.detalleImagen = document.getElementById("detalle-imagen")
     this.detalleTitulo = document.getElementById("detalle-titulo")
     this.detalleCategoria = document.getElementById("detalle-categoria")
-    this.detalleDescripcion = document.getElementById("detalle-Descripcion")
+    this.detalleDescripcion = document.getElementById("detalle-descripcion")
     this.detalleLista = document.getElementById("detalle-lista")
     this.detalleTabla = document.getElementById("detalle-tabla")
     this.cantidadInput = document.getElementById("cantidad")
@@ -1082,12 +1082,13 @@ const GalleryManager = {
       const img = document.createElement("img")
       img.src = src
       img.alt = `Referencia ${src}`
+      img.loading = "eager"
       this.galeriaContenedor.appendChild(img)
 
       img.addEventListener("click", () => {
         const viewer = document.createElement("div")
         viewer.classList.add("galeria-imagen-principal")
-        viewer.innerHTML = `<img src="${src}" alt="Referencia ampliada">`
+        viewer.innerHTML = `<img src="${src}" alt="Referencia ampliada" loading="eager">`
         document.body.appendChild(viewer)
 
         viewer.addEventListener("click", (e) => {
@@ -1103,6 +1104,13 @@ const GalleryManager = {
         this.galeriaRef.classList.remove("galeria-oculta")
         this.galeriaRef.setAttribute("aria-hidden", "false")
         document.body.style.overflow = "hidden"
+        this.galeriaRef.offsetHeight
+        const images = this.galeriaContenedor.querySelectorAll("img")
+        images.forEach((img) => {
+          if (!img.complete) {
+            img.loading = "eager"
+          }
+        })
       })
     }
 
