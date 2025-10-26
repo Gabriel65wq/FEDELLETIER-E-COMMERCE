@@ -2394,6 +2394,152 @@ footer {
   }
 }
 
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE
+   ============================================ */
+@media (max-width: 767px) {
+  /* </CHANGE> Navbar móvil compacta: ocultar logo, reorganizar elementos */
+  header {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .header-container {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: var(--space-sm);
+  }
+
+  /* Ocultar logo en móvil */
+  .header-left {
+    display: none;
+  }
+
+  /* Reorganizar navegación: hamburguesa, inicio, carrito */
+  .centered-nav {
+    flex-basis: auto;
+    order: 0;
+    margin: 0;
+    gap: var(--space-sm);
+    flex: 1;
+    justify-content: center;
+  }
+
+  /* Hamburguesa a la izquierda */
+  .hamburger-menu {
+    order: -1;
+  }
+
+  /* Theme switch a la derecha */
+  .theme-switch {
+    order: 1;
+    margin: 0;
+  }
+
+  /* Igualar tamaños de todos los botones */
+  .nav-button,
+  .button,
+  .hamburger-button,
+  .theme-switch {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+
+  .nav-button .icon,
+  .button .icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .hamburger-button {
+    gap: 3px;
+  }
+
+  .hamburger-button span {
+    width: 18px;
+  }
+
+  /* Ajustar el switch de tema para que sea del mismo tamaño */
+  .theme-switch input[type="checkbox"] {
+    width: 36px;
+    height: 36px;
+  }
+
+  .theme-switch input[type="checkbox"]::before {
+    width: 16px;
+    height: 16px;
+    left: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .theme-switch input[type="checkbox"]:checked::before {
+    left: calc(100% - 19px);
+  }
+  /* </CHANGE> */
+
+  /* </CHANGE> Centrar completamente la sección #inicio en móvil */
+  #inicio {
+    padding: 60px 5%;
+  }
+
+  #inicio .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #inicio .left,
+  #inicio .right {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #inicio .left h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  #inicio .left p {
+    text-align: center;
+  }
+
+  #inicio .buttons {
+    justify-content: center;
+  }
+
+  #inicio .right img {
+    margin: 0 auto;
+  }
+  /* </CHANGE> */
+
+  /* </CHANGE> Mostrar 2 productos por fila en móvil */
+  .productos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+  /* </CHANGE> */
+
+  /* </CHANGE> Ajustes para la sección #referencias en móvil */
+  #referencias .description {
+    font-size: 0.95rem;
+  }
+
+  .referencias-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .referencia-item img {
+    width: 100%;
+    height: auto;
+  }
+  /* </CHANGE> */
+}
+
 @media (max-width: 768px) {
   header {
     padding: var(--space-md) var(--space-lg);
@@ -2615,9 +2761,12 @@ footer {
   }
 
   .nav-button,
-  .button {
+  .button,
+  .hamburger-button,
+  .theme-switch {
     width: 35px;
     height: 35px;
+    min-width: 35px;
   }
 
   .nav-button .icon,
