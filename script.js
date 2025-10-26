@@ -1,5 +1,5 @@
 // ============================================
-// CONFIGURACIÓN Y UTILIDADES
+// CONFIGURACIÓN Y UTILIDADES - OPTIMIZADO
 // ============================================
 
 const PRODUCTOS_DB = {
@@ -549,12 +549,6 @@ function calcularPrecioPerfume(totalPerfumes, rangosPerfume) {
   return rangosPerfume[rangosPerfume.length - 1][2]
 }
 
-// ============================================
-// THEME MANAGER
-// ============================================
-// ============================================
-// THEME MANAGER
-// ============================================
 const ThemeManager = {
   init() {
     this.checkbox = document.getElementById("theme-checkbox")
@@ -564,17 +558,17 @@ const ThemeManager = {
 
   loadTheme() {
     const savedTheme = localStorage.getItem("theme")
-    if (savedTheme === "dark") {
-      document.body.classList.add("dark")
-      this.checkbox.checked = true // Tema Oscuro -> checked (luna visible)
-    } else {
+    if (savedTheme === "light" || !savedTheme) {
       document.body.classList.remove("dark")
-      this.checkbox.checked = false // Tema Claro -> unchecked (sol visible)
+      this.checkbox.checked = false
+    } else {
+      document.body.classList.add("dark")
+      this.checkbox.checked = true
     }
   },
 
   toggleTheme() {
-    const isDark = this.checkbox.checked // checked=true es ahora Tema Oscuro (luna)
+    const isDark = this.checkbox.checked
     if (isDark) {
       document.body.classList.add("dark")
       localStorage.setItem("theme", "dark")
@@ -585,9 +579,6 @@ const ThemeManager = {
   },
 }
 
-// ============================================
-// CART MANAGER
-// ============================================
 const CartManager = {
   items: [],
 
@@ -747,9 +738,6 @@ const CartManager = {
   },
 }
 
-// ============================================
-// PRODUCT DETAIL MANAGER
-// ============================================
 const ProductDetailManager = {
   init() {
     this.setupElements()
@@ -927,9 +915,6 @@ const ProductDetailManager = {
   },
 }
 
-// ============================================
-// CHECKOUT MANAGER
-// ============================================
 const CheckoutManager = {
   init() {
     this.setupEventListeners()
@@ -1020,9 +1005,6 @@ const CheckoutManager = {
   },
 }
 
-// ============================================
-// PRODUCT FILTER MANAGER
-// ============================================
 const ProductFilterManager = {
   init() {
     this.filterButtons = document.querySelectorAll(".filtro-btn")
@@ -1067,9 +1049,6 @@ const ProductFilterManager = {
   },
 }
 
-// ============================================
-// GALLERY MANAGER
-// ============================================
 const GalleryManager = {
   init() {
     this.setupElements()
@@ -1124,9 +1103,6 @@ const GalleryManager = {
   },
 }
 
-// ============================================
-// HAMBURGER MENU MANAGER
-// ============================================
 const HamburgerMenuManager = {
   init() {
     this.hamburgerButton = document.querySelector(".hamburger-button")
@@ -1160,99 +1136,340 @@ const HamburgerMenuManager = {
   },
 }
 
-// ============================================
-// AUTH MODAL MANAGER
-// ============================================
-const AuthModalManager = {
+const ParticlesManager = {
+  canvas: null,
+  ctx: null,
+  particles: [],
+  animationId: null,
+  isDark: false,
+
   init() {
-    this.setupElements()
-    this.setupEventListeners()
-  },
+    this.canvas = document.getElementById("particles-canvas")
+    if (!this.canvas) return
 
-  setupElements() {
-    this.accountButton = document.getElementById("account-button")
-    this.authModal = document.getElementById("auth-modal")
-    this.closeModalBtn = document.getElementById("close-modal")
-    this.authTabs = document.querySelectorAll(".auth-tab")
-    this.authForms = document.querySelectorAll(".auth-form")
-    this.modalBackdrop = document.querySelector(".auth-modal-backdrop")
-  },
+    this.ctx = this.canvas.getContext("2d")
+    this.resizeCanvas()
+    this.createParticles()
+    this.animate()
 
-  setupEventListeners() {
-    if (this.accountButton) {
-      this.accountButton.addEventListener("click", () => this.openModal())
-    }
-
-    if (this.closeModalBtn) {
-      this.closeModalBtn.addEventListener("click", () => this.closeModal())
-    }
-
-    if (this.modalBackdrop) {
-      this.modalBackdrop.addEventListener("click", () => this.closeModal())
-    }
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && this.authModal.classList.contains("active")) {
-        this.closeModal()
-      }
-    })
-
-    this.authTabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        const targetTab = tab.dataset.tab
-        this.switchTab(targetTab)
+    // Detectar cambios de tema
+    this.updateTheme()
+    const themeCheckbox = document.getElementById("theme-checkbox")
+    if (themeCheckbox) {
+      themeCheckbox.addEventListener("change", () => {
+        this.updateTheme()
       })
+    }
+
+    // Redimensionar canvas cuando cambia el tamaño de la ventana
+    window.addEventListener("resize", () => {
+      this.resizeCanvas()
+      this.createParticles()
     })
+  },
 
-    document.querySelector("#login-form form").addEventListener("submit", (e) => {
-      e.preventDefault()
-      alert("Funcionalidad de inicio de sesión - Conectar con tu backend")
-    })
+  resizeCanvas() {
+    const section = document.getElementById("inicio")
+    if (!section) return
 
-    document.querySelector("#register-form form").addEventListener("submit", (e) => {
-      e.preventDefault()
-      const password = document.getElementById("register-password").value
-      const confirmPassword = document.getElementById("register-confirm-password").value
+    this.canvas.width = section.offsetWidth
+    this.canvas.height = section.offsetHeight
+  },
 
-      if (password !== confirmPassword) {
-        alert("Las contraseñas no coinciden")
-        return
+  updateTheme() {
+    this.isDark = document.body.classList.contains("dark")
+  },
+
+  createParticles() {
+    this.particles = []
+    const particleCount = Math.floor((this.canvas.width * this.canvas.height) / 15000)
+
+    for (let i = 0; i < particleCount; i++) {
+      this.particles.push({
+        x: Math.random() * this.canvas.width,
+        y: Math.random() * this.canvas.height,
+        size: Math.random() * 3 + 1,
+        speedX: (Math.random() - 0.5) * 0.5,
+        speedY: (Math.random() - 0.5) * 0.5,
+        opacity: Math.random() * 0.5 + 0.3,
+        pulseSpeed: Math.random() * 0.02 + 0.01,
+        pulsePhase: Math.random() * Math.PI * 2,
+      })
+    }
+  },
+
+  drawParticles() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+
+    this.particles.forEach((particle, index) => {
+      // Actualizar posición
+      particle.x += particle.speedX
+      particle.y += particle.speedY
+
+      // Rebotar en los bordes
+      if (particle.x < 0 || particle.x > this.canvas.width) {
+        particle.speedX *= -1
+      }
+      if (particle.y < 0 || particle.y > this.canvas.height) {
+        particle.speedY *= -1
       }
 
-      alert("Funcionalidad de registro - Conectar con tu backend")
+      // Efecto de pulsación
+      particle.pulsePhase += particle.pulseSpeed
+      const pulseFactor = Math.sin(particle.pulsePhase) * 0.3 + 0.7
+
+      // Colores según el tema
+      const baseColor = this.isDark
+        ? `rgba(0, 168, 255, ${particle.opacity * pulseFactor})`
+        : `rgba(0, 123, 255, ${particle.opacity * pulseFactor})`
+
+      // Dibujar partícula
+      this.ctx.beginPath()
+      this.ctx.arc(particle.x, particle.y, particle.size * pulseFactor, 0, Math.PI * 2)
+      this.ctx.fillStyle = baseColor
+      this.ctx.fill()
+
+      // Dibujar conexiones entre partículas cercanas
+      for (let j = index + 1; j < this.particles.length; j++) {
+        const other = this.particles[j]
+        const dx = particle.x - other.x
+        const dy = particle.y - other.y
+        const distance = Math.sqrt(dx * dx + dy * dy)
+
+        if (distance < 120) {
+          const lineOpacity = (1 - distance / 120) * 0.15 * pulseFactor
+          const lineColor = this.isDark ? `rgba(0, 212, 255, ${lineOpacity})` : `rgba(0, 168, 255, ${lineOpacity})`
+
+          this.ctx.beginPath()
+          this.ctx.strokeStyle = lineColor
+          this.ctx.lineWidth = 0.5
+          this.ctx.moveTo(particle.x, particle.y)
+          this.ctx.lineTo(other.x, other.y)
+          this.ctx.stroke()
+        }
+      }
     })
   },
 
-  openModal() {
-    this.authModal.classList.add("active")
-    this.authModal.setAttribute("aria-hidden", "false")
-    document.body.style.overflow = "hidden"
+  animate() {
+    this.drawParticles()
+    this.animationId = requestAnimationFrame(() => this.animate())
   },
 
-  closeModal() {
-    this.authModal.classList.remove("active")
-    this.authModal.setAttribute("aria-hidden", "true")
-    document.body.style.overflow = ""
-  },
-
-  switchTab(targetTab) {
-    this.authTabs.forEach((t) => {
-      t.classList.remove("active")
-      t.setAttribute("aria-selected", "false")
-    })
-
-    const activeTab = document.querySelector(`[data-tab="${targetTab}"]`)
-    activeTab.classList.add("active")
-    activeTab.setAttribute("aria-selected", "true")
-
-    this.authForms.forEach((f) => f.classList.remove("active"))
-    document.getElementById(`${targetTab}-form`).classList.add("active")
+  destroy() {
+    if (this.animationId) {
+      cancelAnimationFrame(this.animationId)
+    }
   },
 }
 
-// ============================================
-// SMOOTH SCROLL
-// ============================================
+const ProductosAnimationManager = {
+  canvas: null,
+  ctx: null,
+  lights: [],
+  sparkles: [],
+  animationId: null,
+  isDark: false,
+
+  init() {
+    this.canvas = document.getElementById("productos-canvas")
+    if (!this.canvas) return
+
+    this.ctx = this.canvas.getContext("2d")
+    this.resizeCanvas()
+    this.createLights()
+    this.animate()
+
+    // Detectar cambios de tema
+    this.updateTheme()
+    const themeCheckbox = document.getElementById("theme-checkbox")
+    if (themeCheckbox) {
+      themeCheckbox.addEventListener("change", () => {
+        this.updateTheme()
+      })
+    }
+
+    // Redimensionar canvas cuando cambia el tamaño de la ventana
+    window.addEventListener("resize", () => {
+      this.resizeCanvas()
+      this.createLights()
+    })
+  },
+
+  resizeCanvas() {
+    const section = document.getElementById("productos")
+    if (!section) return
+
+    this.canvas.width = section.offsetWidth
+    this.canvas.height = section.offsetHeight
+  },
+
+  updateTheme() {
+    this.isDark = document.body.classList.contains("dark")
+  },
+
+  createLights() {
+    this.lights = []
+    const lightCount = Math.floor((this.canvas.width * this.canvas.height) / 12000)
+
+    for (let i = 0; i < lightCount; i++) {
+      this.lights.push({
+        x: Math.random() * this.canvas.width,
+        y: Math.random() * this.canvas.height,
+        size: Math.random() * 4 + 2,
+        speedX: (Math.random() - 0.5) * 0.4,
+        speedY: (Math.random() - 0.5) * 0.4,
+        opacity: Math.random() * 0.6 + 0.3,
+        pulseSpeed: Math.random() * 0.03 + 0.01,
+        pulsePhase: Math.random() * Math.PI * 2,
+        glowSize: Math.random() * 20 + 15,
+      })
+    }
+
+    // Inicializar array de destellos
+    this.sparkles = []
+  },
+
+  createSparkle() {
+    if (Math.random() < 0.02) {
+      // 2% de probabilidad cada frame
+      this.sparkles.push({
+        x: Math.random() * this.canvas.width,
+        y: Math.random() * this.canvas.height,
+        size: Math.random() * 3 + 1,
+        life: 1.0,
+        decay: Math.random() * 0.02 + 0.01,
+        rotation: Math.random() * Math.PI * 2,
+      })
+    }
+  },
+
+  drawLights() {
+    this.lights.forEach((light, index) => {
+      // Actualizar posición
+      light.x += light.speedX
+      light.y += light.speedY
+
+      // Rebotar en los bordes
+      if (light.x < 0 || light.x > this.canvas.width) {
+        light.speedX *= -1
+      }
+      if (light.y < 0 || light.y > this.canvas.height) {
+        light.speedY *= -1
+      }
+
+      // Efecto de pulsación
+      light.pulsePhase += light.pulseSpeed
+      const pulseFactor = Math.sin(light.pulsePhase) * 0.4 + 0.6
+
+      // Colores según el tema - similar a #inicio
+      const coreColor = this.isDark ? "rgba(0, 212, 255, " : "rgba(0, 168, 255, "
+      const glowColor = this.isDark ? "rgba(77, 184, 255, " : "rgba(0, 123, 255, "
+
+      // Dibujar resplandor exterior
+      const gradient = this.ctx.createRadialGradient(
+        light.x,
+        light.y,
+        0,
+        light.x,
+        light.y,
+        light.glowSize * pulseFactor,
+      )
+      gradient.addColorStop(0, coreColor + light.opacity * pulseFactor + ")")
+      gradient.addColorStop(0.3, glowColor + light.opacity * 0.4 * pulseFactor + ")")
+      gradient.addColorStop(1, "rgba(0, 168, 255, 0)")
+
+      this.ctx.beginPath()
+      this.ctx.arc(light.x, light.y, light.glowSize * pulseFactor, 0, Math.PI * 2)
+      this.ctx.fillStyle = gradient
+      this.ctx.fill()
+
+      // Dibujar núcleo brillante
+      this.ctx.beginPath()
+      this.ctx.arc(light.x, light.y, light.size * pulseFactor, 0, Math.PI * 2)
+      this.ctx.fillStyle = coreColor + light.opacity * 0.9 * pulseFactor + ")"
+      this.ctx.fill()
+
+      // Dibujar conexiones entre luces cercanas (similar a #inicio)
+      for (let j = index + 1; j < this.lights.length; j++) {
+        const other = this.lights[j]
+        const dx = light.x - other.x
+        const dy = light.y - other.y
+        const distance = Math.sqrt(dx * dx + dy * dy)
+
+        if (distance < 150) {
+          const lineOpacity = (1 - distance / 150) * 0.1 * pulseFactor
+          const lineColor = this.isDark ? `rgba(0, 212, 255, ${lineOpacity})` : `rgba(0, 168, 255, ${lineOpacity})`
+
+          this.ctx.beginPath()
+          this.ctx.strokeStyle = lineColor
+          this.ctx.lineWidth = 1
+          this.ctx.moveTo(light.x, light.y)
+          this.ctx.lineTo(other.x, other.y)
+          this.ctx.stroke()
+        }
+      }
+    })
+  },
+
+  drawSparkles() {
+    this.sparkles = this.sparkles.filter((sparkle) => {
+      sparkle.life -= sparkle.decay
+
+      if (sparkle.life <= 0) return false
+
+      const sparkleColor = this.isDark
+        ? `rgba(255, 255, 255, ${sparkle.life * 0.8})`
+        : `rgba(0, 168, 255, ${sparkle.life})`
+
+      // Dibujar forma de estrella
+      this.ctx.save()
+      this.ctx.translate(sparkle.x, sparkle.y)
+      this.ctx.rotate(sparkle.rotation)
+
+      // Líneas de la estrella
+      for (let i = 0; i < 4; i++) {
+        this.ctx.beginPath()
+        this.ctx.moveTo(0, 0)
+        const angle = (Math.PI / 2) * i
+        const length = sparkle.size * 8 * sparkle.life
+        this.ctx.lineTo(Math.cos(angle) * length, Math.sin(angle) * length)
+        this.ctx.strokeStyle = sparkleColor
+        this.ctx.lineWidth = 2 * sparkle.life
+        this.ctx.stroke()
+      }
+
+      // Núcleo del destello
+      this.ctx.beginPath()
+      this.ctx.arc(0, 0, sparkle.size * sparkle.life, 0, Math.PI * 2)
+      this.ctx.fillStyle = this.isDark
+        ? `rgba(255, 255, 255, ${sparkle.life})`
+        : `rgba(255, 255, 255, ${sparkle.life * 0.9})`
+      this.ctx.fill()
+
+      this.ctx.restore()
+
+      return true
+    })
+  },
+
+  animate() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+
+    this.drawLights()
+    this.createSparkle()
+    this.drawSparkles()
+
+    this.animationId = requestAnimationFrame(() => this.animate())
+  },
+
+  destroy() {
+    if (this.animationId) {
+      cancelAnimationFrame(this.animationId)
+    }
+  },
+}
+
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
@@ -1265,9 +1482,6 @@ function initSmoothScroll() {
   })
 }
 
-// ============================================
-// INITIALIZATION
-// ============================================
 document.body.classList.add("no-transition")
 
 window.addEventListener("load", () => {
@@ -1283,30 +1497,6 @@ window.addEventListener("load", () => {
   ProductFilterManager.init()
   GalleryManager.init()
   HamburgerMenuManager.init()
-  AuthModalManager.init()
   initSmoothScroll()
-})
-
-// ============================================
-// INITIALIZATION
-// ============================================
-document.body.classList.add("no-transition")
-
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.body.classList.remove("no-transition")
-  }, 100)
-
-  window.scrollTo({ top: 0, behavior: "instant" })
-  window.location.hash = "#inicio"
-
-  ThemeManager.init()
-  CartManager.init()
-  ProductDetailManager.init()
-  CheckoutManager.init()
-  ProductFilterManager.init()
-  GalleryManager.init()
-  HamburgerMenuManager.init()
-  AuthModalManager.init()
-  initSmoothScroll()
+  ParticlesManager.init()
 })
