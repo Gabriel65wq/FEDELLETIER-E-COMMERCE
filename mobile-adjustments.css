@@ -161,6 +161,44 @@
     border-radius: 8px;
   }
 
+  /* REFERENCIAS - 3 imágenes más chicas */
+.referencias-galeria {
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 0.25rem !important;
+}
+
+.ref-img {
+  width: 100% !important;
+  height: 100px !important; /* antes 250px o más */
+  object-fit: cover;
+}
+
+/* ✅ Galería de referencias completa */
+#galeria-referencias .galeria-top h2,
+#galeria-referencias .galeria-titulo {
+  display: none !important; /* Oculta título solo en mobile */
+}
+
+.galeria-container {
+  width: 95% !important;
+}
+
+.galeria-imagenes {
+  grid-template-columns: repeat(2, 1fr) !important; /* 2 por fila */
+  gap: 0.75rem !important;
+}
+
+.galeria-imagenes img {
+  height: 140px !important;
+  border-radius: 8px !important;
+}
+
+/* Botón salir más largo */
+#volver-referencias {
+  width: 100% !important;
+  font-size: 1rem !important;
+  padding: 14px 0 !important;
+}
 
   /* ===============================
      ✅ DETALLE PRODUCTO
