@@ -835,22 +835,26 @@
 }
 
 @media (max-width: 767px) {
-  /* Espaciador a la izquierda */
+
+  /* Hacemos la navbar 3 columnas */
+  .header-container {
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+
+  /* IZQUIERDA - espacio vacío */
   .nav-spacer-left {
-    flex: 1;
-    order: -2;
+    display: block !important;
   }
 
-  /* Centrar botones del medio sin mover theme */
-  .centered-nav {
-    flex: 1;
-    justify-content: center;
-    order: -1;
+  /* CENTRO - los tres botones */
+  .header-middle {
+    justify-self: center;
   }
 
-  /* Theme a la derecha del todo */
-  .theme-switch {
-    order: 1;
-    margin-left: 0;
+  /* DERECHA - theme */
+  .header-right {
+    justify-self: end;
   }
 }
