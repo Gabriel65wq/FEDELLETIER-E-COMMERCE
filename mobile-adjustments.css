@@ -795,3 +795,21 @@
   }
 
 }
+
+@media (max-width: 767px) {
+
+  /* ✅ Imagen de #inicio más grande */
+  #inicio .right .circular-image {
+    width: 290px !important;  /* antes ~250px */
+    height: 290px !important;
+  }
+
+  /* ✅ Descripción un poco más grande y legible */
+  #inicio .left p {
+    font-size: 1.05rem !important; /* antes ~1rem */
+    line-height: 1.55 !important;  /* mejor lectura */
+    max-width: 90% !important;     /* ayuda a que no quede muy larga */
+    margin: 0 auto !important;     /* centrada */
+  }
+
+}
