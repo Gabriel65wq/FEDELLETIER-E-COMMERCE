@@ -858,3 +858,20 @@
     justify-self: end;
   }
 }
+
+@media (max-width: 767px) {
+
+  /* Centrar todo el texto dentro del footer */
+  footer *:not(hr):not(.footer-copy) {
+    text-align: center !important;
+  }
+
+  /* Acercar Fede Lettier, Enlaces y Contacto */
+  .footer-sections {
+    gap: 10px !important; /* Antes seguro es más grande */
+  }
+
+  .footer-section {
+    margin-bottom: 8px !important;
+  }
+}
