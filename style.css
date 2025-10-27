@@ -2389,36 +2389,18 @@ footer {
 /* ============================================
    RESPONSIVE DESIGN (MOBILE FIRST)
    ============================================ */
-@media (max-width: 1024px) {
-  #inicio .container {
-    flex-direction: column;
-    text-align: center;
-    gap: var(--space-2xl);
-  }
+/* Eliminados todos los media queries - ahora están en mobile.css */
 
-  #inicio .left h1 {
-    font-size: 3rem;
-  }
+/* FIX VISIBILIDAD ICONO INSTAGRAM */
+.icon-content a[data-social="instagram"] svg {
+  fill: #e1306c !important;
+  stroke: none !important;
+  z-index: 2 !important;
+  opacity: 1 !important;
+}
 
-  #inicio .left p {
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .circular-image {
-    width: 300px;
-    height: 300px;
-  }
-
-  .checkout-content {
-    grid-template-columns: 1fr;
-  }
-
-  .checkout-resumen {
-    position: static;
-  }
+.icon-content a[data-social="instagram"]::before {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%) !important;
 }
 
 /* ============================================
@@ -2616,7 +2598,7 @@ footer {
 
   /* Icono del sol (tema claro) */
   .theme-switch::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3 Cline x1='12' y1='21' x2='12' y2='23'/%3E%3Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3 Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3 Cline x1='1' y1='12' x2='3' y2='12'/%3E%3 Cline x1='21' y1='12' x2='23' y2='12'/%3E%3 Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3 Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3 Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3 Cline x1='1' y1='12' x2='3' y2='12'/%3E%3Cline x1='21' y1='12' x2='23' y2='12'/%3E%3 Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -3198,10 +3180,5 @@ footer {
 }
 
 .icon-content a[data-social="instagram"]::before {
-  z-index: 1 !important;
-}
-
-.icon-content a[data-social="instagram"] svg {
-  fill: #e4405f !important;
-  stroke: none !important;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%) !important;
 }
