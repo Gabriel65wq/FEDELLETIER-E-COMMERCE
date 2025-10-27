@@ -835,40 +835,22 @@
 }
 
 @media (max-width: 767px) {
-
-  /* ✅ Reordenar elementos */
-  .header-left {
-    display: block !important;
-    visibility: hidden !important;
-    width: 40px !important;
-    height: 40px !important;
-    flex-shrink: 0;
-    order: 0;
+  /* Espaciador a la izquierda */
+  .nav-spacer-left {
+    flex: 1;
+    order: -2;
   }
 
+  /* Centrar los botones del medio */
   .centered-nav {
-    display: flex;
-    justify-content: center !important;
-    align-items: center !important;
-    flex-grow: 1 !important; /* ✅ Esto centra de verdad */
-    gap: 8px !important;
-    order: 1;
+    flex: 0 0 auto;
+    order: -1;
+    justify-content: center;
   }
 
-  .nav-button { order: 0; }       /* Inicio */
-  .hamburger-button { order: 1; } /* Hamburguesa */
-  .cart-button { order: 2; }      /* Carrito */
-
-  /* ✅ Theme SIEMPRE a la derecha */
+  /* Theme a la derecha del todo */
   .theme-switch {
     order: 2;
-    margin-left: auto !important;
-    flex-shrink: 0;
-  }
-
-  /* ✅ Navbar más finita y compacta */
-  header {
-    padding: 6px 10px !important;
-    height: auto !important;
+    margin-left: auto;
   }
 }
