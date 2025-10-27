@@ -854,3 +854,25 @@
     margin-left: auto;
   }
 }
+
+@media (max-width: 767px) {
+
+  /* Espaciador a la izquierda */
+  .nav-spacer-left {
+    flex: 1;
+    order: -2;
+  }
+
+  /* Centrar botones del medio sin mover theme */
+  .centered-nav {
+    flex: 1;
+    justify-content: center;
+    order: -1;
+  }
+
+  /* Theme se queda donde está */
+  .theme-switch {
+    order: 1;
+    margin-left: 0;
+  }
+}
