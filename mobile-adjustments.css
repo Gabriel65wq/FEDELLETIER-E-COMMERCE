@@ -783,3 +783,11 @@
   object-fit: cover;
   flex-shrink: 0; /* evita que se achiquen de más */
 }
+
+/* ✅ Texto de referencia más chico en móviles */
+.referencias-descripcion {
+  font-size: 0.85rem !important;
+  line-height: 1.4 !important;
+  margin-bottom: 1.5rem !important;
+  padding: 0 0.5rem !important;
+}
