@@ -822,13 +822,14 @@
     gap: 1.2rem;
   }
 
-  /* Acerca la imagen un 50% más a los social buttons */
+  /* 🔹 Social buttons más cerca de la imagen */
   #inicio .social-buttons {
-    margin-bottom: 1rem !important; /* antes 1.8rem aprox. */
+    margin-bottom: 0.6rem !important; /* antes > 1.5rem */
   }
 
+  /* 🔹 Imagen más hacia arriba */
   #inicio .circular-image {
-    margin-top: 0.5rem !important; /* antes ~2rem de distancia visual */
+    margin-top: 0.3rem !important; /* acercamos a los botones */
   }
 
 }
