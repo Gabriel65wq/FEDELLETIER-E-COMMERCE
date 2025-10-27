@@ -836,31 +836,39 @@
 
 @media (max-width: 767px) {
 
-  /* ✅ Orden correcto de botones */
-  .nav-button { order: 0; } /* Inicio */
-  .hamburger-menu { order: 1; } /* Hamburguesa */
-  .cart-button { order: 2; } /* Carrito */
-  .theme-switch { order: 3; } /* Theme a la derecha */
-
-  /* ✅ Contenedor central con distribución real centrada */
-  .centered-nav {
-    flex: 1;
-    justify-content: center !important;
-  }
-
-  /* ✅ Espacio vacío a la izquierda para balancear */
+  /* ✅ Reordenar elementos */
   .header-left {
     display: block !important;
-    visibility: hidden !important; /* se muestra como espacio */
-    width: 36px !important; /* mismo ancho que los botones */
-    height: 36px !important;
+    visibility: hidden !important;
+    width: 40px !important;
+    height: 40px !important;
     flex-shrink: 0;
+    order: 0;
   }
 
-  /* ✅ Mantener theme a la derecha del todo */
+  .centered-nav {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-grow: 1 !important; /* ✅ Esto centra de verdad */
+    gap: 8px !important;
+    order: 1;
+  }
+
+  .nav-button { order: 0; }       /* Inicio */
+  .hamburger-button { order: 1; } /* Hamburguesa */
+  .cart-button { order: 2; }      /* Carrito */
+
+  /* ✅ Theme SIEMPRE a la derecha */
   .theme-switch {
+    order: 2;
     margin-left: auto !important;
     flex-shrink: 0;
   }
 
+  /* ✅ Navbar más finita y compacta */
+  header {
+    padding: 6px 10px !important;
+    height: auto !important;
+  }
 }
