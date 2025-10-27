@@ -833,3 +833,34 @@
   }
 
 }
+
+@media (max-width: 767px) {
+
+  /* ✅ Orden correcto de botones */
+  .nav-button { order: 0; } /* Inicio */
+  .hamburger-menu { order: 1; } /* Hamburguesa */
+  .cart-button { order: 2; } /* Carrito */
+  .theme-switch { order: 3; } /* Theme a la derecha */
+
+  /* ✅ Contenedor central con distribución real centrada */
+  .centered-nav {
+    flex: 1;
+    justify-content: center !important;
+  }
+
+  /* ✅ Espacio vacío a la izquierda para balancear */
+  .header-left {
+    display: block !important;
+    visibility: hidden !important; /* se muestra como espacio */
+    width: 36px !important; /* mismo ancho que los botones */
+    height: 36px !important;
+    flex-shrink: 0;
+  }
+
+  /* ✅ Mantener theme a la derecha del todo */
+  .theme-switch {
+    margin-left: auto !important;
+    flex-shrink: 0;
+  }
+
+}
