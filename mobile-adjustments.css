@@ -822,4 +822,13 @@
     gap: 1.2rem;
   }
 
+  /* Acerca la imagen un 50% más a los social buttons */
+  #inicio .social-buttons {
+    margin-bottom: 1rem !important; /* antes 1.8rem aprox. */
+  }
+
+  #inicio .circular-image {
+    margin-top: 0.5rem !important; /* antes ~2rem de distancia visual */
+  }
+
 }
