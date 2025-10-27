@@ -767,3 +767,19 @@
     font-size: 1.5rem;
   }
 }
+
+/* REFERENCIAS - 3 imágenes más chicas en una sola fila */
+.referencias-galeria {
+  display: flex !important;
+  flex-wrap: nowrap !important; /* evita que salten de fila */
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+}
+
+.ref-img {
+  width: 32% !important; /* 3 imágenes juntas en una fila */
+  height: 100px !important;
+  object-fit: cover;
+  flex-shrink: 0; /* evita que se achiquen de más */
+}
