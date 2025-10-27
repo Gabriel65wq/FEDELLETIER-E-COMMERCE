@@ -812,4 +812,14 @@
     margin: 0 auto !important;     /* centrada */
   }
 
+   /* ✅ Social buttons centrados entre texto e imagen */
+  #inicio .social-buttons {
+    margin-top: 1.2rem !important; /* antes muy pegado al texto */
+    margin-bottom: 1.8rem !important; /* agrega espacio hacia la imagen */
+    justify-content: center !important;
+    width: 100%;
+    display: flex;
+    gap: 1.2rem;
+  }
+
 }
