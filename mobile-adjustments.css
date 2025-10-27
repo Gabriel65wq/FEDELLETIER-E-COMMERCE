@@ -2,45 +2,54 @@
    MÓVIL (max-width: 767px)
    ============================================ */
 @media (max-width: 767px) {
-  /* Navbar móvil compacta y reorganizada */
+  /* Navbar móvil perfectamente centrada con grid */
   header {
     padding: 8px var(--space-md);
   }
 
   .header-container {
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-sm);
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr !important;
+    align-items: center !important;
+    gap: 0 !important;
+    flex-wrap: nowrap !important;
   }
 
   /* Ocultar logo en móvil */
   .header-left {
-    display: none;
+    display: none !important;
   }
 
-  /* Reorganizar navegación: todos los botones centrados */
+  /* Espacio vacío a la izquierda para balance */
+  .nav-spacer-left {
+    display: block !important;
+    grid-column: 1;
+  }
+
+  /* Navegación centrada perfectamente */
+  .header-middle {
+    grid-column: 2 !important;
+    justify-self: center !important;
+  }
+
   .centered-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    flex: 0 0 auto;
-    order: 0;
-    margin: 0;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
   }
 
-  /* Hamburguesa a la izquierda del todo */
-  .hamburger-menu {
-    order: -1;
-    flex: 0 0 auto;
+  /* Theme switch a la derecha */
+  .header-right {
+    grid-column: 3 !important;
+    justify-self: end !important;
   }
 
   /* Theme switch simplificado para móvil */
   .theme-switch {
-    order: 1;
-    flex: 0 0 auto;
-    margin: 0;
+    margin: 0 !important;
     width: 36px;
     height: 36px;
     position: relative;
@@ -73,10 +82,10 @@
   .nav-button,
   .button,
   .hamburger-button {
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    min-height: 36px;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
   }
 
   .nav-button .icon,
@@ -769,7 +778,6 @@
 }
 
 @media (max-width: 767px) {
-
   /* 3 imágenes más chicas en una sola fila */
   .referencias-galeria {
     display: flex !important;
@@ -793,26 +801,24 @@
     margin-bottom: 1.5rem !important;
     padding: 0 0.5rem !important;
   }
-
 }
 
 @media (max-width: 767px) {
-
   /* ✅ Imagen de #inicio más grande */
   #inicio .right .circular-image {
-    width: 260px !important;  /* antes ~250px */
+    width: 260px !important; /* antes ~250px */
     height: 260px !important;
   }
 
   /* ✅ Descripción un poco más grande y legible */
   #inicio .left p {
     font-size: 1.03rem !important; /* antes ~1rem */
-    line-height: 1.55 !important;  /* mejor lectura */
-    max-width: 90% !important;     /* ayuda a que no quede muy larga */
-    margin: 0 auto !important;     /* centrada */
+    line-height: 1.55 !important; /* mejor lectura */
+    max-width: 90% !important; /* ayuda a que no quede muy larga */
+    margin: 0 auto !important; /* centrada */
   }
 
-   /* ✅ Social buttons centrados entre texto e imagen */
+  /* ✅ Social buttons centrados entre texto e imagen */
   #inicio .social-buttons {
     margin-top: 1.2rem !important; /* antes muy pegado al texto */
     margin-bottom: 1.8rem !important; /* agrega espacio hacia la imagen */
@@ -831,11 +837,9 @@
   #inicio .circular-image {
     margin-top: 0.3rem !important; /* acercamos a los botones */
   }
-
 }
 
 @media (max-width: 767px) {
-
   /* Hacemos la navbar 3 columnas */
   .header-container {
     display: grid !important;
@@ -860,7 +864,6 @@
 }
 
 @media (max-width: 767px) {
-
   /* Centrar todo el texto dentro del footer */
   footer *:not(hr):not(.footer-copy) {
     text-align: center !important;
