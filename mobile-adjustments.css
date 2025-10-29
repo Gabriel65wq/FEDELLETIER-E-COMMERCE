@@ -1,6 +1,6 @@
 /* =========================================================
-   AJUSTES RESPONSIVE LIMPIOS (MÓVILES) – versión restaurada
-   Mantiene diseño/base sin tocar funcionalidad ni colores.
+   AJUSTES RESPONSIVE LIMPIOS (MÓVILES) – versión con navbar pedida
+   Mantiene el diseño general y funcionalidad.
    Breakpoints: ≤767px (teléfonos), ≤480px (teléfonos chicos)
    ========================================================= */
 
@@ -9,10 +9,86 @@
    ========================= */
 @media (max-width: 767px) {
 
-  /* ====== Navbar ======
-     No se oculta el theme ni se cambian layouts de la barra.
-     (Sin reglas aquí para no interferir con tu CSS base)
-  */
+  /* ====== NAVBAR (pedidos nuevos) ====== */
+
+  /* Ocultar logo en mobile */
+  .header-left { display: none; }
+
+  /* Botones (Inicio / Hamburguesa / Carrito) más chicos */
+  .nav-button,
+  .button,
+  .hamburger-button {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+  }
+  .nav-button .icon,
+  .button .icon {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+  }
+  .hamburger-button { gap: 3px; }
+  .hamburger-button span { width: 16px; }
+
+  /* Reemplazar theme de PC por un botón simple en mobile:
+     - Ocultamos el contenedor complejo solo en mobile
+     - Mostramos/estilizamos .theme-switch como botón de 32x32 con sol/luna */
+  .theme-switch__container {
+    display: none !important; /* solo mobile */
+  }
+  .theme-switch {
+    margin: 0 !important;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    cursor: pointer;
+  }
+  .theme-switch::before,
+  .theme-switch::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 18px;
+    height: 18px;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  /* Sol (modo claro) */
+  .theme-switch::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3Cline x1='1' y1='12' x2='3' y2='12'/%3E%3Cline x1='21' y1='12' x2='23' y2='12'/%3E%3Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  /* Luna (modo oscuro) */
+  .theme-switch::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300d4ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/%3E%3C/svg%3E");
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-180deg) scale(0.5);
+  }
+  body.dark .theme-switch::before {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(180deg) scale(0.5);
+  }
+  body.dark .theme-switch::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  .theme-switch:hover::before,
+  .theme-switch:hover::after {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  body.dark .theme-switch:hover::before {
+    transform: translate(-50%, -50%) rotate(180deg) scale(0.6);
+  }
+  body.dark .theme-switch:hover::after {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.1);
+  }
 
   /* ====== #inicio (centrado como lo ves) ====== */
   #inicio { padding: 60px 5%; }
@@ -66,8 +142,6 @@
   .producto-card span { font-size: 0.8rem; }
 
   /* ====== DETALLE DE PRODUCTO – FIX imagen “pegada” ====== */
-  /* En desktop tu .detalle-imagen-container es sticky (bien).
-     En móvil lo desactivamos para que acompañe el scroll. */
   .detalle-contenido {
     width: 95%;
     max-height: 90vh;
@@ -90,15 +164,13 @@
     width: 100%;
     object-fit: contain;
   }
-  /* Si tu tabla de precios usa grid, 1 columna en vistas estrechas */
   .detalle-tabla-moderna { grid-template-columns: 1fr; }
 
   /* ====== #informacion ======
-     Restablecido como tu base (sin cambios de tamaño aquí).
-     (No agregamos padding/márgenes/escala en mobile)
+     (Sin overrides: queda igual que tu base/restaurado)
   */
 
-  /* ====== #referencias (miniaturas “vista previa”) ====== */
+  /* ====== #referencias (3 miniaturas en vista previa) ====== */
   .referencias-descripcion {
     font-size: 0.95rem;
     line-height: 1.4;
@@ -109,18 +181,18 @@
   .referencias-galeria {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-between;   /* asegura que entren 3 */
+    justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
   }
   .ref-img {
-    flex: 0 0 calc(33.333% - 0.5rem); /* 3 por fila visibles */
+    flex: 0 0 calc(33.333% - 0.5rem);
     max-width: calc(33.333% - 0.5rem);
     height: 100px;
     object-fit: cover;
   }
 
-  /* ====== Galería “Ver todas las referencias” ====== */
+  /* ====== Galería “Ver todas las referencias” → 2 por fila en mobile ====== */
   .galeria-container { width: 95%; }
   .galeria-top {
     display: flex;
@@ -130,11 +202,9 @@
     align-items: flex-start;
   }
   .galeria-titulo { font-size: 1.6rem; text-align: left; }
-
-  /* Fuerza 2 por fila en móviles */
   .galeria-imagenes {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* ← 2 columnas fijas */
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas fijas en mobile */
     gap: var(--space-md);
   }
   .galeria-imagenes img {
@@ -148,7 +218,7 @@
   /* ====== Footer (centrado y apilado) ====== */
   .footer-container {
     display: flex;
-    flex-direction: column; /* apilado */
+    flex-direction: column;
     align-items: center;
     gap: 10px;
     text-align: center;
@@ -165,7 +235,22 @@
    TELÉFONOS PEQUEÑOS (≤ 480px)
    ========================= */
 @media (max-width: 480px) {
-  /* (No tocamos navbar/theme para respetar tu implementación) */
+  /* Botones aún un toque más compactos si querés */
+  .nav-button,
+  .button,
+  .hamburger-button,
+  .theme-switch {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+  }
+  .nav-button .icon,
+  .button .icon {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+  }
+  .hamburger-button span { width: 16px; }
 
   /* Inicio (ligeros ajustes de lectura) */
   #inicio .left h1 { font-size: 2rem; }
