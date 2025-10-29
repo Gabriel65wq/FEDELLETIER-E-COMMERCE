@@ -207,6 +207,25 @@
     font-size: 0.9rem;
   }
 
+  /* ====== #informacion – listas alineadas sin separación extra ====== */
+  #informacion ul {
+    list-style-position: inside;   /* coloca los puntos al inicio del texto */
+    padding-left: 0;               /* elimina sangría adicional */
+    margin-left: 0;
+  }
+
+  #informacion li {
+    text-align: left;
+    margin: 4px 0;                 /* espacio mínimo entre ítems */
+    line-height: 1.5;
+  }
+
+  /* Mantiene coherencia visual con títulos alineados */
+  #informacion h3,
+  #informacion p {
+    text-align: left;
+  }
+
   /* ====== Referencias (vista previa: 3 miniaturas) ====== */
   .referencias-descripcion {
     font-size: 0.95rem; line-height: 1.4;
