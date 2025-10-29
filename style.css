@@ -800,28 +800,47 @@ body.dark .circular-image:hover {
    SECCIÓN PRODUCTOS
    ============================================ */
 #productos {
-  padding: 100px 8%;
+  padding: 80px 8%;
   text-align: center;
+  /* Aplicado el mismo fondo de #informacion a #productos */
   background: linear-gradient(
-    135deg,
-    rgba(0, 153, 255, 0.03) 0%,
-    rgba(0, 212, 255, 0.06) 50%,
-    rgba(0, 168, 255, 0.03) 100%
+    160deg,
+    rgba(0, 123, 255, 0.02) 0%,
+    rgba(0, 168, 255, 0.05) 50%,
+    rgba(0, 99, 255, 0.03) 100%
   );
   position: relative;
   overflow: hidden;
+  z-index: 2;
 }
 
+/* Canvas para animaciones de productos */
+#productos-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Aplicado el mismo ::before de #informacion */
 #productos::before {
   content: "";
   position: absolute;
-  inset: 0;
+  top: -20%;
+  left: -10%;
+  width: 120%;
+  height: 140%;
   background: radial-gradient(ellipse at 30% 20%, rgba(0, 170, 255, 0.08), transparent 50%),
     radial-gradient(ellipse at 70% 80%, rgba(0, 123, 255, 0.06), transparent 50%);
   animation: infoFloat 18s ease-in-out infinite;
-  z-index: 0;
+  z-index: -1;
+  will-change: transform;
 }
 
+/* Aplicado el mismo fondo oscuro de #informacion */
 body.dark #productos {
   background: linear-gradient(
     160deg,
@@ -836,6 +855,7 @@ body.dark #productos::before {
     radial-gradient(ellipse at 70% 80%, rgba(0, 212, 255, 0.09), transparent 50%);
 }
 
+/* Título con animación consistente */
 .productos-titulo {
   font-size: 2.6rem;
   font-weight: 800;
@@ -884,6 +904,7 @@ body.dark .productos-titulo::after {
   opacity: 0.6;
 }
 
+/* Botones de filtro optimizados */
 .productos-filtros {
   display: flex;
   justify-content: center;
@@ -950,120 +971,107 @@ body.dark .productos-titulo::after {
 .filtro-btn.active {
   background: var(--btn-bg);
   color: var(--btn-text);
-  border-color: var(--btn-bg);
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(0, 123, 255, 0.25);
 }
 
-.filtro-btn.active::before {
-  left: 0;
-}
-
+/* Grid de productos optimizado */
 .productos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: var(--space-xl);
-  max-width: 1400px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  justify-items: center;
+  align-items: start;
+  padding: 0 2%;
   position: relative;
   z-index: 1;
 }
 
 .producto-card {
-  background-color: var(--bg-color);
+  background: var(--header-bg);
   border: 2px solid var(--border-color);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   padding: var(--space-lg);
-  cursor: pointer;
-  /* Mejorada la transición para incluir transform, box-shadow, border-color y filter */
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.4s ease, filter
-    0.3s ease;
-  box-shadow: var(--shadow-sm);
-  opacity: 1;
-  animation: fadeInUp 0.6s ease;
-  /* Agregado overflow hidden para contener la animación de la imagen */
-  overflow: hidden;
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+  transition: all 0.35s ease;
   position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.8s ease-out;
+  /* Agregando iluminación sutil permanente alrededor de los productos */
+  box-shadow: 0 0 20px rgba(0, 123, 255, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Animación hover mejorada con escala, elevación, brillo y borde brillante */
+.producto-card.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
 .producto-card:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 123, 255, 0.15), 0 0 0 1px rgba(0, 123, 255, 0.1);
-  border-color: rgba(0, 123, 255, 0.3);
-  filter: brightness(1.05);
-}
-
-/* Efecto de brillo sutil en modo oscuro */
-body.dark .producto-card:hover {
-  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2), 0 0 0 1px rgba(0, 212, 255, 0.15);
-  border-color: rgba(0, 212, 255, 0.4);
-}
-
-.producto-card.hidden {
-  display: none;
+  transform: translateY(-10px);
+  /* Aumentando la iluminación en hover para mayor visibilidad */
+  box-shadow: 0 0 30px rgba(0, 123, 255, 0.25), 0 15px 35px rgba(0, 123, 255, 0.15);
 }
 
 .producto-card img {
   width: 100%;
   height: 220px;
+  border-radius: var(--radius-md);
+  transition: transform 0.5s ease, filter 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  filter: brightness(0.95) saturate(1.05) contrast(1.05);
   object-fit: cover;
-  border-radius: var(--radius-sm);
-  margin-bottom: var(--space-md);
-  /* Agregada transición suave para la imagen */
-  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
 }
 
-/* Animación de zoom en la imagen al hacer hover */
 .producto-card:hover img {
-  transform: scale(1.08);
-  filter: brightness(1.1) contrast(1.05);
+  transform: scale(1.08) rotate(0.5deg);
+  filter: brightness(1.15) saturate(1.25) contrast(1.1);
+  box-shadow: 0 12px 28px rgba(0, 150, 255, 0.25);
+}
+
+/* Efecto de brillo optimizado */
+.producto-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), transparent 60%);
+  transition: all 0.6s ease;
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+}
+
+.producto-card:hover::before {
+  left: 100%;
 }
 
 .producto-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: var(--space-sm);
-  color: var(--text-color);
-  line-height: 1.4;
-  /* Agregada transición para el título */
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-/* Efecto sutil en el título al hacer hover */
-.producto-card:hover h3 {
-  transform: translateX(2px);
+  margin-top: var(--space-md);
+  font-size: 1.15rem;
+  font-weight: 700;
 }
 
 .producto-card p {
-  font-size: 0.9rem;
-  color: var(--accent-blue);
-  font-weight: 600;
-  margin-bottom: var(--space-sm);
-  /* Agregada transición para el precio */
-  transition: transform 0.3s ease, color 0.3s ease;
+  margin: 6px 0;
+  font-size: 1rem;
+  color: #555;
 }
 
-/* Efecto en el precio al hacer hover */
-.producto-card:hover p {
-  transform: translateX(2px);
-  color: var(--accent-blue);
-  filter: brightness(1.2);
+body.dark .producto-card p {
+  color: #ccc;
 }
 
 .producto-card span {
-  display: inline-block;
-  padding: 5px 12px;
-  background-color: var(--btn-bg);
-  color: var(--btn-text);
-  border-radius: 20px;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--btn-bg);
   font-weight: 600;
-  /* Agregada transición para la etiqueta de categoría */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Efecto en la etiqueta de categoría al hacer hover */
-.producto-card:hover span {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* ============================================
@@ -1545,26 +1553,27 @@ body:has(#galeria-referencias:not(.galeria-oculta)) #referencias {
 }
 
 /* ============================================
-   MODAL DETALLE DE PRODUCTO - OPTIMIZADO
+   MODAL DETALLE DE PRODUCTO
    ============================================ */
-.detalle-modal {
+#producto-detalle {
+  display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
-  display: none;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 5000;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
   padding: var(--space-lg);
+  overflow-y: auto;
 }
 
 .detalle-contenido {
   background: var(--bg-color);
   border-radius: var(--radius-lg);
-  max-width: 1100px;
+  max-width: 1100px; /* Updated max-width */
   width: 100%;
-  max-height: 90vh;
+  max-height: 85vh;
   overflow-y: auto;
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
   animation: slideUpModal 0.4s ease;
@@ -1595,7 +1604,7 @@ body.dark .detalle-contenido {
   border: 0;
   color: var(--text-color);
   cursor: pointer;
-  transition: transform var(--transition-fast) ease, color var(--transition-fast) ease;
+  transition: transform 0.2s ease, color 0.2s ease;
   z-index: 10;
 }
 
@@ -1604,12 +1613,19 @@ body.dark .detalle-contenido {
   color: #00a8ff;
 }
 
-/* Layout horizontal: imagen a la izquierda, contenido a la derecha */
+/* Reorganizando el layout para desktop: imagen arriba con título y descripción al lado */
 .detalle-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  padding: var(--space-2xl);
+}
+
+/* Contenedor superior con imagen y detalles lado a lado */
+.detalle-superior {
   display: grid;
   grid-template-columns: 400px 1fr;
   gap: var(--space-2xl);
-  padding: var(--space-2xl);
   align-items: start;
 }
 
@@ -1622,11 +1638,8 @@ body.dark .detalle-contenido {
   padding: var(--space-lg);
   position: relative;
   overflow: hidden;
-  min-height: 400px;
-  max-height: 500px;
-  /* Sticky para que la imagen se mantenga visible al hacer scroll */
-  position: sticky;
-  top: var(--space-lg);
+  min-height: 350px;
+  height: 100%;
 }
 
 .detalle-imagen-container::before {
@@ -1651,7 +1664,7 @@ body.dark .detalle-contenido {
 
 .detalle-imagen-container img {
   max-width: 100%;
-  max-height: 450px;
+  max-height: 400px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -1701,11 +1714,6 @@ body.dark .detalle-texto h2 {
   margin: 10px 0;
 }
 
-.detalle-descripcion-section,
-.detalle-detalles-section {
-  margin-bottom: var(--space-md);
-}
-
 .detalle-texto h3 {
   margin: 10px 0 8px 0;
   color: #00a8ff;
@@ -1742,15 +1750,15 @@ body.dark .detalle-texto h2 {
   font-weight: bold;
 }
 
-/*Tabla de precios en 2 filas de 4 botones (grid de 4 columnas) */
+/* Sección de precios ahora en 2 filas de 4 botones */
 .detalle-precios-section {
-  margin: var(--space-lg) 0;
+  margin-top: var(--space-md);
 }
 
 .detalle-tabla-moderna {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-sm);
+  gap: var(--space-md);
   margin: var(--space-md) 0;
 }
 
@@ -1758,7 +1766,7 @@ body.dark .detalle-texto h2 {
   background: linear-gradient(135deg, rgba(0, 123, 255, 0.08), rgba(0, 212, 255, 0.05));
   border: 2px solid rgba(0, 170, 255, 0.2);
   border-radius: var(--radius-md);
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-md);
   text-align: center;
   cursor: pointer;
   transition: all var(--transition-normal) ease;
@@ -1778,8 +1786,8 @@ body.dark .detalle-texto h2 {
 }
 
 .precio-card:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 8px 25px rgba(0, 170, 255, 0.3);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 170, 255, 0.3);
   border-color: #00a8ff;
 }
 
@@ -1810,34 +1818,37 @@ body.dark .precio-card.selected {
 }
 
 .precio-cantidad {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #00a8ff;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   display: block;
 }
 
 .precio-valor {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-color);
   display: block;
 }
 
-/* Controles en horizontal: cantidad, total y botón en una fila */
-.detalle-controles-container {
+/* Sección inferior con cantidad, total y botón en horizontal */
+.detalle-acciones {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
-  margin-top: var(--space-lg);
-  padding-top: var(--space-md);
-  border-top: 2px solid var(--border-color);
+  justify-content: space-between;
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.03), rgba(0, 212, 255, 0.02));
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 170, 255, 0.15);
 }
 
 .detalle-cantidad {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 12px;
   flex-shrink: 0;
 }
 
@@ -1845,11 +1856,12 @@ body.dark .precio-card.selected {
   font-weight: 600;
   color: var(--text-color);
   white-space: nowrap;
+  font-size: 0.95rem;
 }
 
 .detalle-cantidad input {
   width: 80px;
-  padding: 8px 10px;
+  padding: 10px 12px;
   border-radius: var(--radius-sm);
   border: 2px solid var(--border-color);
   background: var(--bg-color);
@@ -1857,41 +1869,82 @@ body.dark .precio-card.selected {
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
-  transition: border-color var(--transition-fast);
+  transition: all var(--transition-normal) ease;
 }
 
 .detalle-cantidad input:focus {
   outline: none;
   border-color: #00a8ff;
+  box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.1);
 }
 
 .detalle-precio-total {
+  font-size: 1.5rem;
   font-weight: 700;
-  font-size: 1.4rem;
   color: #00a8ff;
   margin: 0;
-  flex-grow: 1;
-  text-align: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-shadow: 0 2px 10px rgba(0, 170, 255, 0.2);
 }
 
 .detalle-boton {
-  background: linear-gradient(90deg, #007bff, #00a8ff, #00d4ff, #007bff);
-  color: #fff;
+  background: linear-gradient(135deg, #007bff, #00a8ff);
+  color: white;
   border: 0;
-  padding: 12px 30px;
+  padding: 12px 40px;
   border-radius: var(--radius-md);
-  cursor: pointer;
-  font-weight: 600;
   font-size: 1rem;
-  animation: gradientShift 4s ease infinite;
-  transition: transform var(--transition-fast) ease, box-shadow var(--transition-fast) ease;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal) ease;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .detalle-boton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 170, 255, 0.5);
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.5);
+  background: linear-gradient(135deg, #0066cc, #0088cc);
+}
+
+.detalle-boton:active {
+  transform: translateY(0);
+}
+
+/* Media query para mantener el diseño mobile intacto */
+@media (max-width: 768px) {
+  .detalle-superior {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .detalle-imagen-container {
+    min-height: 250px;
+  }
+
+  .detalle-tabla-moderna {
+    grid-template-columns: 1fr;
+  }
+
+  .detalle-acciones {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-md);
+  }
+
+  .detalle-cantidad {
+    justify-content: space-between;
+  }
+
+  .detalle-precio-total {
+    text-align: center;
+  }
+
+  .detalle-boton {
+    width: 100%;
+  }
 }
 
 /* ============================================
@@ -1989,10 +2042,10 @@ body.dark .precio-card.selected {
 }
 
 .carrito-vacio p {
-  margin: 0 0 30px 0;
+  font-size: 1rem;
   color: var(--text-color);
   opacity: 0.7;
-  font-size: 1rem;
+  margin: 0 0 30px 0;
 }
 
 /* Carrito con items */
@@ -2384,12 +2437,17 @@ footer {
   text-align: left;
 }
 
+/* Aplicando gradiente azul a los títulos del footer como los títulos de la página */
 .footer-left h3,
 .footer-middle h3,
 .footer-right h3 {
-  color: #fff;
+  background: linear-gradient(90deg, #007bff, #00a8ff, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 15px;
   font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .footer-left p,
@@ -2652,7 +2710,7 @@ footer {
 
   /* Icono del sol (tema claro) */
   .theme-switch::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3 Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3 Cline x1='1' y1='12' x2='3' y2='12'/%3E%3Cline x1='21' y1='12' x2='23' y2='12'/%3E%3 Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3 Cline x1='12' y1='21' x2='12' y2='23'/%3E%3 Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3 Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3Cline x1='1' y1='12' x2='3' y2='12'/%3E%3 Cline x1='21' y1='12' x2='23' y2='12'/%3E%3 Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -3259,4 +3317,27 @@ footer {
 
 .icon-content a[data-social="instagram"]::before {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%) !important;
+}
+
+/* Agregando estilos para botones .btn-primary del carrito con gradiente animado */
+.btn-primary {
+  width: 100%;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #007bff, #00a8ff, #00d4ff, #007bff);
+  background-size: 300%;
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.4s ease;
+  animation: gradientFlow 4s ease infinite;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 170, 255, 0.5);
 }
