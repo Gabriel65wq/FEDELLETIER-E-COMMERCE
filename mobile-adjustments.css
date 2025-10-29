@@ -1,39 +1,36 @@
 /* =========================================================
-   AJUSTES RESPONSIVE LIMPIOS (MÓVILES) – versión con navbar pedida
-   Mantiene el diseño general y funcionalidad.
-   Breakpoints: ≤767px (teléfonos), ≤480px (teléfonos chicos)
+   AJUSTES RESPONSIVE (MÓVILES)
+   Solo móviles. No afecta escritorio.
+   Breakpoints: ≤767px y ≤480px
    ========================================================= */
 
 /* =========================
    TELÉFONOS (≤ 767px)
    ========================= */
 @media (max-width: 767px) {
-  /* ====== NAVBAR centrada con espacio izquierdo y theme a la derecha ====== */
 
-  /* Usamos GRID: [espacio en blanco] | [botonera centrada] | [theme] */
+  /* ====== NAVBAR: centro con spacer izq. y theme a la derecha ====== */
+
+  /* Grid: [espacio en blanco] | [botonera centrada] | [theme] */
   .header-container {
     display: grid;
-    grid-template-columns: 1fr auto 1fr; /* lados simétricos para centrar columna del medio */
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 0;
   }
 
-  /* Ocultamos el logo en mobile (espacio izquierdo queda vacío) */
+  /* Ocultar logo en mobile (espacio izquierdo queda vacío) */
   .header-left { display: none; }
 
   /* Espacio en blanco a la izquierda */
   .nav-spacer-left {
     display: block;
     grid-column: 1;
-    /* opcional: asegura altura de barra */
-    min-height: 36px;
+    min-height: 36px; /* asegura altura de barra */
   }
 
   /* Botonera centrada (Inicio, Hamburguesa, Carrito) */
-  .header-middle {
-    grid-column: 2;
-    justify-self: center;
-  }
+  .header-middle { grid-column: 2; justify-self: center; }
   .centered-nav {
     display: flex;
     align-items: center;
@@ -43,12 +40,9 @@
   }
 
   /* Theme a la derecha del todo */
-  .header-right {
-    grid-column: 3;
-    justify-self: end;
-  }
+  .header-right { grid-column: 3; justify-self: end; }
 
-  /* Tamaños compactos para los 3 botones del centro */
+  /* Botones más compactos en mobile */
   .nav-button,
   .button,
   .hamburger-button {
@@ -66,10 +60,11 @@
   .hamburger-button { gap: 3px; }
   .hamburger-button span { width: 16px; }
 
-  /* Reemplazo del theme de PC por botón simple (sol/luna) SOLO en mobile */
-  .theme-switch__container { display: none !important; }   /* oculta el switch complejo */
+  /* ====== Theme mobile (botón simple sol/luna) ======
+     No afecta el switch de escritorio: solo ocultamos el contenedor complejo en mobile. */
+  .theme-switch__container { display: none; }
   .theme-switch {
-    margin: 0 !important;
+    margin: 0;
     width: 32px;
     height: 32px;
     position: relative;
@@ -117,134 +112,72 @@
   body.dark .theme-switch:hover::after {
     transform: translate(-50%, -50%) rotate(0deg) scale(1.1);
   }
-}
 
-  /* ====== #inicio (centrado como lo ves) ====== */
+  /* ====== #inicio – centrado como lo ves ====== */
   #inicio { padding: 60px 5%; }
-  #inicio .container {
-    flex-direction: column;
-    text-align: center;
-  }
+  #inicio .container { flex-direction: column; text-align: center; }
   #inicio .left,
   #inicio .right {
-    width: 100%;
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%; max-width: 100%;
+    display: flex; flex-direction: column; align-items: center;
   }
-  #inicio .left h1 {
-    font-size: 2rem;
-    text-align: center;
-    white-space: normal;
-  }
-  #inicio .left p {
-    text-align: center;
-    font-size: 1.03rem;
-    line-height: 1.55;
-    max-width: 90%;
-    margin: 0 auto;
-  }
-  #inicio .right .circular-image {
-    width: 260px;
-    height: 260px;
-    margin-top: 0.3rem;
-  }
+  #inicio .left h1 { font-size: 2rem; text-align: center; white-space: normal; }
+  #inicio .left p  { text-align: center; font-size: 1.03rem; line-height: 1.55; max-width: 90%; margin: 0 auto; }
+  #inicio .right .circular-image { width: 260px; height: 260px; margin-top: 0.3rem; }
   #inicio .social-buttons {
-    margin-top: 1.2rem;
-    margin-bottom: 0.6rem;
-    justify-content: center;
-    width: 100%;
-    display: flex;
-    gap: 1.2rem;
+    margin-top: 1.2rem; margin-bottom: 0.6rem;
+    justify-content: center; width: 100%; display: flex; gap: 1.2rem;
   }
 
-  /* ====== Productos (cards como las ves actualmente) ====== */
-  .productos-grid {
-    grid-template-columns: repeat(1, 1fr);
-    gap: var(--space-md);
-  }
+  /* ====== Productos – cards como las ves en mobile ====== */
+  .productos-grid { grid-template-columns: repeat(1, 1fr); gap: var(--space-md); }
   .producto-card { max-width: 100%; padding: var(--space-md); }
   .producto-card img { height: 180px; object-fit: cover; }
   .producto-card h3 { font-size: 0.95rem; line-height: 1.3; margin: var(--space-sm) 0; }
   .producto-card p { font-size: 0.85rem; }
   .producto-card span { font-size: 0.8rem; }
 
-  /* ====== DETALLE DE PRODUCTO – FIX imagen “pegada” ====== */
+  /* ====== DETALLE DE PRODUCTO – Fix imagen “pegada” ====== */
   .detalle-contenido {
     width: 95%;
     max-height: 90vh;
     -webkit-overflow-scrolling: touch; /* scroll suave iOS */
   }
-  .detalle-info {
-    grid-template-columns: 1fr;   /* texto bajo la imagen */
-    gap: var(--space-lg);
-    padding: var(--space-lg);
-  }
+  .detalle-info { grid-template-columns: 1fr; gap: var(--space-lg); padding: var(--space-lg); }
   .detalle-imagen-container {
-    position: static;   /* ← desactiva sticky en mobile */
-    top: auto;
-    min-height: 250px;
-    max-height: none;
+    position: static; /* desactiva sticky en mobile */
+    top: auto; min-height: 250px; max-height: none;
   }
   .detalle-imagen-container img {
-    max-height: 60vh;   /* no más que la pantalla */
-    height: auto;
-    width: 100%;
-    object-fit: contain;
+    max-height: 60vh; height: auto; width: 100%; object-fit: contain;
   }
   .detalle-tabla-moderna { grid-template-columns: 1fr; }
 
   /* ====== #informacion ======
-     (Sin overrides: queda igual que tu base/restaurado)
+     Sin overrides: queda como en tu base.
   */
 
-  /* ====== Galería “Ver todas las referencias” → 2 imágenes en fila, mismo tamaño ====== */
-.galeria-container {
-  width: 95%;
-}
-
-.galeria-top {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  margin-bottom: 24px;
-  align-items: flex-start;
-}
-
-.galeria-titulo {
-  font-size: 1.6rem;
-  text-align: left;
-}
-
-/* Dos columnas iguales, centradas y proporcionadas */
-.galeria-imagenes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-/* Ambas imágenes con tamaño uniforme y centrado visual */
-.galeria-imagenes img {
-  width: 48%;
-  height: 180px;
-  object-fit: cover;   /* recorta sin deformar */
-  border-radius: 8px;  /* opcional, visual más suave */
-  flex-shrink: 0;
-}
-
-  /* ====== Galería “Ver todas las referencias” → 2 por fila (mismo tamaño) ====== */
-  .galeria-container { width: 95%; }
-  .galeria-top {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-    margin-bottom: 24px;
-    align-items: flex-start;
+  /* ====== Referencias (vista previa: 3 miniaturas) ====== */
+  .referencias-descripcion {
+    font-size: 0.95rem; line-height: 1.4;
+    margin-bottom: 1.2rem; padding: 0 0.5rem; text-align: center;
+  }
+  .referencias-galeria {
+    display: flex; flex-wrap: nowrap; justify-content: space-between;
+    align-items: center; gap: 0.5rem;
+  }
+  .ref-img {
+    flex: 0 0 calc(33.333% - 0.5rem);
+    max-width: calc(33.333% - 0.5rem);
+    height: 100px; object-fit: cover;
   }
 
+  /* ====== Ver todas las referencias: 2 por fila, mismo tamaño ====== */
+  .galeria-container { width: 95%; }
+  .galeria-top {
+    display: flex; flex-direction: column; gap: var(--space-md);
+    margin-bottom: 24px; align-items: flex-start;
+  }
   .galeria-titulo { font-size: 1.6rem; text-align: left; }
 
   .galeria-imagenes {
@@ -252,72 +185,54 @@
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-md);
   }
-
-  /* 🔧 Clave: forzar alturas y proporciones iguales */
   .galeria-imagenes img {
     width: 100%;
-    height: 200px;           /* altura fija para uniformidad */
-    object-fit: cover;       /* recorta sin deformar */
-    aspect-ratio: auto;      /* se ignora el tamaño original */
+    height: 200px;        /* altura uniforme */
+    object-fit: cover;    /* recorta sin deformar */
     display: block;
-    border-radius: 8px;      /* opcional, mejora estética */
+    border-radius: 8px;   /* opcional */
   }
 
   /* ====== Footer (centrado y apilado) ====== */
   .footer-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    text-align: center;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 10px; text-align: center;
   }
-  .footer-section {
-    width: 100%;
-    margin-bottom: 8px;
-    text-align: center;
-  }
+  .footer-section { width: 100%; margin-bottom: 8px; text-align: center; }
   footer * { text-align: center; }
+}
 
 /* =========================
    TELÉFONOS PEQUEÑOS (≤ 480px)
    ========================= */
 @media (max-width: 480px) {
-  /* Botones aún un toque más compactos si querés */
+  /* Botones un toque más compactos */
   .nav-button,
   .button,
   .hamburger-button,
   .theme-switch {
-    width: 30px;
-    height: 30px;
-    min-width: 30px;
+    width: 30px; height: 30px; min-width: 30px;
   }
   .nav-button .icon,
-  .button .icon {
-    width: 18px;
-    height: 18px;
-    font-size: 18px;
-  }
+  .button .icon { width: 18px; height: 18px; font-size: 18px; }
   .hamburger-button span { width: 16px; }
 
-  /* Inicio (ligeros ajustes de lectura) */
+  /* Inicio (lectura) */
   #inicio .left h1 { font-size: 2rem; }
-  #inicio .left p { font-size: 0.92rem; }
+  #inicio .left p  { font-size: 0.92rem; }
   .circular-image { width: 200px; height: 200px; }
   .social-buttons { gap: var(--space-sm); }
 
-  /* Títulos de secciones (sin tocar #informacion escalado base) */
+  /* Títulos (sin tocar #informacion) */
   .productos-titulo,
-  .referencias-titulo {
-    font-size: 1.8rem;
-    margin-bottom: 28px;
-  }
+  .referencias-titulo { font-size: 1.8rem; margin-bottom: 28px; }
 
   /* Filtros (si aplican) */
   .filtro-btn { padding: 7px 15px; font-size: 0.85rem; }
 
-  /* Productos (lectura un poco mejor) */
+  /* Productos (legibilidad) */
   .producto-card h3 { font-size: 1rem; }
-  .producto-card p { font-size: 0.85rem; }
+  .producto-card p  { font-size: 0.85rem; }
 
   /* Referencias (botón) */
   .ver-todas-btn { font-size: 1rem; padding: 10px 24px; }
