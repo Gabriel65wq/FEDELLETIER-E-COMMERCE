@@ -199,27 +199,41 @@
      (Sin overrides: queda igual que tu base/restaurado)
   */
 
-  /* ====== #referencias (3 miniaturas en vista previa) ====== */
-  .referencias-descripcion {
-    font-size: 0.95rem;
-    line-height: 1.4;
-    margin-bottom: 1.2rem;
-    padding: 0 0.5rem;
-    text-align: center;
-  }
-  .referencias-galeria {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .ref-img {
-    flex: 0 0 calc(33.333% - 0.5rem);
-    max-width: calc(33.333% - 0.5rem);
-    height: 100px;
-    object-fit: cover;
-  }
+  /* ====== Galería “Ver todas las referencias” → 2 imágenes en fila, mismo tamaño ====== */
+.galeria-container {
+  width: 95%;
+}
+
+.galeria-top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: 24px;
+  align-items: flex-start;
+}
+
+.galeria-titulo {
+  font-size: 1.6rem;
+  text-align: left;
+}
+
+/* Dos columnas iguales, centradas y proporcionadas */
+.galeria-imagenes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Ambas imágenes con tamaño uniforme y centrado visual */
+.galeria-imagenes img {
+  width: 48%;
+  height: 180px;
+  object-fit: cover;   /* recorta sin deformar */
+  border-radius: 8px;  /* opcional, visual más suave */
+  flex-shrink: 0;
+}
 
   /* ====== Galería “Ver todas las referencias” → 2 por fila (mismo tamaño) ====== */
   .galeria-container { width: 95%; }
