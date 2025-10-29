@@ -1836,26 +1836,31 @@ body.dark .precio-card.selected {
 .detalle-acciones {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
-  margin-top: var(--space-lg);
-  padding-top: var(--space-lg);
-  border-top: 2px solid rgba(0, 170, 255, 0.2);
+  justify-content: space-between;
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.03), rgba(0, 212, 255, 0.02));
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 170, 255, 0.15);
 }
 
 .detalle-cantidad {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .detalle-cantidad label {
   font-weight: 600;
   color: var(--text-color);
   white-space: nowrap;
+  font-size: 0.95rem;
 }
 
 .detalle-cantidad input {
-  width: 90px;
+  width: 80px;
   padding: 10px 12px;
   border-radius: var(--radius-sm);
   border: 2px solid var(--border-color);
@@ -1864,21 +1869,30 @@ body.dark .precio-card.selected {
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
+  transition: all var(--transition-normal) ease;
+}
+
+.detalle-cantidad input:focus {
+  outline: none;
+  border-color: #00a8ff;
+  box-shadow: 0 0 0 3px rgba(0, 170, 255, 0.1);
 }
 
 .detalle-precio-total {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #00a8ff;
   margin: 0;
   white-space: nowrap;
+  flex-shrink: 0;
+  text-shadow: 0 2px 10px rgba(0, 170, 255, 0.2);
 }
 
 .detalle-boton {
   background: linear-gradient(135deg, #007bff, #00a8ff);
   color: white;
   border: 0;
-  padding: 12px 32px;
+  padding: 12px 40px;
   border-radius: var(--radius-md);
   font-size: 1rem;
   font-weight: 600;
@@ -1886,7 +1900,7 @@ body.dark .precio-card.selected {
   transition: all var(--transition-normal) ease;
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
   white-space: nowrap;
-  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .detalle-boton:hover {
@@ -1930,7 +1944,6 @@ body.dark .precio-card.selected {
 
   .detalle-boton {
     width: 100%;
-    margin-left: 0;
   }
 }
 
@@ -2692,7 +2705,7 @@ footer {
 
   /* Icono del sol (tema claro) */
   .theme-switch::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3 Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3 Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3 Cline x1='1' y1='12' x2='3' y2='12'/%3E%3 Cline x1='21' y1='12' x2='23' y2='12'/%3E%3 Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3 Cline x1='1' y1='12' x2='3' y2='12'/%3E%3 Cline x1='21' y1='12' x2='23' y2='12'/%3E%3Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -2969,18 +2982,18 @@ footer {
   }
 
   .payment-option {
-    min-width: 100px;
-    max-width: 150px;
-    padding: var(--space-sm);
+    min-width: 120px;
+    max-width: 180px;
+    padding: var(--space-md);
   }
 
   .payment-option img {
-    width: 50px;
-    height: 30px;
+    width: 60px;
+    height: 40px;
   }
 
   .payment-option span {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 
   .checkout-btn {
@@ -3218,7 +3231,7 @@ footer {
   }
 
   .btn-eliminar {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     padding: 4px 8px;
   }
 
