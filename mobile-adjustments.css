@@ -226,19 +226,33 @@
     text-align: left;
   }
 
-  /* ====== Referencias (vista previa: 3 miniaturas) ====== */
+  /* ====== #referencias – versión móvil ajustada ====== */
+
+  /* Texto centrado en 3 líneas */
   .referencias-descripcion {
-    font-size: 0.95rem; line-height: 1.4;
-    margin-bottom: 1.2rem; padding: 0 0.5rem; text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 1.2rem;
+    padding: 0 0.5rem;
+    white-space: pre-line; /* respeta saltos de línea en el texto */
   }
+
+  /* Imágenes un poco más grandes, pero sin salir de pantalla */
   .referencias-galeria {
-    display: flex; flex-wrap: nowrap; justify-content: space-between;
-    align-items: center; gap: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
   }
+
   .ref-img {
     flex: 0 0 calc(33.333% - 0.5rem);
     max-width: calc(33.333% - 0.5rem);
-    height: 100px; object-fit: cover;
+    height: 120px; /* antes 100px, ahora un poco más grandes */
+    object-fit: cover;
+    border-radius: 6px;
   }
 
   /* ====== Ver todas las referencias: 2 por fila, mismo tamaño ====== */
