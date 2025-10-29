@@ -136,7 +136,7 @@
     height: 180px;
   }
 
-  /* Modal detalle producto - layout vertical en tablet */
+  /* Modal detalle producto */
   .detalle-contenido {
     width: 95%;
     max-height: 90vh;
@@ -150,35 +150,14 @@
 
   .detalle-imagen-container {
     min-height: 250px;
-    position: relative;
-    top: auto;
   }
 
   .detalle-texto h2 {
     font-size: 1.6rem;
   }
 
-  /* Tabla de precios en 2 columnas en tablet */
   .detalle-tabla-moderna {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* Controles en columna en tablet */
-  .detalle-controles-container {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .detalle-cantidad {
-    justify-content: space-between;
-  }
-
-  .detalle-precio-total {
-    text-align: left;
-  }
-
-  .detalle-boton {
-    width: 100%;
+    grid-template-columns: 1fr;
   }
 
   /* Carrito */
@@ -490,67 +469,6 @@
     font-size: 0.7rem;
   }
 
-  /* Modal detalle producto - layout optimizado para móvil */
-  .detalle-info {
-    grid-template-columns: 1fr !important;
-    gap: var(--space-md);
-    padding: var(--space-md);
-  }
-
-  .detalle-imagen-container {
-    min-height: 200px;
-    max-height: 300px;
-    position: relative;
-    top: auto;
-  }
-
-  .detalle-imagen-container img {
-    max-height: 280px;
-  }
-
-  /* Tabla de precios en 2 columnas en móvil */
-  .detalle-tabla-moderna {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: var(--space-sm);
-  }
-
-  .precio-card {
-    padding: var(--space-sm);
-  }
-
-  .precio-cantidad {
-    font-size: 1rem;
-  }
-
-  .precio-valor {
-    font-size: 0.85rem;
-  }
-
-  /* Controles en columna para móvil */
-  .detalle-controles-container {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: var(--space-md);
-  }
-
-  .detalle-cantidad {
-    justify-content: space-between;
-  }
-
-  .detalle-cantidad input {
-    width: 70px;
-  }
-
-  .detalle-precio-total {
-    text-align: center;
-    font-size: 1.3rem;
-  }
-
-  .detalle-boton {
-    width: 100%;
-    padding: 12px 20px;
-  }
-
   /* Referencias - 3 imágenes en fila */
   .referencias-descripcion {
     font-size: 0.85rem !important;
@@ -704,7 +622,7 @@
     height: 140px;
   }
 
-  /* Modal detalle más compacto en móvil pequeño */
+  /* Modal detalle */
   .detalle-contenido {
     padding: 0;
   }
@@ -721,13 +639,8 @@
   }
 
   .detalle-imagen-container {
-    min-height: 180px;
-    max-height: 250px;
+    min-height: 200px;
     padding: var(--space-sm);
-  }
-
-  .detalle-imagen-container img {
-    max-height: 220px;
   }
 
   .detalle-texto h2 {
@@ -743,41 +656,30 @@
     font-size: 0.9rem;
   }
 
-  /* Tabla de precios más compacta */
-  .detalle-tabla-moderna {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: var(--space-xs);
-  }
-
   .precio-card {
-    padding: var(--space-xs) var(--space-sm);
+    padding: var(--space-sm);
   }
 
   .precio-cantidad {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .precio-valor {
-    font-size: 0.8rem;
-  }
-
-  /* Controles más compactos */
-  .detalle-controles-container {
-    gap: var(--space-sm);
+    font-size: 0.9rem;
   }
 
   .detalle-cantidad input {
-    width: 60px;
-    padding: 6px;
+    width: 70px;
+    padding: 5px;
   }
 
   .detalle-precio-total {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .detalle-boton {
-    padding: 10px 18px;
-    font-size: 0.95rem;
+    padding: 10px 20px;
+    font-size: 0.9rem;
   }
 
   /* Carrito */
