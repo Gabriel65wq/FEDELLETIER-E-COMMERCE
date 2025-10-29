@@ -153,32 +153,45 @@
   }
   .detalle-tabla-moderna { grid-template-columns: 1fr; }
 
-  /* ====== #informacion – mejor escala para móviles ====== */
+  /* ====== #informacion – subtítulos alineados y consistentes ====== */
   #informacion {
-    padding: 50px 6%;         /* menos espacio lateral y superior */
-    text-align: center;       /* centra el contenido si no lo estaba */
+    padding: 60px 5%;
+    text-align: left; /* orientación general a la izquierda */
   }
 
-  #informacion h2,
-  .informacion-titulo {
-    font-size: 1.6rem;        /* título un poco más chico */
-    margin-bottom: 20px;
+  /* Título principal centrado */
+  #informacion .informacion-titulo,
+  #informacion h2:first-of-type {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
   }
 
+  /* Subtítulos ("Retiros y Envíos de Mercadería", etc.) */
+  #informacion h3 {
+    text-align: center;        /* centrado con el título */
+    font-size: 1.4rem;         /* mismo tamaño para todos */
+    margin-top: 25px;
+    margin-bottom: 15px;
+  }
+
+  /* Textos y listas alineados a la izquierda */
   #informacion p,
+  #informacion ul,
   #informacion li {
-    font-size: 0.9rem;        /* texto más legible en pantallas pequeñas */
-    line-height: 1.55;
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.6;
     max-width: 95%;
-    margin: 0 auto 15px auto; /* centrado y con respiración */
+    margin: 0 auto 12px auto;
   }
 
   #informacion ul {
-    padding-left: 15px;
+    padding-left: 18px;
   }
 
   #informacion li::marker {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 
   /* ====== Referencias (vista previa: 3 miniaturas) ====== */
