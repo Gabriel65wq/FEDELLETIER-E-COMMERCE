@@ -153,9 +153,33 @@
   }
   .detalle-tabla-moderna { grid-template-columns: 1fr; }
 
-  /* ====== #informacion ======
-     Sin overrides: queda como en tu base.
-  */
+  /* ====== #informacion – mejor escala para móviles ====== */
+  #informacion {
+    padding: 50px 6%;         /* menos espacio lateral y superior */
+    text-align: center;       /* centra el contenido si no lo estaba */
+  }
+
+  #informacion h2,
+  .informacion-titulo {
+    font-size: 1.6rem;        /* título un poco más chico */
+    margin-bottom: 20px;
+  }
+
+  #informacion p,
+  #informacion li {
+    font-size: 0.9rem;        /* texto más legible en pantallas pequeñas */
+    line-height: 1.55;
+    max-width: 95%;
+    margin: 0 auto 15px auto; /* centrado y con respiración */
+  }
+
+  #informacion ul {
+    padding-left: 15px;
+  }
+
+  #informacion li::marker {
+    font-size: 0.8rem;
+  }
 
   /* ====== Referencias (vista previa: 3 miniaturas) ====== */
   .referencias-descripcion {
