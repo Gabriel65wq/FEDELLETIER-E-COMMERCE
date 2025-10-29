@@ -973,15 +973,29 @@ body.dark .productos-titulo::after {
   border-radius: var(--radius-md);
   padding: var(--space-lg);
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Mejorada la transición para incluir transform, box-shadow, border-color y filter */
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.4s ease, filter
+    0.3s ease;
   box-shadow: var(--shadow-sm);
   opacity: 1;
   animation: fadeInUp 0.6s ease;
+  /* Agregado overflow hidden para contener la animación de la imagen */
+  overflow: hidden;
+  position: relative;
 }
 
+/* Animación hover mejorada con escala, elevación, brillo y borde brillante */
 .producto-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 123, 255, 0.15), 0 0 0 1px rgba(0, 123, 255, 0.1);
+  border-color: rgba(0, 123, 255, 0.3);
+  filter: brightness(1.05);
+}
+
+/* Efecto de brillo sutil en modo oscuro */
+body.dark .producto-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2), 0 0 0 1px rgba(0, 212, 255, 0.15);
+  border-color: rgba(0, 212, 255, 0.4);
 }
 
 .producto-card.hidden {
@@ -994,6 +1008,14 @@ body.dark .productos-titulo::after {
   object-fit: cover;
   border-radius: var(--radius-sm);
   margin-bottom: var(--space-md);
+  /* Agregada transición suave para la imagen */
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+}
+
+/* Animación de zoom en la imagen al hacer hover */
+.producto-card:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.1) contrast(1.05);
 }
 
 .producto-card h3 {
@@ -1001,6 +1023,13 @@ body.dark .productos-titulo::after {
   margin-bottom: var(--space-sm);
   color: var(--text-color);
   line-height: 1.4;
+  /* Agregada transición para el título */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efecto sutil en el título al hacer hover */
+.producto-card:hover h3 {
+  transform: translateX(2px);
 }
 
 .producto-card p {
@@ -1008,6 +1037,15 @@ body.dark .productos-titulo::after {
   color: var(--accent-blue);
   font-weight: 600;
   margin-bottom: var(--space-sm);
+  /* Agregada transición para el precio */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Efecto en el precio al hacer hover */
+.producto-card:hover p {
+  transform: translateX(2px);
+  color: var(--accent-blue);
+  filter: brightness(1.2);
 }
 
 .producto-card span {
@@ -1018,9 +1056,15 @@ body.dark .productos-titulo::after {
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 600;
+  /* Agregada transición para la etiqueta de categoría */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
+/* Efecto en la etiqueta de categoría al hacer hover */
+.producto-card:hover span {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 /* ============================================
    SECCIÓN INFORMACIÓN
@@ -1698,7 +1742,7 @@ body.dark .detalle-texto h2 {
   font-weight: bold;
 }
 
-/* Tabla de precios en 2 filas de 4 botones (grid de 4 columnas) */
+/*Tabla de precios en 2 filas de 4 botones (grid de 4 columnas) */
 .detalle-precios-section {
   margin: var(--space-lg) 0;
 }
@@ -1945,10 +1989,10 @@ body.dark .precio-card.selected {
 }
 
 .carrito-vacio p {
-  font-size: 1rem;
+  margin: 0 0 30px 0;
   color: var(--text-color);
   opacity: 0.7;
-  margin: 0 0 30px 0;
+  font-size: 1rem;
 }
 
 /* Carrito con items */
@@ -2608,7 +2652,7 @@ footer {
 
   /* Icono del sol (tema claro) */
   .theme-switch::before {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3 Cline x1='1' y1='12' x2='3' y2='12'/%3E%3 Cline x1='21' y1='12' x2='23' y2='12'/%3E%3Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='5'/%3E%3Cline x1='12' y1='1' x2='12' y2='3'/%3E%3Cline x1='12' y1='21' x2='12' y2='23'/%3E%3 Cline x1='4.22' y1='4.22' x2='5.64' y2='5.64'/%3E%3Cline x1='18.36' y1='18.36' x2='19.78' y2='19.78'/%3E%3 Cline x1='1' y1='12' x2='3' y2='12'/%3E%3Cline x1='21' y1='12' x2='23' y2='12'/%3E%3 Cline x1='4.22' y1='19.78' x2='5.64' y2='18.36'/%3E%3 Cline x1='18.36' y1='5.64' x2='19.78' y2='4.22'/%3E%3C/svg%3E");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
