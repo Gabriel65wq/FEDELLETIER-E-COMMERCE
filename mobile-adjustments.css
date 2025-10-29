@@ -153,26 +153,36 @@
   }
   .detalle-tabla-moderna { grid-template-columns: 1fr; }
 
-  /* ====== #informacion – subtítulos alineados y consistentes ====== */
+  /* ====== #informacion – estilo igual al escritorio, adaptado a móviles ====== */
   #informacion {
     padding: 60px 5%;
-    text-align: left; /* orientación general a la izquierda */
   }
 
-  /* Título principal centrado */
+  /* Título principal */
   #informacion .informacion-titulo,
   #informacion h2:first-of-type {
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 2rem;        /* mismo tamaño grande */
+    font-weight: 700;
+    letter-spacing: 1px;
     margin-bottom: 25px;
   }
 
-  /* Subtítulos ("Retiros y Envíos de Mercadería", etc.) */
+  /* Subtítulo principal (“Retiros y Envíos de Mercadería”) */
+  #informacion h3:first-of-type {
+    text-align: center;
+    font-size: 1.5rem;      /* mismo tamaño que los demás subtítulos */
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  /* Todos los subtítulos siguientes mantienen coherencia */
   #informacion h3 {
-    text-align: center;        /* centrado con el título */
-    font-size: 1.4rem;         /* mismo tamaño para todos */
+    text-align: left;       /* subtítulos de secciones internas (como “Retiros por Depósito”, etc.) */
+    font-size: 1.5rem;
+    font-weight: 600;
     margin-top: 25px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   /* Textos y listas alineados a la izquierda */
@@ -183,15 +193,18 @@
     font-size: 1rem;
     line-height: 1.6;
     max-width: 95%;
-    margin: 0 auto 12px auto;
+    margin: 0 auto 10px auto;
+    color: var(--text-color, #dce6eb); /* conserva tono visual */
   }
 
+  /* Listas con buena separación */
   #informacion ul {
     padding-left: 18px;
-  }
+    margin-bottom: 10px;
+  } 
 
   #informacion li::marker {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 
   /* ====== Referencias (vista previa: 3 miniaturas) ====== */
