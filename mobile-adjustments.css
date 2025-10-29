@@ -253,45 +253,6 @@
     text-align: left;
   }
 
-  /* Dos imágenes por fila, idénticas en tamaño */
-  .galeria-imagenes {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-md);
-    align-items: stretch;
-  }
-
-  /* Todas las imágenes con misma proporción cuadrada y sin deformar */
-  .galeria-imagenes img {
-    width: 100%;
-    aspect-ratio: 1 / 1; /* mantiene tamaño cuadrado */
-    object-fit: cover;   /* recorta sin deformar */
-    border-radius: 8px;
-    display: block;
-  }
-
-/* ====== Galería de Referencias (mobile) – 2 por fila, mismas dimensiones ====== */
-@media (max-width: 768px) {
-  #galeria-referencias .galeria-imagenes {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    align-items: stretch;       /* que ambas columnas tengan la misma altura */
-  }
-
-  /* Asegura que cualquier wrapper y la img ocupen el 100% del grid cell */
-  #galeria-referencias .galeria-imagenes > * { width: 100%; }
-
-  #galeria-referencias .galeria-imagenes img {
-    display: block;
-    width: 100%;
-    height: auto;               /* sobreescribe height:240px del CSS base */
-    aspect-ratio: 1 / 1;        /* cuadrado = mismas proporciones */
-    object-fit: cover;          /* recorta sin deformar */
-    border-radius: 8px;
-  }
-}
-
   /* ====== Footer (centrado y apilado) ====== */
   .footer-container {
     display: flex; flex-direction: column;
