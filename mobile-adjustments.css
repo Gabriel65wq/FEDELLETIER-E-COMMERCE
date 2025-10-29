@@ -8,13 +8,47 @@
    TELÉFONOS (≤ 767px)
    ========================= */
 @media (max-width: 767px) {
+  /* ====== NAVBAR centrada con espacio izquierdo y theme a la derecha ====== */
 
-  /* ====== NAVBAR (pedidos nuevos) ====== */
+  /* Usamos GRID: [espacio en blanco] | [botonera centrada] | [theme] */
+  .header-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* lados simétricos para centrar columna del medio */
+    align-items: center;
+    gap: 0;
+  }
 
-  /* Ocultar logo en mobile */
+  /* Ocultamos el logo en mobile (espacio izquierdo queda vacío) */
   .header-left { display: none; }
 
-  /* Botones (Inicio / Hamburguesa / Carrito) más chicos */
+  /* Espacio en blanco a la izquierda */
+  .nav-spacer-left {
+    display: block;
+    grid-column: 1;
+    /* opcional: asegura altura de barra */
+    min-height: 36px;
+  }
+
+  /* Botonera centrada (Inicio, Hamburguesa, Carrito) */
+  .header-middle {
+    grid-column: 2;
+    justify-self: center;
+  }
+  .centered-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 0;
+  }
+
+  /* Theme a la derecha del todo */
+  .header-right {
+    grid-column: 3;
+    justify-self: end;
+  }
+
+  /* Tamaños compactos para los 3 botones del centro */
   .nav-button,
   .button,
   .hamburger-button {
@@ -32,12 +66,8 @@
   .hamburger-button { gap: 3px; }
   .hamburger-button span { width: 16px; }
 
-  /* Reemplazar theme de PC por un botón simple en mobile:
-     - Ocultamos el contenedor complejo solo en mobile
-     - Mostramos/estilizamos .theme-switch como botón de 32x32 con sol/luna */
-  .theme-switch__container {
-    display: none !important; /* solo mobile */
-  }
+  /* Reemplazo del theme de PC por botón simple (sol/luna) SOLO en mobile */
+  .theme-switch__container { display: none !important; }   /* oculta el switch complejo */
   .theme-switch {
     margin: 0 !important;
     width: 32px;
@@ -49,11 +79,9 @@
   .theme-switch::after {
     content: "";
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 18px;
-    height: 18px;
+    width: 18px; height: 18px;
     transition: opacity 0.4s ease, transform 0.4s ease;
     background-size: contain;
     background-repeat: no-repeat;
@@ -89,6 +117,7 @@
   body.dark .theme-switch:hover::after {
     transform: translate(-50%, -50%) rotate(0deg) scale(1.1);
   }
+}
 
   /* ====== #inicio (centrado como lo ves) ====== */
   #inicio { padding: 60px 5%; }
