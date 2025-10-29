@@ -241,21 +241,41 @@
     height: 100px; object-fit: cover;
   }
 
-  /* ====== Galería de Referencias (solo móviles, columnas iguales) ====== */
+  /* ====== Galería de Referencias (vista completa en mobile) ====== */
+  .galeria-container {
+    width: 95%;
+  }
+
+  .galeria-top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: 24px;
+    align-items: flex-start;
+  }
+
+  .galeria-titulo {
+    font-size: 1.6rem;
+    text-align: left;
+  }
+
+  /* Dos imágenes por fila, idénticas en tamaño */
   .galeria-imagenes {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
-    align-items: stretch; /* iguala la altura de ambas columnas */
+    gap: var(--space-md);
+    align-items: stretch;
   }
 
+  /* Todas las imágenes con misma proporción cuadrada y sin deformar */
   .galeria-imagenes img {
     width: 100%;
-    height: 220px;          /* altura uniforme en todas las imágenes */
-    object-fit: cover;      /* recorta sin deformar */
-    display: block;
+    aspect-ratio: 1 / 1; /* mantiene tamaño cuadrado */
+    object-fit: cover;   /* recorta sin deformar */
     border-radius: 8px;
+    display: block;
   }
+
   /* ====== Footer (centrado y apilado) ====== */
   .footer-container {
     display: flex; flex-direction: column;
