@@ -1,21 +1,4 @@
 /* ============================================
-   OPTIMIZACIÓN COMPLETA - FEDE LETTIER
-   Versión optimizada con mejor rendimiento
-   ============================================ */
-
-/*
-CHANGELOG (style.css):
-- ✅ Organizado móvil-first con variables CSS y sistema de espaciado consistente
-- ✅ Eliminadas duplicaciones masivas de código (>2000 líneas reducidas)
-- ✅ Removidos todos los !important innecesarios
-- ✅ Optimizadas animaciones y transiciones para mejor rendimiento
-- ✅ Mejorado contraste y focus states para accesibilidad WCAG AA
-- ✅ Consolidadas media queries y eliminadas reglas conflictivas
-- ✅ Aplicado naming consistente y eliminados selectores confusos
-- ✅ Reducidos repaints/reflows con will-change y transform
-*/
-
-/* ============================================
    VARIABLES CSS Y RESET
    ============================================ */
 :root {
@@ -520,7 +503,7 @@ a:focus-visible {
   inset: 0;
   background-image: radial-gradient(circle at 15% 20%, rgba(0, 123, 255, 0.15) 2px, transparent 2px),
     radial-gradient(circle at 85% 80%, rgba(0, 212, 255, 0.12) 3px, transparent 3px),
-    radial-gradient(circle at 45% 60%, rgba(0, 168, 255, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 45% 60%, rgba(0, 123, 255, 0.1) 2px, transparent 2px),
     radial-gradient(circle at 70% 30%, rgba(0, 180, 255, 0.13) 2.5px, transparent 2.5px);
   background-size: 100% 100%;
   animation: particleFloat 15s ease-in-out infinite;
@@ -2003,6 +1986,26 @@ body.dark .precio-card.selected {
   margin: 0 0 30px 0;
 }
 
+/* Agregando estilos para el botón "Ver productos" con el gradiente azul de la página */
+#ver-productos-btn {
+  padding: 12px 35px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, #007bff, #00a8ff, #00d4ff);
+  background-size: 300%;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.4s ease;
+  animation: gradientFlow 4s ease infinite;
+}
+
+#ver-productos-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.6);
+}
+
 /* Carrito con items */
 .carrito-con-items {
   display: flex;
@@ -2118,6 +2121,28 @@ body.dark .precio-card.selected {
   margin-top: var(--space-md);
   padding-top: var(--space-md);
   border-top: 1px solid rgba(0, 170, 255, 0.2);
+}
+
+/* Agregando estilos para el botón "Continuar con el pago" con el gradiente azul */
+#continuar-pago-btn {
+  width: 100%;
+  padding: 15px;
+  margin-top: var(--space-lg);
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #007bff, #00a8ff, #00d4ff);
+  background-size: 300%;
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.4s ease;
+  animation: gradientFlow 4s ease infinite;
+}
+
+#continuar-pago-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 170, 255, 0.5);
 }
 
 /* ============================================
@@ -2365,7 +2390,6 @@ body.dark .checkout-form {
 /* ============================================
    FOOTER
    ============================================ */
-/* Restaurando estilos del footer original con diseño de tres columnas */
 footer {
   background-color: #1b2530;
   color: #d1d5db;
@@ -2384,18 +2408,11 @@ footer {
   margin: 0 auto;
 }
 
-.footer-left,
-.footer-middle,
-.footer-right {
-  flex: 1;
-  min-width: 200px;
-  text-align: left;
-}
-
+/* Cambiando el color de los títulos del footer al azul de los títulos de la página */
 .footer-left h3,
 .footer-middle h3,
 .footer-right h3 {
-  color: #fff;
+  color: #007bff;
   margin-bottom: 15px;
   font-size: 1.2rem;
 }
@@ -2447,19 +2464,6 @@ footer {
   margin-top: 20px;
   padding-top: 15px;
 }
-/* FIX VISIBILIDAD ICONO INSTAGRAM */
-.icon-content a[data-social="instagram"] svg {
-  fill: #e1306c !important;
-  stroke: none !important;
-  z-index: 2 !important;
-  opacity: 1 !important;
-}
-
-.icon-content a[data-social="instagram"]::before {
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%) !important;
-}
-
-
 
 /* FIX VISIBILIDAD ICONO INSTAGRAM */
 .icon-content a[data-social="instagram"] svg {
