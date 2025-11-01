@@ -1,14 +1,17 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export default function MainContent() {
+  const [mounted, setMounted] = useState(false)
+
   useEffect(() => {
-    // El script se cargará después del montaje
+    setMounted(true)
+
     // Cargar el script principal
     const script = document.createElement("script")
     script.src = "/script.js"
-    script.async = true
+    script.async = false
     document.body.appendChild(script)
 
     // Cargar MercadoPago SDK
@@ -19,17 +22,20 @@ export default function MainContent() {
 
     return () => {
       // Limpiar scripts al desmontar
-      document.body.removeChild(script)
-      document.body.removeChild(mpScript)
+      if (document.body.contains(script)) {
+        document.body.removeChild(script)
+      }
+      if (document.body.contains(mpScript)) {
+        document.body.removeChild(mpScript)
+      }
     }
   }, [])
 
-  return (
-    <>
-      <div dangerouslySetInnerHTML={{ __html: getHTMLContent() }} />
-      {/* The original Script components are no longer needed as they are now handled in useEffect */}
-    </>
-  )
+  if (!mounted) {
+    return null
+  }
+
+  return <div dangerouslySetInnerHTML={{ __html: getHTMLContent() }} />
 }
 
 function getHTMLContent() {
