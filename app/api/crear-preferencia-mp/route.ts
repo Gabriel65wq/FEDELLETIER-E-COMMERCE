@@ -9,22 +9,35 @@ const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || ""
 
 export async function POST(request: NextRequest) {
   try {
+    console.log("[v0] Iniciando crear-preferencia-mp")
+
     const body = await request.json()
+    console.log("[v0] Datos recibidos:", { ...body, items: `${body.items?.length} items` })
 
     if (!MERCADOPAGO_ACCESS_TOKEN) {
-      return NextResponse.json({ error: "MercadoPago no está configurado" }, { status: 500 })
+      console.error("[v0] Error: MERCADOPAGO_ACCESS_TOKEN no configurado")
+      return NextResponse.json(
+        {
+          error:
+            "MercadoPago no está configurado. Por favor, configura la variable de entorno MERCADOPAGO_ACCESS_TOKEN",
+        },
+        { status: 500 },
+      )
     }
 
     // Generar número de pedido único
     const numeroPedido = `PED-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`
+    console.log("[v0] Número de pedido generado:", numeroPedido)
 
     // Preparar items para MercadoPago
     const items = body.items.map((item: any) => ({
       title: item.nombre,
       quantity: item.cantidad,
       unit_price: item.precioUnitario,
-      currency_id: "USD",
+      currency_id: "ARS",
     }))
+
+    console.log("[v0] Items preparados para MercadoPago:", items.length)
 
     // Crear preferencia en MercadoPago
     const preference = {
@@ -51,6 +64,8 @@ export async function POST(request: NextRequest) {
       statement_descriptor: "FEDE LETTIER",
     }
 
+    console.log("[v0] Enviando solicitud a MercadoPago...")
+
     const response = await fetch("https://api.mercadopago.com/checkout/preferences", {
       method: "POST",
       headers: {
@@ -62,14 +77,21 @@ export async function POST(request: NextRequest) {
 
     if (!response.ok) {
       const errorData = await response.json()
-      console.error("Error de MercadoPago:", errorData)
-      return NextResponse.json({ error: "Error al crear preferencia de pago" }, { status: 500 })
+      console.error("[v0] Error de MercadoPago:", errorData)
+      return NextResponse.json(
+        {
+          error: `Error al crear preferencia de pago: ${errorData.message || "Error desconocido"}`,
+        },
+        { status: 500 },
+      )
     }
 
     const data = await response.json()
+    console.log("[v0] Preferencia creada exitosamente:", data.id)
 
     // Guardar pedido en la base de datos con estado "pendiente_pago"
     if (supabaseUrl && supabaseKey) {
+      console.log("[v0] Guardando pedido en base de datos...")
       const supabase = createClient(supabaseUrl, supabaseKey)
 
       const pedidoData = {
@@ -96,8 +118,18 @@ export async function POST(request: NextRequest) {
         created_at: new Date().toISOString(),
       }
 
-      await supabase.from("pedidos").insert([pedidoData])
+      const { error } = await supabase.from("pedidos").insert([pedidoData])
+
+      if (error) {
+        console.error("[v0] Error al guardar pedido en Supabase:", error)
+      } else {
+        console.log("[v0] Pedido guardado exitosamente en base de datos")
+      }
+    } else {
+      console.warn("[v0] Advertencia: Supabase no configurado, pedido no guardado en base de datos")
     }
+
+    console.log("[v0] Proceso completado exitosamente")
 
     return NextResponse.json({
       success: true,
@@ -106,7 +138,12 @@ export async function POST(request: NextRequest) {
       numeroPedido,
     })
   } catch (error) {
-    console.error("Error en crear-preferencia-mp:", error)
-    return NextResponse.json({ error: "Error interno del servidor" }, { status: 500 })
+    console.error("[v0] Error en crear-preferencia-mp:", error)
+    return NextResponse.json(
+      {
+        error: `Error interno del servidor: ${error instanceof Error ? error.message : "Error desconocido"}`,
+      },
+      { status: 500 },
+    )
   }
 }
