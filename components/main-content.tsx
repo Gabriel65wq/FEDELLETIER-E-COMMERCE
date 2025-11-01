@@ -32,7 +32,20 @@ export default function MainContent() {
   }, [])
 
   if (!mounted) {
-    return null
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+          fontSize: "1.2rem",
+          color: "var(--text-color, #333)",
+        }}
+      >
+        Cargando...
+      </div>
+    )
   }
 
   return <div dangerouslySetInnerHTML={{ __html: getHTMLContent() }} />
@@ -157,7 +170,7 @@ function getHTMLContent() {
           </div>
 
           <div class="right">
-            <img src="/imagenes/presentacion.jpg" alt="Foto de perfil de Fede Lettier, importador directo" class="circular-image">
+            <img src="imagenes/presentacion.jpg" alt="Foto de perfil de Fede Lettier, importador directo" class="circular-image">
           </div>
         </div>
       </section>
@@ -177,42 +190,42 @@ function getHTMLContent() {
         <div class="productos-grid">
           <!-- Accesorios Apple -->
           <div class="producto-card" data-category="Accesorios Apple" data-nombre="AirPods Pro 2da Gen">
-            <img src="/imagenes/apple1.jpg" alt="AirPods Pro 2da Generación con cancelación de ruido">
+            <img src="imagenes/apple1.jpg" alt="AirPods Pro 2da Generación con cancelación de ruido">
             <h3>AirPods Pro 2da Gen</h3>
             <p>Desde $8.5 USD (hasta 500x)</p>
             <span>Accesorios Apple</span>
           </div>
 
           <div class="producto-card" data-category="Accesorios Apple" data-nombre="Cable + Cargador">
-            <img src="/imagenes/apple2.jpg" alt="Cable Lightning y cargador USB-C de 20W">
+            <img src="imagenes/apple2.jpg" alt="Cable Lightning y cargador USB-C de 20W">
             <h3>Cable + Cargador</h3>
             <p>Desde $3.2 USD (hasta 100x)</p>
             <span>Accesorios Apple</span>
           </div>
 
           <div class="producto-card" data-category="Accesorios Apple" data-nombre="Cargadores Completos">
-            <img src="/imagenes/apple3.jpg" alt="Kit completo de cargador Apple">
+            <img src="imagenes/apple3.jpg" alt="Kit completo de cargador Apple">
             <h3>Cargadores Completos</h3>
             <p>Desde $3.2 USD (hasta 100x)</p>
             <span>Accesorios Apple</span>
           </div>
 
           <div class="producto-card" data-category="Accesorios Apple" data-nombre="Battery Pack 🔋">
-            <img src="/imagenes/apple4.jpg" alt="Batería externa MagSafe oficial de Apple">
+            <img src="imagenes/apple4.jpg" alt="Batería externa MagSafe oficial de Apple">
             <h3>Battery Pack 🔋</h3>
             <p>Desde $8 USD (hasta 50x)</p>
             <span>Accesorios Apple</span>
           </div>
 
           <div class="producto-card" data-category="Accesorios Apple" data-nombre="Funda Silicon Case I11 - 16Pro Max 📱">
-            <img src="/imagenes/apple5.jpg" alt="Fundas de silicona premium para iPhone">
+            <img src="imagenes/apple5.jpg" alt="Fundas de silicona premium para iPhone">
             <h3>Funda Silicon Case I11 - 16Pro Max 📱</h3>
             <p>Desde $1.3 USD (hasta 300x)</p>
             <span>Accesorios Apple</span>
           </div>
 
           <div class="producto-card" data-category="Accesorios Apple" data-nombre="AirPods Max 🎧">
-            <img src="/imagenes/apple6.jpg" alt="Auriculares over-ear premium AirPods Max">
+            <img src="imagenes/apple6.jpg" alt="Auriculares over-ear premium AirPods Max">
             <h3>AirPods Max 🎧</h3>
             <p>Desde $13 USD (hasta 50x)</p>
             <span>Accesorios Apple</span>
@@ -220,14 +233,14 @@ function getHTMLContent() {
 
           <!-- Varios -->
           <div class="producto-card" data-category="Varios" data-nombre="​Aspiradora Robot 🤖">
-            <img src="/imagenes/varios.jpg" alt="Aspiradora robot inteligente SWEEPOL">
+            <img src="imagenes/varios.jpg" alt="Aspiradora robot inteligente SWEEPOL">
             <h3>Aspiradora Robot 🤖</h3>
             <p>Desde $16 USD</p>
             <span>Varios</span>
           </div>
 
           <div class="producto-card" data-category="Varios" data-nombre="JBL GO3">
-            <img src="/imagenes/varios.jpg" alt="Altavoz portátil JBL GO3">
+            <img src="imagenes/varios.jpg" alt="Altavoz portátil JBL GO3">
             <h3>JBL GO3</h3>
             <p>Desde $8.5 USD (hasta 100x)</p>
             <span>Varios</span>
@@ -235,63 +248,63 @@ function getHTMLContent() {
 
           <!-- Vapes -->
           <div class="producto-card" data-category="Vapes" data-nombre="Torch 7.5G 🌸">
-            <img src="/imagenes/vapes1.jpg" alt="Vape desechable Torch 7.5G">
+            <img src="imagenes/vapes1.jpg" alt="Vape desechable Torch 7.5G">
             <h3>Torch 7.5G 🌸</h3>
             <p>Desde $27 USD (hasta 100x)</p>
             <span>Vapes</span>
           </div>
 
           <div class="producto-card" data-category="Vapes" data-nombre="ElfThc 5g Edición Limitada 💨">
-            <img src="/imagenes/vapes2.jpg" alt="Vape desechable ElfThc 5g edición limitada">
+            <img src="imagenes/vapes2.jpg" alt="Vape desechable ElfThc 5g edición limitada">
             <h3>ElfThc 5g Edición Limitada 💨</h3>
             <p>Desde $21.5 USD (hasta 100x)</p>
             <span>Vapes</span>
           </div>
 
           <div class="producto-card" data-category="Vapes" data-nombre="ElfThc 3000mg Edición Limitada 💨">
-            <img src="/imagenes/vapes3.jpg" alt="Vape desechable ElfThc 3000mg">
+            <img src="imagenes/vapes3.jpg" alt="Vape desechable ElfThc 3000mg">
             <h3>ElfThc 3000mg Edición Limitada 💨</h3>
             <p>Desde $16 USD (hasta 100x)</p>
             <span>Vapes</span>
           </div>
 
           <div class="producto-card" data-category="Vapes" data-nombre="Elfbar 40K Puff 💨">
-            <img src="/imagenes/vapes4.jpg" alt="Vape desechable Elfbar 40K Puff">
+            <img src="imagenes/vapes4.jpg" alt="Vape desechable Elfbar 40K Puff">
             <h3>Elfbar 40K Puff 💨</h3>
             <p>Desde $11.75 USD (hasta 100x)</p>
             <span>Vapes</span>
           </div>
 
           <div class="producto-card" data-category="Vapes" data-nombre="Ignite V400 40mil 💨">
-            <img src="/imagenes/vapes5.jpg" alt="Vape desechable Ignite V400">
+            <img src="imagenes/vapes5.jpg" alt="Vape desechable Ignite V400">
             <h3>Ignite V400 40mil 💨</h3>
             <p>Desde $13.8 USD (hasta 50x)</p>
             <span>Vapes</span>
           </div>
 
           <div class="producto-card" data-category="Vapes" data-nombre="Lost Mary Mixer 30.000 Puffs 💨">
-            <img src="/imagenes/vapes6.jpg" alt="Vape desechable Lost Mary Mixer">
+            <img src="imagenes/vapes6.jpg" alt="Vape desechable Lost Mary Mixer">
             <h3>Lost Mary Mixer 30.000 Puffs 💨</h3>
             <p>Desde $11.4 USD (hasta 100x)</p>
             <span>Vapes</span>
           </div>
 
           <div class="producto-card" data-category="Vapes" data-nombre="IGNITE V250 25.000 Puffs 💨">
-            <img src="/imagenes/vapes7.jpg" alt="Vape desechable IGNITE V250">
+            <img src="imagenes/vapes7.jpg" alt="Vape desechable IGNITE V250">
             <h3>IGNITE V250 25.000 Puffs 💨</h3>
             <p>Desde $11.4 USD (hasta 100x)</p>
             <span>Vapes</span>
           </div>
 
           <div class="producto-card" data-category="Vapes" data-nombre="IGNITE V150 15.000 Puffs 💨">
-            <img src="/imagenes/vapes8.jpg" alt="Vape desechable IGNITE V150">
+            <img src="imagenes/vapes8.jpg" alt="Vape desechable IGNITE V150">
             <h3>IGNITE V150 15.000 Puffs 💨</h3>
             <p>Desde $8.8 USD (hasta 100x)</p>
             <span>Vapes</span>
           </div>
 
           <div class="producto-card" data-category="Vapes" data-nombre="Elfbar Ice King 40.000 Puffs 💨">
-            <img src="/imagenes/vapes9.jpg" alt="Vape desechable Elfbar Ice King">
+            <img src="imagenes/vapes9.jpg" alt="Vape desechable Elfbar Ice King">
             <h3>Elfbar Ice King 40.000 Puffs 💨</h3>
             <p>Desde $12.5 USD (hasta 100x)</p>
             <span>Vapes</span>
@@ -299,84 +312,84 @@ function getHTMLContent() {
 
           <!-- Perfumes -->
           <div class="producto-card" data-category="Perfumes" data-nombre="AL HARAMAIN AMBER OUD GOLD EDITION EDP 100ml 🌟">
-            <img src="/imagenes/perfumes1.jpg" alt="Perfume AL HARAMAIN AMBER OUD GOLD EDITION">
+            <img src="imagenes/perfumes1.jpg" alt="Perfume AL HARAMAIN AMBER OUD GOLD EDITION">
             <h3>AL HARAMAIN AMBER OUD GOLD EDITION EDP 100ml 🌟</h3>
             <p>Desde $59.5 USD (hasta 20x)</p>
             <span>Perfumes</span>
           </div>
 
           <div class="producto-card" data-category="Perfumes" data-nombre="BHARARA KING EDP 150ml 👑">
-            <img src="/imagenes/perfumes2.jpg" alt="Perfume BHARARA KING">
+            <img src="imagenes/perfumes2.jpg" alt="Perfume BHARARA KING">
             <h3>BHARARA KING EDP 150ml 👑</h3>
             <p>Desde $65.5 USD (hasta 20x)</p>
             <span>Perfumes</span>
           </div>
 
           <div class="producto-card" data-category="Perfumes" data-nombre="LATTAFA FAKHAR DORADO EDP 100ml ✨">
-            <img src="/imagenes/perfumes3.jpg" alt="Perfume LATTAFA FAKHAR DORADO">
+            <img src="imagenes/perfumes3.jpg" alt="Perfume LATTAFA FAKHAR DORADO">
             <h3>LATTAFA FAKHAR DORADO EDP 100ml ✨</h3>
             <p>Desde $33.5 USD (hasta 20x)</p>
             <span>Perfumes</span>
           </div>
 
           <div class="producto-card" data-category="Perfumes" data-nombre="ARMAF CLUB DE NUIT INTENSE MAN EDT 105ml 🖤">
-            <img src="/imagenes/perfumes4.jpg" alt="Perfume ARMAF CLUB DE NUIT INTENSE MAN">
+            <img src="imagenes/perfumes4.jpg" alt="Perfume ARMAF CLUB DE NUIT INTENSE MAN">
             <h3>ARMAF CLUB DE NUIT INTENSE MAN EDT 105ml 🖤</h3>
             <p>Desde $32.5 USD (hasta 20x)</p>
             <span>Perfumes</span>
           </div>
 
           <div class="producto-card" data-category="Perfumes" data-nombre="LATTAFA KHAMRAH EDP 100ml 🍯">
-            <img src="/imagenes/perfumes5.jpg" alt="Perfume LATTAFA KHAMRAH">
+            <img src="imagenes/perfumes5.jpg" alt="Perfume LATTAFA KHAMRAH">
             <h3>LATTAFA KHAMRAH EDP 100ml 🍯</h3>
             <p>Desde $39 USD (hasta 20x)</p>
             <span>Perfumes</span>
           </div>
 
           <div class="producto-card" data-category="Perfumes" data-nombre="LATTAFA ASAD EDP 100ml 🦁">
-            <img src="/imagenes/perfumes6.jpg" alt="Perfume LATTAFA ASAD">
+            <img src="imagenes/perfumes6.jpg" alt="Perfume LATTAFA ASAD">
             <h3>LATTAFA ASAD EDP 100ml 🦁</h3>
             <p>Desde $26.5 USD (hasta 20x)</p>
             <span>Perfumes</span>
           </div>
 
           <div class="producto-card" data-category="Perfumes" data-nombre="LATTAFA BADE'E AL OUD SUBLIME 100ml 🌹">
-            <img src="/imagenes/perfumes8.jpg" alt="Perfume LATTAFA BADE'E AL OUD SUBLIME">
+            <img src="imagenes/perfumes8.jpg" alt="Perfume LATTAFA BADE'E AL OUD SUBLIME">
             <h3>LATTAFA BADE'E AL OUD SUBLIME 100ml 🌹</h3>
             <p>Desde $26.5 USD (hasta 20x)</p>
             <span>Perfumes</span>
           </div>
 
           <div class="producto-card" data-category="Perfumes" data-nombre="LATTAFA YARA PINK EDP 100ml 🌸">
-            <img src="/imagenes/perfumes9.jpg" alt="Perfume LATTAFA YARA PINK">
+            <img src="imagenes/perfumes9.jpg" alt="Perfume LATTAFA YARA PINK">
             <h3>LATTAFA YARA PINK EDP 100ml 🌸</h3>
             <p>Desde $33 USD (hasta 20x)</p>
             <span>Perfumes</span>
           </div>
 
           <div class="producto-card" data-category="Perfumes" data-nombre="LATTAFA YARA CANDY EDP 100ml 🍭">
-            <img src="/imagenes/perfumes10.jpg" alt="Perfume LATTAFA YARA CANDY">
+            <img src="imagenes/perfumes10.jpg" alt="Perfume LATTAFA YARA CANDY">
             <h3>LATTAFA YARA CANDY EDP 100ml 🍭</h3>
             <p>Desde $25.5 USD (hasta 20x)</p>
             <span>Perfumes</span>
           </div>
 
           <div class="producto-card" data-category="Perfumes" data-nombre="LATTAFA YARA MOI EDP 100ml 💖">
-            <img src="/imagenes/perfumes11.jpg" alt="Perfume LATTAFA YARA MOI">
+            <img src="imagenes/perfumes11.jpg" alt="Perfume LATTAFA YARA MOI">
             <h3>LATTAFA YARA MOI EDP 100ml 💖</h3>
             <p>Desde $26 USD (hasta 20x)</p>
             <span>Perfumes</span>
           </div>
 
           <div class="producto-card" data-category="Perfumes" data-nombre="LATTAFA BADEE AL OUD NOBLE BLUSH EDP 100ml 🌺">
-            <img src="/imagenes/perfumes12.jpg" alt="Perfume LATTAFA BADEE AL OUD NOBLE BLUSH">
+            <img src="imagenes/perfumes12.jpg" alt="Perfume LATTAFA BADEE AL OUD NOBLE BLUSH">
             <h3>LATTAFA BADEE AL OUD NOBLE BLUSH EDP 100ml 🌺</h3>
             <p>Desde $28.5 USD (hasta 20x)</p>
             <span>Perfumes</span>
           </div>
 
           <div class="producto-card" data-category="Perfumes" data-nombre="LATTAFA FAKHAR ROSE EDP 100ml 🌹">
-            <img src="/imagenes/perfumes13.jpg" alt="Perfume LATTAFA FAKHAR ROSE">
+            <img src="imagenes/perfumes13.jpg" alt="Perfume LATTAFA FAKHAR ROSE">
             <h3>LATTAFA FAKHAR ROSE EDP 100ml 🌹</h3>
             <p>Desde $33 USD (hasta 20x)</p>
             <span>Perfumes</span>
@@ -446,9 +459,9 @@ function getHTMLContent() {
         </p>
 
         <div class="referencias-galeria">
-          <img src="/imagenes/referencias1.jpg" alt="Testimonio de cliente satisfecho 1" class="ref-img">
-          <img src="/imagenes/referencias2.jpg" alt="Testimonio de cliente satisfecho 2" class="ref-img">
-          <img src="/imagenes/referencias3.jpg" alt="Testimonio de cliente satisfecho 3" class="ref-img">
+          <img src="imagenes/referencias1.jpg" alt="Testimonio de cliente satisfecho 1" class="ref-img">
+          <img src="imagenes/referencias2.jpg" alt="Testimonio de cliente satisfecho 2" class="ref-img">
+          <img src="imagenes/referencias3.jpg" alt="Testimonio de cliente satisfecho 3" class="ref-img">
         </div>
 
         <div class="referencias-boton">

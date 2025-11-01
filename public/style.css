@@ -434,6 +434,8 @@ a:focus-visible {
   transform: translateY(-50%);
 }
 
+/* El theme switch se oculta en mobile mediante media queries en mobile-adjustments.css */
+
 /* Cart badge optimizado y posicionado correctamente */
 .cart-button {
   position: relative;
