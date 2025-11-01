@@ -1,18 +1,33 @@
 "use client"
 
 import { useEffect } from "react"
-import Script from "next/script"
 
 export default function MainContent() {
   useEffect(() => {
     // El script se cargará después del montaje
+    // Cargar el script principal
+    const script = document.createElement("script")
+    script.src = "/script.js"
+    script.async = true
+    document.body.appendChild(script)
+
+    // Cargar MercadoPago SDK
+    const mpScript = document.createElement("script")
+    mpScript.src = "https://sdk.mercadopago.com/js/v2"
+    mpScript.async = true
+    document.body.appendChild(mpScript)
+
+    return () => {
+      // Limpiar scripts al desmontar
+      document.body.removeChild(script)
+      document.body.removeChild(mpScript)
+    }
   }, [])
 
   return (
     <>
       <div dangerouslySetInnerHTML={{ __html: getHTMLContent() }} />
-      <Script src="/script.js" strategy="afterInteractive" />
-      <Script src="https://sdk.mercadopago.com/js/v2" strategy="afterinteractive" />
+      {/* The original Script components are no longer needed as they are now handled in useEffect */}
     </>
   )
 }
