@@ -1,0 +1,398 @@
+/* Mejorando la sección de factura con fondo animado y colores azulados */
+
+/* ============================================
+   FACTURA SECTION - MEJORADA
+   ============================================ */
+.factura-seccion {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 10000;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+  animation: fadeIn 0.4s ease;
+}
+
+/* Canvas de fondo animado para la factura */
+.factura-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.factura-container {
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.08), rgba(0, 212, 255, 0.08));
+  border: 2px solid rgba(0, 170, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 170, 255, 0.4);
+  max-width: 1000px;
+  width: 100%;
+  padding: 2.5rem;
+  margin: 2rem auto;
+  animation: slideInUp 0.4s ease-out;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+}
+
+/* Títulos con colores azulados como en la página */
+.factura-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(0, 170, 255, 0.3);
+}
+
+.factura-header h2 {
+  font-size: 2.5rem;
+  background: linear-gradient(90deg, #007bff, #00a8ff, #00d4ff, #00a8ff, #007bff);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  animation: gradientShift 4s ease-in-out infinite;
+  filter: drop-shadow(0 2px 8px rgba(0, 123, 255, 0.4));
+  font-weight: 700;
+}
+
+.factura-subtitle {
+  color: var(--text-color);
+  font-size: 1.05rem;
+  opacity: 0.85;
+}
+
+.factura-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Secciones con fondo azulado y bordes brillantes */
+.factura-resumen-pedido,
+.factura-datos-comprador,
+.factura-metodos-pago {
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.05), rgba(0, 212, 255, 0.05));
+  border-radius: 15px;
+  padding: 1.8rem;
+  border: 2px solid rgba(0, 170, 255, 0.25);
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 170, 255, 0.15);
+}
+
+.factura-resumen-pedido:hover,
+.factura-datos-comprador:hover,
+.factura-metodos-pago:hover {
+  border-color: rgba(0, 170, 255, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 170, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Títulos de secciones con gradiente azulado */
+.factura-resumen-pedido h3,
+.factura-datos-comprador h3,
+.factura-metodos-pago h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(90deg, #007bff, #00a8ff, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.factura-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Scrollbar personalizado azulado */
+.factura-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.factura-items::-webkit-scrollbar-track {
+  background: rgba(0, 170, 255, 0.1);
+  border-radius: 10px;
+}
+
+.factura-items::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #007bff, #00a8ff);
+  border-radius: 10px;
+}
+
+/* Items con fondo azulado y hover effect */
+.factura-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.08), rgba(0, 212, 255, 0.08));
+  border-radius: 12px;
+  border: 1px solid rgba(0, 170, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.factura-item:hover {
+  border-color: #00a8ff;
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 170, 255, 0.2);
+}
+
+.factura-item-info {
+  flex: 1;
+}
+
+/* Nombres y detalles con colores azulados */
+.factura-item-nombre {
+  font-weight: 700;
+  color: #00a8ff;
+  margin-bottom: 0.3rem;
+  font-size: 1.05rem;
+}
+
+.factura-item-cantidad {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.factura-item-precio {
+  font-weight: 700;
+  color: #00d4ff;
+  font-size: 1.2rem;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+.factura-total-section {
+  border-top: 2px solid rgba(0, 170, 255, 0.3);
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.factura-total-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+/* Total final con animación y colores azulados */
+.factura-total-final {
+  font-size: 1.6rem;
+  font-weight: 700;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(0, 170, 255, 0.2);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.factura-total-final span:last-child {
+  background: linear-gradient(90deg, #007bff, #00a8ff, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+}
+
+/* Grid de información con colores azulados */
+.factura-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.2rem;
+}
+
+.factura-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.8rem;
+  background: rgba(0, 123, 255, 0.03);
+  border-radius: 8px;
+  border-left: 3px solid #00a8ff;
+  transition: all 0.3s ease;
+}
+
+.factura-info-item:hover {
+  background: rgba(0, 123, 255, 0.08);
+  transform: translateX(5px);
+}
+
+.factura-info-label {
+  font-size: 0.85rem;
+  color: #00a8ff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.factura-info-value {
+  font-size: 1.05rem;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.pago-disclaimer {
+  margin-top: 1rem;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.12), rgba(0, 212, 255, 0.12));
+  border-left: 4px solid #00a8ff;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  line-height: 1.6;
+  box-shadow: 0 3px 10px rgba(0, 170, 255, 0.15);
+}
+
+.factura-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Botones con estilos azulados mejorados */
+.btn-volver-checkout {
+  flex: 1;
+  min-width: 200px;
+  padding: 1.1rem 2rem;
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(0, 212, 255, 0.1));
+  color: #00a8ff;
+  border: 2px solid rgba(0, 170, 255, 0.4);
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-volver-checkout:hover {
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.2), rgba(0, 212, 255, 0.2));
+  border-color: #00a8ff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 170, 255, 0.3);
+}
+
+.btn-realizar-pedido,
+.btn-pagar-mercadopago {
+  flex: 2;
+  min-width: 250px;
+  padding: 1.2rem 2.5rem;
+  background: linear-gradient(90deg, #007bff, #00a8ff, #00d4ff, #00a8ff, #007bff);
+  background-size: 300%;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(0, 170, 255, 0.4);
+  animation: gradientFlow 4s ease infinite;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-realizar-pedido::before,
+.btn-pagar-mercadopago::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-realizar-pedido:hover::before,
+.btn-pagar-mercadopago:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-realizar-pedido:hover,
+.btn-pagar-mercadopago:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(0, 170, 255, 0.6);
+}
+
+.btn-realizar-pedido:active,
+.btn-pagar-mercadopago:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+/* Animaciones para el canvas de fondo */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
+}
