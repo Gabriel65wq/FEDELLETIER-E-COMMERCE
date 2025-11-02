@@ -6,23 +6,22 @@ export default function MainContent() {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    console.log("[v0] Componente montado, iniciando carga...")
     setMounted(true)
 
-    const loadScript = () => {
+    const timer = setTimeout(() => {
+      console.log("[v0] Cargando script.js...")
       const script = document.createElement("script")
       script.src = "/script.js"
       script.async = false
       script.onload = () => {
-        console.log("[v0] Script cargado correctamente")
+        console.log("[v0] Script cargado exitosamente")
       }
-      script.onerror = () => {
-        console.error("[v0] Error al cargar el script")
+      script.onerror = (error) => {
+        console.error("[v0] Error al cargar el script:", error)
       }
       document.body.appendChild(script)
-    }
-
-    // Esperar a que el HTML esté en el DOM antes de cargar el script
-    const timer = setTimeout(loadScript, 50)
+    }, 100)
 
     return () => {
       clearTimeout(timer)
