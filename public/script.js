@@ -2007,6 +2007,49 @@ function initSmoothScroll() {
   })
 }
 
+const initializeApp = () => {
+  console.log("[v0] Inicializando aplicación...")
+
+  try {
+    ThemeManager.init()
+    console.log("[v0] ThemeManager inicializado")
+
+    CartManager.init()
+    console.log("[v0] CartManager inicializado")
+
+    ProductDetailManager.init()
+    console.log("[v0] ProductDetailManager inicializado")
+
+    CheckoutManager.init()
+    console.log("[v0] CheckoutManager inicializado")
+
+    FacturaManager.init()
+    console.log("[v0] FacturaManager inicializado")
+
+    PagoExitosoManager.init()
+    console.log("[v0] PagoExitosoManager inicializado")
+
+    ProductFilterManager.init()
+    console.log("[v0] ProductFilterManager inicializado")
+
+    GalleryManager.init()
+    console.log("[v0] GalleryManager inicializado")
+
+    HamburgerMenuManager.init()
+    console.log("[v0] HamburgerMenuManager inicializado")
+
+    initSmoothScroll()
+    console.log("[v0] Smooth scroll inicializado")
+
+    ParticlesManager.init()
+    console.log("[v0] ParticlesManager inicializado")
+
+    console.log("[v0] Aplicación inicializada correctamente")
+  } catch (error) {
+    console.error("[v0] Error al inicializar la aplicación:", error)
+  }
+}
+
 document.body.classList.add("no-transition")
 
 window.addEventListener("load", () => {
@@ -2015,15 +2058,5 @@ window.addEventListener("load", () => {
   }, 100)
   window.scrollTo({ top: 0, behavior: "instant" })
 
-  ThemeManager.init()
-  CartManager.init()
-  ProductDetailManager.init()
-  CheckoutManager.init()
-  FacturaManager.init()
-  PagoExitosoManager.init()
-  ProductFilterManager.init()
-  GalleryManager.init()
-  HamburgerMenuManager.init()
-  initSmoothScroll()
-  ParticlesManager.init()
+  initializeApp()
 })
